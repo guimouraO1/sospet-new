@@ -13,8 +13,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoginComponent } from './pages/login/login.component';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  // Adicione esta linha
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,18 +22,20 @@ import { LoginComponent } from './pages/login/login.component';
     NavbarComponent,
     HomepageComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+
     
   ],
   imports: [
     // Obrigatórios
     RouterModule,
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     MatSlideToggleModule,
     AppRoutingModule,
     // Obrigatórios
-    
+    FormsModule,
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,

@@ -5,17 +5,17 @@
 
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
-              <input matInput placeholder="yourEmail@gmail.com">
+              <input type="email" [(ngModel)]="user.login" matInput placeholder="yourEmail@gmail.com">
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
-              <input matInput placeholder="Password">
+              <input type="password" [(ngModel)]="user.password" matInput placeholder="Password">
               <mat-icon matSuffix>password</mat-icon>
             </mat-form-field>
             
-            <button mat-raised-button color="primary">Login</button>
+            <button (click)="login()" mat-raised-button color="primary">Login</button>
 
           </div>
     </div>
