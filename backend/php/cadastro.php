@@ -28,7 +28,7 @@ if (empty($Email)|| empty($ConfirmaEmail) || empty($Senha) || empty($ConfirmaSen
 }
 
 // Verifica se as senhas coincidem
-if ($Senha == $ConfirmaSenha) {
+if ($Senha == $ConfirmaSenha && $Email == $ConfirmaEmail) {
     
     // Verifica se o email já existe no banco de dados
     $queryCheckEmail = $conexao->prepare("SELECT COUNT(*) FROM usuario WHERE email = :Email");
@@ -49,14 +49,12 @@ if ($Senha == $ConfirmaSenha) {
 
         $queryInsertUsuario = $conexao->prepare("
             INSERT INTO usuario (
-                id,
                 email,
-                senha,
+                password
             )
             VALUES (
-                NULL,
                 :Email,
-                :Senha,
+                :Senha
             )
         ");
 
@@ -75,7 +73,7 @@ if ($Senha == $ConfirmaSenha) {
     // As senhas não coincidem, retorna uma resposta de erro
     $response = [
         'success' => false,
-        'message' => 'As senhas não coincidem.'
+        'message' => 'As senhas ou os Emails não coincidem.'
     ];
     echo json_encode($response);
 }

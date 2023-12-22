@@ -2,7 +2,7 @@
 try
 {
     $servidor = "localhost";
-    $database = "loginPage";
+    $database = "login page";
     $usuario = "root";
     $senha = "";
     

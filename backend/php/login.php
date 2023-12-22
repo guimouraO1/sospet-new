@@ -13,7 +13,7 @@ $Senha = $_POST['Senha'];
 
 // Consulta para obter o hash da senha do usuário com base no e-mail fornecido
 $querySelectUsuario = $conexao->prepare("
-    SELECT senha
+    SELECT password
     FROM usuario
     WHERE email = :Email
     LIMIT 1
@@ -25,10 +25,20 @@ $querySelectUsuario->execute();
 $usuario = $querySelectUsuario->fetch(PDO::FETCH_ASSOC);
 
 if ($usuario) {
-    $senhaHash = $usuario['senha'];
+    $senhaHash = $usuario['password'];
     if (password_verify($Senha, $senhaHash)) {
-        // Senha válida
-        echo json_encode(['message' => 'Senha válida']);
+
+        $queryUser = $conexao->prepare("
+            SELECT id, email
+            FROM usuario
+            WHERE email = :Email
+            LIMIT 1
+        ");
+        $queryUser->bindValue(':Email', $Email, PDO::PARAM_STR);
+        $queryUser->execute();
+        $user = $queryUser->fetch(PDO::FETCH_ASSOC);
+        echo json_encode(['user' => $user]);
+
     } else {
         // Senha inválida
         echo json_encode(['message' => 'Senha inválida']);
