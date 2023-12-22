@@ -26,12 +26,14 @@ import { LoginComponent } from './pages/login/login.component';
     
   ],
   imports: [
+    // Obrigatórios
     RouterModule,
     BrowserModule,
     HttpClientModule,
     MatSlideToggleModule,
     AppRoutingModule,
     // Obrigatórios
+    
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
