@@ -1,20 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-
+import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css',
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
 })
-export class AppComponent implements OnInit{
- 
+export class LoginComponent implements OnInit {
+  ngOnInit(): void {
+  }
   constructor(private router: Router, public dialog: MatDialog, private http: HttpClient) {
 
-  }
-  ngOnInit(): void {
   }
 }

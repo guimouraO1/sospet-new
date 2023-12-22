@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [ 
-
 {
-  path:'navbar',
-  component: NavbarComponent
+  path:'',
+  component: LoginComponent,
+},
+{
+  path:'home',
+  component: HomepageComponent,
+},
+{
+  path:'**',
+  component: NotFoundComponent,
 },
 ];
 
