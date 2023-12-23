@@ -22,15 +22,15 @@ export class NavbarComponent implements OnInit {
 
   toHome(){
     if(this.authService.loggedIn){
-      this.router.navigate(['/home'])
+      this.router.navigate(['/home']);
     }
   }
   
   toLogin(){
-    this.router.navigate([''])
+    this.router.navigate(['']);
   }
   toRegister(){
-    this.router.navigate(['register'])
+    this.router.navigate(['register']);
   }
 
   // getUsers() {
@@ -46,7 +46,5 @@ export class NavbarComponent implements OnInit {
   //       console.log(res);
   //     });
   // }
-
-
 
 }
