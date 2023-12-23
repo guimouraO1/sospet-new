@@ -1,4 +1,4 @@
-import { HttpClient,HttpParams,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -8,15 +8,25 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
 })
 export class RegisterComponent implements OnInit {
-  ngOnInit(): void {
-  }
-  user = {email: '', password: ''}
-  constructor(private router: Router, public dialog: MatDialog, private http: HttpClient, private authService: AuthService, private snackBar: MatSnackBar){
-
-  }
+  ngOnInit(): void {}
+  user = {
+    email: '', 
+    confirmEmail: '',
+    password: '',
+    confirmPassword: ''
+  
+  
+  };
+  constructor(
+    private router: Router,
+    public dialog: MatDialog,
+    private http: HttpClient,
+    private authService: AuthService,
+    private snackBar: MatSnackBar
+  ) {}
 
   // register(email: string, password: string,){
   //   // Define os dados que você deseja enviar
@@ -32,7 +42,7 @@ export class RegisterComponent implements OnInit {
   //   this.http.post('http://localhost:3000/api/user', data.toString(), { headers })
   //     .subscribe((res: any) => {
   //       this.router.navigate([''])
-  //       this.openSnackBar('Register successful!', res.result.email) 
+  //       this.openSnackBar('Register successful!', res.result.email)
   //   });
   // }
 
@@ -41,6 +51,7 @@ export class RegisterComponent implements OnInit {
       duration: 3000,
       verticalPosition: 'top',
     });
-  }
 
+    this.router.navigate(['']);
+  }
 }

@@ -22,5 +22,8 @@ export class LoginComponent implements OnInit {
     console.log(this.user)
     this.authService.login(this.user);
   }
+  toRegister(){
+    this.router.navigate(['register'])
+  }
 
 }
