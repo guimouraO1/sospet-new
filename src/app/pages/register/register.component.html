@@ -15,7 +15,7 @@
               <mat-icon matSuffix>password</mat-icon>
             </mat-form-field>
             
-            <button (click)="register(user.email, user.password)" mat-raised-button color="primary">Register</button>
+            <button (click)="openSnackBar('Register successful!', user.email)" mat-raised-button color="primary">Register</button>
 
           </div>
     </div>

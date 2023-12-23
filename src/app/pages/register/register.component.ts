@@ -18,23 +18,23 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  register(email: string, password: string,){
-    // Define os dados que você deseja enviar
-    const data = new HttpParams()
-      .set('email', email)
-      .set('password', password);
+  // register(email: string, password: string,){
+  //   // Define os dados que você deseja enviar
+  //   const data = new HttpParams()
+  //     .set('email', email)
+  //     .set('password', password);
 
-    // Configura os cabeçalhos para indicar que você está enviando dados no formato x-www-form-urlencoded
-    const headers = new HttpHeaders()
-      .set('Content-Type', 'application/x-www-form-urlencoded');
+  //   // Configura os cabeçalhos para indicar que você está enviando dados no formato x-www-form-urlencoded
+  //   const headers = new HttpHeaders()
+  //     .set('Content-Type', 'application/x-www-form-urlencoded');
 
-    // Faz a solicitação POST com os dados e cabeçalhos configurados
-    this.http.post('http://localhost:3000/api/user', data.toString(), { headers })
-      .subscribe((res: any) => {
-        this.router.navigate([''])
-        this.openSnackBar('Register successful!', res.result.email) 
-      });
-  }
+  //   // Faz a solicitação POST com os dados e cabeçalhos configurados
+  //   this.http.post('http://localhost:3000/api/user', data.toString(), { headers })
+  //     .subscribe((res: any) => {
+  //       this.router.navigate([''])
+  //       this.openSnackBar('Register successful!', res.result.email) 
+  //   });
+  // }
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {

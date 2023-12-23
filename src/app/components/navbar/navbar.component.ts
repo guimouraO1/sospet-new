@@ -20,12 +20,10 @@ export class NavbarComponent implements OnInit {
     
   }
 
-
   toHome(){
     if(this.authService.loggedIn){
       this.router.navigate(['/home'])
     }
-   
   }
   
   toLogin(){
@@ -35,19 +33,19 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['register'])
   }
 
-  getUsers() {
-    this.http.get('http://localhost:3000/api/users')
-      .subscribe((res: any) => {
-        console.log(res);
-      });
-  }
+  // getUsers() {
+  //   this.http.get('http://localhost:3000/api/users')
+  //     .subscribe((res: any) => {
+  //       console.log(res);
+  //     });
+  // }
 
-  getUser(id: number) {
-    this.http.get(`http://localhost:3000/api/user/${id}`)
-      .subscribe((res: any) => {
-        console.log(res);
-      });
-  }
+  // getUser(id: number) {
+  //   this.http.get(`http://localhost:3000/api/user/${id}`)
+  //     .subscribe((res: any) => {
+  //       console.log(res);
+  //     });
+  // }
 
 
 
