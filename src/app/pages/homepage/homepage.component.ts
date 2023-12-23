@@ -11,14 +11,17 @@ import { AuthService } from '../../services/auth.service';
 })
 
 export class HomepageComponent implements OnInit{
+
+  user: any;
   constructor(private router: Router, public dialog: MatDialog, private http: HttpClient, private authService: AuthService) {
 
   }
   ngOnInit(): void {
     if(this.authService.loggedIn){
-      console.log('Bem vindo ' + this.authService.user.email)
+      this.user = this.authService.user;
     }else{
       this.router.navigate(['']);
     }
   }
+  
 }

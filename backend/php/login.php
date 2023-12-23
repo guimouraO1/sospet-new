@@ -14,7 +14,7 @@ $Senha = $_POST['Senha'];
 // Consulta para obter o hash da senha do usuário com base no e-mail fornecido
 $querySelectUsuario = $conexao->prepare("
     SELECT password
-    FROM usuario
+    FROM user
     WHERE email = :Email
     LIMIT 1
 ");
@@ -30,7 +30,7 @@ if ($usuario) {
 
         $queryUser = $conexao->prepare("
             SELECT id, email
-            FROM usuario
+            FROM user
             WHERE email = :Email
             LIMIT 1
         ");

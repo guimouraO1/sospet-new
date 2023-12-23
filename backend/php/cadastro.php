@@ -31,7 +31,7 @@ if (empty($Email)|| empty($ConfirmaEmail) || empty($Senha) || empty($ConfirmaSen
 if ($Senha == $ConfirmaSenha && $Email == $ConfirmaEmail) {
     
     // Verifica se o email já existe no banco de dados
-    $queryCheckEmail = $conexao->prepare("SELECT COUNT(*) FROM usuario WHERE email = :Email");
+    $queryCheckEmail = $conexao->prepare("SELECT COUNT(*) FROM user WHERE email = :Email");
     $queryCheckEmail->bindValue(':Email', $Email, PDO::PARAM_STR);
     $queryCheckEmail->execute();
     $emailExists = $queryCheckEmail->fetchColumn();
@@ -48,7 +48,7 @@ if ($Senha == $ConfirmaSenha && $Email == $ConfirmaEmail) {
         $senhaHash = hashSenha($Senha);
 
         $queryInsertUsuario = $conexao->prepare("
-            INSERT INTO usuario (
+            INSERT INTO user (
                 email,
                 password
             )

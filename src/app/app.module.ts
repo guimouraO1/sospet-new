@@ -16,6 +16,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  // Adicione esta linha
 import { FormsModule } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +25,11 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     HomepageComponent,
     NotFoundComponent,
     LoginComponent,
-    
+    RegisterComponent
     
   ],
   imports: [
-    // Obrigatórios
+
     RouterModule,
     BrowserModule,
     BrowserAnimationsModule,

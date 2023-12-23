@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
 export class AuthService {
   user: any;
   loggedIn: any;
+  
   constructor(
     private http: HttpClient,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   login(user: { email: string; password: string }) {
     const productData = new FormData();
@@ -41,4 +42,5 @@ export class AuthService {
       verticalPosition: 'top',
     });
   }
+
 }
