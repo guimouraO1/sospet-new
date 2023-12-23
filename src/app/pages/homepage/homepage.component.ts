@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-homepage',
@@ -11,12 +11,12 @@ import { LoginService } from '../../services/login.service';
 })
 
 export class HomepageComponent implements OnInit{
-  constructor(private router: Router, public dialog: MatDialog, private http: HttpClient, private loginService: LoginService) {
+  constructor(private router: Router, public dialog: MatDialog, private http: HttpClient, private authService: AuthService) {
 
   }
   ngOnInit(): void {
-    if(this.loginService.loggedIn){
-      console.log('Bem vindo ' + this.loginService.user.email)
+    if(this.authService.loggedIn){
+      console.log('Bem vindo ' + this.authService.user.email)
     }else{
       this.router.navigate(['']);
     }

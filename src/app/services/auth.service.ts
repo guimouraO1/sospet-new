@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -7,11 +7,15 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 
-export class LoginService {
+export class AuthService {
   user: any;
   loggedIn: any;
-  constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) {}
-  
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
+
   login(user: { email: string; password: string }) {
     const productData = new FormData();
     productData.append('Email', user.email);
@@ -24,7 +28,7 @@ export class LoginService {
           this.loggedIn = true;
           this.user = res.user;
           this.router.navigate(['/home']);
-          this.openSnackBar('login successful', this.user.email)
+          this.openSnackBar('Login successful!', this.user.email);
         } else if (res.loggedIn === false) {
           alert('Senha inválida');
         }
@@ -33,10 +37,8 @@ export class LoginService {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      // duration: 2000,
+      duration: 3000,
       verticalPosition: 'top',
-      panelClass: ['mat-toolbar', 'mat-primary']
-
     });
   }
 }
