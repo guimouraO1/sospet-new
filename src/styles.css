@@ -11,3 +11,8 @@
 html, body { 
     height: 100%;
 }
+.mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action
+{
+  color:#673ab7 !important;
+
+}

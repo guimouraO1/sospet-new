@@ -37,15 +37,16 @@ if ($usuario) {
         $queryUser->bindValue(':Email', $Email, PDO::PARAM_STR);
         $queryUser->execute();
         $user = $queryUser->fetch(PDO::FETCH_ASSOC);
-        echo json_encode(['user' => $user]);
+
+        echo json_encode(['message' => 'Senha válida', 'user' => $user, 'loggedIn' => true]);
 
     } else {
         // Senha inválida
-        echo json_encode(['message' => 'Senha inválida']);
+        echo json_encode(['message' => 'Senha inválida', 'loggedIn' => false]);
     }
 } else {
     // Usuário não encontrado
-    echo json_encode(['message' => 'Usuário não encontrado']);
+    echo json_encode(['message' => 'Usuário não encontrado', 'loggedIn' => false]);
 }
 
 ?>
