@@ -33,12 +33,12 @@ export class AuthService {
           
         // res.result.loggedIn = true;
           // this.loggedIn = res.result.loggedIn;
-          
+
           let token = res.result.token
           localStorage.setItem('token', token);
           this.router.navigate(['home']);
           // this.tokenToUser();
-          this.openSnackBar('Login successful!', res.result.email);
+          this.openSnackBar('Login successful!', res.result.user.email);
 
       });
   }
