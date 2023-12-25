@@ -30,16 +30,16 @@ export class AuthService {
     this.http
       .post('http://localhost:3000/api/login', data.toString(), { headers })
       .subscribe((res: any) => {
-        res.result.loggedIn = true;
-        // this.loggedIn = res.result.loggedIn;
-
-        if (res.result.loggedIn) {
-          localStorage.setItem('token', res.result.token);
+          
+        // res.result.loggedIn = true;
+          // this.loggedIn = res.result.loggedIn;
+          
+          let token = res.result.token
+          localStorage.setItem('token', token);
           this.router.navigate(['home']);
+          // this.tokenToUser();
           this.openSnackBar('Login successful!', res.result.email);
-        } else {
-          this.openSnackBar('Unable to log in, an error occurred.', '');
-        }
+
       });
   }
 
@@ -75,4 +75,22 @@ export class AuthService {
     });
   }
 
+  // tokenToUser() {
+  //   localStorage.getItem('token')
+  
+  //   const params = new HttpParams().set('token', token);
+  //   console.log(params)
+  //   const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+  
+  //   this.http
+  //     .get('http://localhost:3000/api/user/token', { params, headers } )
+  //     .subscribe(
+  //       (res: any) => {
+  //         console.log('Resposta:', res);
+  //       },
+  //       (error) => {
+  //         console.error(error);
+  //       }
+  //     );
+  //     }
 }
