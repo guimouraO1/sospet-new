@@ -1,29 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent implements OnInit {
+  user = { email: '', password: '' };
 
-  user = {email: '', password: ''}
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  constructor(private router: Router, public dialog: MatDialog, private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    public dialog: MatDialog,
+    private http: HttpClient,
+    private authService: AuthService,
+    private snackBar: MatSnackBar
+  ) {}
   
-  login(){
-    console.log(this.user)
-    this.authService.login(this.user);
+  
+
+  login(email: string, password: string) {
+    this.authService.login(email, password);
   }
-  toRegister(){
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: 'top',
+    });
+  }
+
+  toRegister() {
     this.router.navigate(['register']);
   }
-
 }

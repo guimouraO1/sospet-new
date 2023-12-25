@@ -13,12 +13,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
   user = {
-    email: '', 
+    email: '',
     confirmEmail: '',
     password: '',
-    confirmPassword: ''
-  
-  
+    confirmPassword: '',
   };
   constructor(
     private router: Router,
@@ -28,30 +26,29 @@ export class RegisterComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-  // register(email: string, password: string,){
-  //   // Define os dados que você deseja enviar
-  //   const data = new HttpParams()
-  //     .set('email', email)
-  //     .set('password', password);
-
-  //   // Configura os cabeçalhos para indicar que você está enviando dados no formato x-www-form-urlencoded
-  //   const headers = new HttpHeaders()
-  //     .set('Content-Type', 'application/x-www-form-urlencoded');
-
-  //   // Faz a solicitação POST com os dados e cabeçalhos configurados
-  //   this.http.post('http://localhost:3000/api/user', data.toString(), { headers })
-  //     .subscribe((res: any) => {
-  //       this.router.navigate([''])
-  //       this.openSnackBar('Register successful!', res.result.email)
-  //   });
-  // }
-
+  register(
+    email: string,
+    confirmEmail: string,
+    password: string,
+    confirmPassword: string
+  ) {
+    if (
+      !email ||
+      !confirmEmail ||
+      !password ||
+      !confirmPassword ||
+      email !== confirmEmail ||
+      password !== confirmPassword
+    ) {
+      this.openSnackBar('All fields must be filled in.', '');
+    } else {
+      this.authService.register(email, password);
+    }
+  }
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 3000,
       verticalPosition: 'top',
     });
-
-    this.router.navigate(['']);
   }
 }

@@ -5,29 +5,29 @@
 
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
-              <input type="email" [(ngModel)]="user.email" matInput placeholder="yourEmail@gmail.com">
+              <input type="email" [(ngModel)]="user.email" matInput placeholder="yourEmail@gmail.com" required>
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
               <mat-label>Confirm Email</mat-label>
-              <input type="email" [(ngModel)]="user.confirmEmail" matInput placeholder="yourEmail@gmail.com">
+              <input type="email" [(ngModel)]="user.confirmEmail" matInput placeholder="yourEmail@gmail.com" required>
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
-              <input type="password" [(ngModel)]="user.password" matInput placeholder="Password">
+              <input type="password" [(ngModel)]="user.password" matInput placeholder="Password" required>
               <mat-icon matSuffix>password</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
               <mat-label>Confirm Password</mat-label>
-              <input type="password" [(ngModel)]="user.confirmPassword" matInput placeholder="Confirm Password">
+              <input type="password" [(ngModel)]="user.confirmPassword" matInput placeholder="Confirm Password" required>
               <mat-icon matSuffix>password</mat-icon>
             </mat-form-field>
             
-            <button (click)="openSnackBar('Register successful!', user.email)" mat-raised-button color="primary">Register</button>
+            <button (click)="register(user.email,user.confirmEmail, user.password, user.confirmPassword)" mat-raised-button color="primary">Register</button>
 
           </div>
     </div>

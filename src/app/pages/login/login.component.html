@@ -1,24 +1,44 @@
 <div class="main">
-    <div>
-        <div class="form">
-          <mat-icon class="main-card-icon" matSuffix>person</mat-icon>
+  <div>
+    <div class="form">
+      <mat-icon class="main-card-icon" matSuffix>person</mat-icon>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Email</mat-label>
-              <input type="email" [(ngModel)]="user.email" matInput placeholder="yourEmail@gmail.com">
-              <mat-icon matSuffix>email</mat-icon>
-            </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          [(ngModel)]="user.email"
+          matInput
+          placeholder="yourEmail@gmail.com"
+          required
+        />
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Password</mat-label>
-              <input type="password" [(ngModel)]="user.password" matInput placeholder="Password">
-              <mat-icon matSuffix>password</mat-icon>
-            </mat-form-field>
-            
-            <button (click)="login()" mat-raised-button color="primary">Login</button>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          [(ngModel)]="user.password"
+          matInput
+          placeholder="Password"
+          required
+        />
+        <mat-icon matSuffix>password</mat-icon>
+      </mat-form-field>
 
-            <p style="margin: 20px;">Don't have a registration? <span (click)="toRegister()" style="color: brown; cursor: pointer;">Click here</span></p>
-          </div>
-          
+      <button
+        (click)="login(user.email, user.password)"
+        mat-raised-button
+        color="primary"
+      >
+        Login
+      </button>
+
+      <p>
+        Don't have a registration?
+        <span (click)="toRegister()">Click here</span>
+      </p>
     </div>
+  </div>
 </div>
