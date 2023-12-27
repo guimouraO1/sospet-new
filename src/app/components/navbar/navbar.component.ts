@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
   }
   signOut(){
     localStorage.removeItem('token');
-    this.authService.logged = false;
+    this.authService.navItemLogin = false;
     this.router.navigate(['']);
   }
 
