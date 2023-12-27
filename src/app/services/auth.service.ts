@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   
+  logged = false;
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -50,7 +52,7 @@ export class AuthService {
     const headers = new HttpHeaders().set('authorization', `${token}`);
     this.http.get('http://localhost:3000/api/user/auth', { headers }).subscribe(
       (res: any) => {
-        
+        this.logged = true;
       },
       (error: any) => {
         this.router.navigate(['']);

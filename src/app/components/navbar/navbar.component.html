@@ -3,8 +3,8 @@
     <a (click)="toHome()" class="logo">Login Page</a>
     <ul class="navSection">
       <li (click)="toHome()"><a class="navItens">Home</a></li>
-      <li (click)="toLogin()"><a class="navItens">Login</a></li>
-      <li (click)="signOut()"><a class="navItens">Sign Out</a></li>
+      <li *ngIf="!this.authService.logged" (click)="toLogin()"><a class="navItens">Login</a></li>
+      <li *ngIf="this.authService.logged" (click)="signOut()"><a class="navItens">Sign Out</a></li>
       <!-- <mat-slide-toggle value="primary" color="" class="navMode"></mat-slide-toggle>  -->
     </ul>
   </div>

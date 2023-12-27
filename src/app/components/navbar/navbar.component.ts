@@ -9,8 +9,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
-  
-  
+    
   constructor(
     private router: Router,
     public dialog: MatDialog,
@@ -18,7 +17,6 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
   }
 
   toHome() {
@@ -32,6 +30,7 @@ export class NavbarComponent implements OnInit {
   }
   signOut(){
     localStorage.removeItem('token');
+    this.authService.logged = false;
     this.router.navigate(['']);
   }
 
