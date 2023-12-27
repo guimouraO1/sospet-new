@@ -14,16 +14,13 @@ body {
   color: #673ab7 !important;
 }
 
-body::-webkit-scrollbar {
-  width: 14px; /* width of the entire scrollbar */
+
+body {
+  --sb-track-color: transparent;
+  --sb-thumb-color: #673ab7;
+  --sb-size: 16px;
+
+  scrollbar-color: var(--sb-thumb-color) 
+                   var(--sb-track-color);
 }
 
-body::-webkit-scrollbar-track {
-  background: #ff9249; /* color of the tracking area */
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: aliceblue; /* color of the scroll thumb */
-  border-radius: 20px; /* roundness of the scroll thumb */
-  border: 3px solid #ff9249; /* creates padding around scroll thumb */
-}

@@ -1,0 +1,155 @@
+.corpo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25vh;
+    width: 100vw;
+    background-color: #ffffff;
+
+}
+
+
+
+h1 {
+    padding-top: 30px;
+    padding-left: 50px;
+
+}
+
+.card-info {
+
+    width: 80vw;
+    min-height: 500px;
+    border-radius: 4px;
+    background-color: WhiteSmoke;
+
+}
+
+.userPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    text-align: start;
+
+}
+
+.card-user-header {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 100%;
+
+}
+
+.card-user-header h1 {
+    cursor: pointer;
+}
+
+.btn {
+
+    min-width: 240px;
+    color: white;
+}
+
+.card-img {
+    margin-top: -300px;
+    border-radius: 100%;
+    height: 300px;
+    width: 300px;
+    background-size: cover;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(66, 66, 66, 0.247);
+}
+
+.card-img img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.icon {
+
+    text-align: center;
+    margin-top: 80%;
+    color: #673ab7;
+}
+
+mat-icon {
+    opacity: 0.6;
+    cursor: pointer;
+    transition: opacity 0.5s ease 0s;
+}
+
+mat-icon:hover {
+    opacity: 0.3;
+    color: #ffffff;
+
+}
+
+.parent {
+
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 50%);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    width: 90%;
+    background-color: WhiteSmoke;
+    padding: 40px;
+    border-radius: 10px;
+
+}
+
+.userParent {
+    box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 20px;
+    background-color: White;
+    border: none;
+
+}
+
+.userParent:first-child, .userParent:nth-child(2) {
+    margin-top: 20px;
+
+}
+
+.file-label {
+    position: relative;
+    display: inline-block;
+}
+
+.file-label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.file-label mat-icon {
+    cursor: pointer;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    color: #673ab7;
+
+}
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

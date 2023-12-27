@@ -26,6 +26,9 @@ export class NavbarComponent implements OnInit {
   toRegister() {
     this.router.navigate(['register']);
   }
+  toProfile() {
+    this.router.navigate(['profile']);
+  }
   signOut() {
     localStorage.removeItem('token');
     this.authService.navItemLogin = false;

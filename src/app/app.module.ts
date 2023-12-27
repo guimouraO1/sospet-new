@@ -16,7 +16,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Adicione esta linha
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
-
+import {MatMenuModule} from '@angular/material/menu';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { RegisterComponent } from './pages/register/register.component';
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     RouterModule,
@@ -41,8 +44,13 @@ import { RegisterComponent } from './pages/register/register.component';
     MatFormFieldModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatButtonModule, 
+    MatMenuModule,
+    NgxMaskDirective,
   ],
-  providers: [
+  providers: [    
+    provideNgxMask({ /* opções de cfg */ }),
+
   ],
   bootstrap: [AppComponent],
 })

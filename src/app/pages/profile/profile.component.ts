@@ -1,20 +1,17 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-homepage',
-  templateUrl: './homepage.component.html',
-  styleUrl: './homepage.component.css',
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrl: './profile.component.css',
 })
-export class HomepageComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   user: any;
-
   constructor(
-    private formBuilder: FormBuilder,
     private router: Router,
     public dialog: MatDialog,
     private http: HttpClient,

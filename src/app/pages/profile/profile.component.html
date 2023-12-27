@@ -1,0 +1,81 @@
+<div class="total">
+  <div class="corpo">
+    <div class="card-info">
+      <h1 style="color: rgb(0, 0, 0)">Olá, {{user.email}}</h1>
+      <div class="userPanel">
+        <div class="card-user-header">
+          <form class="form" enctype="multipart/form-data">
+            <button
+              style="background-color: #673ab7; color: white"
+              type="btn"
+              class="btn"
+              mat-raised-button
+            >
+              Alterar Papel de Parede
+            </button>
+            <div class="card-img">
+              <form class="icon" enctype="multipart/form-data">
+                <label class="file-label">
+                  <mat-icon #fileIcon>add_a_photo</mat-icon>
+                  <input #fileInput type="file" class="form-control" />
+                </label>
+              </form>
+            </div>
+            <label class="file-label">
+              <input
+                #fileInput
+                type="file"
+                class="form-control"
+                style="display: none"
+              />
+            </label>
+            <button
+              class="btn"
+              style="background-color: #673ab7; color: white"
+              mat-raised-button
+            >
+              Atualizar Perfil
+            </button>
+          </form>
+        </div>
+
+        <div class="parent">
+          <input
+            class="userParent"
+            pattern="[A-Za-z]+"
+            type="text"
+            placeholder="Email: "
+            value="{{user.email}}"
+          />
+          <input
+            class="userParent"
+            pattern="[A-Za-z]+"
+            type="text"
+            placeholder="Nome Completo: "
+          />
+          <input
+            autofocus
+            class="userParent"
+            mask="000.000.000-00"
+            placeholder="CPF"
+            type="text"
+          />
+          <input
+            class="userParent"
+            type="tel"
+            mask="(00) 0 0000 0000"
+            prefix="+55 "
+            placeholder="Telefone: "
+          />
+          <input class="userParent" type="text" placeholder="Endereço: " />
+          <input
+            class="userParent"
+            type="text"
+            placeholder="CEP: "
+            mask="00000-000"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
