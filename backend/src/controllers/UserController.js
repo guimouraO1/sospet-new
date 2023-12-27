@@ -53,20 +53,20 @@ module.exports = {
       let confirmPassword = req.body.confirmPassword;
 
       if (!email) {
-        return res.status(422).json({ msg: "O email é obrigatório" });
+        return res.status(422).json({ msg: "Email is mandatory" });
       }
       if (!password) {
-        return res.status(422).json({ msg: "O password é obrigatório" });
+        return res.status(422).json({ msg: "Password is mandatory" });
       }
       if (password !== confirmPassword) {
-        return res.status(422).json({ msg: "As senhas não conferem" });
+        return res.status(422).json({ msg: "Passwords don't match" });
       }
 
       const userExists = await UserService.findUserByEmail(email);
       if (userExists) {
         return res
           .status(422)
-          .json({ msg: "Email já cadastrado, tente outro." });
+          .json({ msg: "Email already registered, please try a different one." });
       }
 
       const salt = await bcrypt.genSalt(12);
@@ -119,20 +119,20 @@ module.exports = {
     let password = req.body.password;
 
     if (!email) {
-      return res.status(422).json({ msg: "O email é obrigatório" });
+      return res.status(422).json({ msg: "Email is mandatory" });
     }
     if (!password) {
-      return res.status(422).json({ msg: "O password é obrigatório" });
+      return res.status(422).json({ msg: "Password Email is mandatory" });
     }
 
     const userExists = await UserService.findUserByEmail(email);
     if (!userExists) {
-      return res.status(404).json({ msg: "Usuário não encontrado!" });
+      return res.status(404).json({ msg: "User not found!" });
     }
 
     const checkPassword = await bcrypt.compare(password, userExists.password);
     if (!checkPassword) {
-      return res.status(422).json({ msg: "Senha inválida!" });
+      return res.status(422).json({ msg: "Invalid password!" });
     }
 
     try {
