@@ -1,18 +1,29 @@
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
-*{  
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-
-
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
 }
-html, body { 
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
-.mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action
-{
-  color:#673ab7 !important;
+.mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action {
+  color: #673ab7 !important;
+}
 
+body::-webkit-scrollbar {
+  width: 14px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #ff9249; /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: aliceblue; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid #ff9249; /* creates padding around scroll thumb */
 }

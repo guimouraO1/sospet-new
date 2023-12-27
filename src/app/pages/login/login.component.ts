@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
   user = { email: '', password: '' };
-  
+
   ngOnInit(): void {}
 
   constructor(
@@ -22,12 +22,11 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private snackBar: MatSnackBar
   ) {}
-  
-  
+
   login(email: string, password: string) {
     this.authService.login(email, password);
   }
-  
+
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 3000,

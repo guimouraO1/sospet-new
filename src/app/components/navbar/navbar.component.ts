@@ -9,15 +9,13 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
-    
   constructor(
     private router: Router,
     public dialog: MatDialog,
     public authService: AuthService
   ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   toHome() {
     this.router.navigate(['/home']);
@@ -28,10 +26,9 @@ export class NavbarComponent implements OnInit {
   toRegister() {
     this.router.navigate(['register']);
   }
-  signOut(){
+  signOut() {
     localStorage.removeItem('token');
     this.authService.navItemLogin = false;
     this.router.navigate(['']);
   }
-
 }
