@@ -34,4 +34,7 @@ export class RegisterComponent implements OnInit {
       verticalPosition: 'top',
     });
   }
+  toLogin(){
+    this.router.navigate(['']);
+  }
 }

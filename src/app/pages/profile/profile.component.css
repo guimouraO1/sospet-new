@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 25vh;
+    margin-top: 30vh;
     width: 100vw;
     background-color: #ffffff;
 
@@ -104,7 +104,9 @@ mat-icon:hover {
     border-radius: 10px;
 
 }
-
+input::placeholder {
+    color: #85858536;
+}
 .userParent {
     box-shadow: 0px 0px 19px -3px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -115,6 +117,7 @@ mat-icon:hover {
     padding-left: 20px;
     background-color: White;
     border: none;
+    color: #3b3b3bd0;
 
 }
 
@@ -148,8 +151,10 @@ mat-icon:hover {
     color: #673ab7;
 
 }
-.form{
+
+.form {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }

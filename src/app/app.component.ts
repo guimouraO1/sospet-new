@@ -14,6 +14,10 @@ export class AppComponent implements OnInit{
   constructor(private router: Router, public dialog: MatDialog, private http: HttpClient) {
 
   }
+  isRootRoute(): boolean {
+    return this.router.url === '/' || this.router.url === '/register';
+    
+  }
   ngOnInit(): void {
     
   }

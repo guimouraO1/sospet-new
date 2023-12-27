@@ -1,7 +1,7 @@
 <div class="total">
   <div class="corpo">
     <div class="card-info">
-      <h1 style="color: rgb(0, 0, 0)">Olá, {{user.email}}</h1>
+      <h1>Hi there, {{user.email}}</h1>
       <div class="userPanel">
         <div class="card-user-header">
           <form class="form" enctype="multipart/form-data">
@@ -10,8 +10,7 @@
               type="btn"
               class="btn"
               mat-raised-button
-            >
-              Alterar Papel de Parede
+            >Change Wallpaper
             </button>
             <div class="card-img">
               <form class="icon" enctype="multipart/form-data">
@@ -33,8 +32,7 @@
               class="btn"
               style="background-color: #673ab7; color: white"
               mat-raised-button
-            >
-              Atualizar Perfil
+            > Update Profile
             </button>
           </form>
         </div>
@@ -42,38 +40,41 @@
         <div class="parent">
           <input
             class="userParent"
-            pattern="[A-Za-z]+"
             type="text"
-            placeholder="Email: "
+            placeholder="Email "
             value="{{user.email}}"
           />
           <input
-            class="userParent"
-            pattern="[A-Za-z]+"
-            type="text"
-            placeholder="Nome Completo: "
-          />
+          class="userParent"
+          type="text"
+          placeholder="New Password "
+        />
           <input
+            class="userParent"
+            type="text"
+            placeholder="User Name "
+          />
+          <!-- <input
             autofocus
             class="userParent"
             mask="000.000.000-00"
             placeholder="CPF"
             type="text"
-          />
+          /> -->
           <input
             class="userParent"
             type="tel"
             mask="(00) 0 0000 0000"
             prefix="+55 "
-            placeholder="Telefone: "
+            placeholder="Telephone"
           />
-          <input class="userParent" type="text" placeholder="Endereço: " />
-          <input
+          <!-- <input class="userParent" type="text" placeholder="Endereço " /> -->
+          <!-- <input
             class="userParent"
             type="text"
-            placeholder="CEP: "
+            placeholder="CEP "
             mask="00000-000"
-          />
+          /> -->
         </div>
       </div>
     </div>
