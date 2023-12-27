@@ -15,10 +15,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Adicione esta linha
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { RegisterComponent } from './pages/register/register.component';
-import { AuthGuard } from './guard/auth.guard';
-import { TokenInterceptorService } from './services/token-interceptor.service';
+
 
 @NgModule({
   declarations: [
@@ -44,12 +42,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     MatButtonModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthGuard, { 
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptorService,
-    multi: true
-  
-  }],
+  providers: [
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -14,7 +14,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
   user = {
     email: '',
-    confirmEmail: '',
     password: '',
     confirmPassword: '',
   };
@@ -26,24 +25,8 @@ export class RegisterComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-  register(
-    email: string,
-    confirmEmail: string,
-    password: string,
-    confirmPassword: string
-  ) {
-    if (
-      !email ||
-      !confirmEmail ||
-      !password ||
-      !confirmPassword ||
-      email !== confirmEmail ||
-      password !== confirmPassword
-    ) {
-      this.openSnackBar('All fields must be filled in.', '');
-    } else {
-      this.authService.register(email, password);
-    }
+  register(email: string, password: string, confirmPassword: string) {
+    this.authService.register(email, password, confirmPassword);
   }
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
