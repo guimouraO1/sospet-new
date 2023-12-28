@@ -53,10 +53,10 @@ module.exports = {
       let confirmPassword = req.body.confirmPassword;
 
       if (!email) {
-        return res.status(422).json({ msg: "Email is mandatory" });
+        return res.status(422).json({ msg: "Email is required" });
       }
       if (!password) {
-        return res.status(422).json({ msg: "Password is mandatory" });
+        return res.status(422).json({ msg: "Password is required" });
       }
       if (password !== confirmPassword) {
         return res.status(422).json({ msg: "Passwords don't match" });
@@ -119,10 +119,10 @@ module.exports = {
     let password = req.body.password;
 
     if (!email) {
-      return res.status(422).json({ msg: "Email is mandatory" });
+      return res.status(422).json({ msg: "Email is required" });
     }
     if (!password) {
-      return res.status(422).json({ msg: "Password Email is mandatory" });
+      return res.status(422).json({ msg: "Password is required" });
     }
 
     const userExists = await UserService.findUserByEmail(email);

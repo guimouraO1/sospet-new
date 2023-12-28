@@ -101,7 +101,7 @@ export class RegisterComponent implements OnInit {
       controlName === 'confirmPassword' &&
       control.hasError('passwordMismatch')
     ) {
-      return 'Passwords do not match';
+      return "Passwords don't match";
     }
 
     return '';
