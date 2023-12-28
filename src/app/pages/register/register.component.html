@@ -1,7 +1,9 @@
 <div class="main">
   <div>
     <div class="form">
-      <mat-icon class="main-card-icon" matSuffix>person</mat-icon>
+      <div class="card-icon">
+        <mat-icon class="main-card-icon" matSuffix>account_circle</mat-icon>
+      </div>
       <form (ngSubmit)="onSubmit()" [formGroup]="userForm" class="form2">
 
         <mat-form-field appearance="outline">
@@ -24,7 +26,7 @@
 
       <button type="submit" mat-raised-button color="primary">Register</button>
       </form>
-      <p style="margin: 20px;" (click)="toLogin()">Return to <span style="color: brown; cursor: pointer; ">login</span></p>
+      <p style="margin: 20px;">Return to Login? <span (click)="toLogin()" style="color: #673ab7; cursor: pointer; ">Click here</span></p>
     </div>
   </div>
 </div>

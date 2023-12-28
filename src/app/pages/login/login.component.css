@@ -27,7 +27,7 @@ p {
 }
 
 span {
-    color: brown;
+    color: #673ab7;
     cursor: pointer;
 }
 .card-icon{
@@ -39,9 +39,10 @@ span {
     height: 100px;
     margin: 40px;
     background-color: #673ab7;
+    border: 1px solid #673ab7;
 }
 .main-card-icon {
-    transform: scale(6);
+    transform: scale(5);
     padding: 0 !important;
     color: #F8F8FF;
 
