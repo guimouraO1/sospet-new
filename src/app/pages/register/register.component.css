@@ -27,3 +27,10 @@
 button{
     width: 150px;
 }
+
+form{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
