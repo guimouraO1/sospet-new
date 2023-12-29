@@ -46,6 +46,7 @@ export class ProfileComponent implements OnInit {
           email: this.user.email,
           firstName: this.user.firstName,
           lastName: this.user.lastName,
+
         });
       },
       (error) => {
@@ -96,32 +97,35 @@ export class ProfileComponent implements OnInit {
     this.authService.updateProfile(email, firstName, lastName);
   }
 
-
-  
   handleFileInput(event: any): void {
     const files: FileList = event.target.files;
     if (files && files.length > 0) {
       this.selectedFile = files[0];
       this.uploadImage();
     }
-
-    console.log(event);
   }
 
   uploadImage(): void {
     if (this.selectedFile) {
       const formData: FormData = new FormData();
+      const token = localStorage.getItem('token');
+      const headers = new HttpHeaders().set('authorization', `${token}`);
+      
       formData.append('file', this.selectedFile);
-      // formData.append('email', this.user.email);
       this.http
-        .post('http://localhost:3000/api/upload', formData)
+        .post('http://localhost:3000/api/upload', formData, { headers })
         .subscribe((response: any) => {
-          try {
-            console.log('Imagem enviada com sucesso!', response);
-          } catch (e) {}
+          try { 
+            if(response.update){
+              this.getUser();
+              this.authService.openSnackBar("Image successfully uploaded!", '✅');
+            } else{
+              this.authService.openSnackBar("Image upload failed. Please try again", '❗');
+             }
+          } catch (e) {
+            
+          }
         });
-    } else {
-      console.warn('Nenhuma imagem selecionada.');
     }
   }
 }
