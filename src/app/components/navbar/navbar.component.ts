@@ -18,7 +18,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {}
 
   toHome() {
+   if(this.authService.navItemLogin){
     this.router.navigate(['/home']);
+   }
   }
   toLogin() {
     this.router.navigate(['']);
@@ -27,7 +29,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['register']);
   }
   toProfile() {
-    this.router.navigate(['profile']);
+    if(this.authService.navItemLogin){
+      this.router.navigate(['profile']);
+     }
   }
   signOut() {
     localStorage.removeItem('token');

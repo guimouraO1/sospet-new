@@ -80,25 +80,28 @@ module.exports = {
 
   update: async (req, res) => {
     try {
-      let id = req.userId;
+      let userId = req.userId;
       let email = req.body.email;
-      let password = req.body.password;
-
-      if (id && email && password) {
-        await UserService.update(id, email, password);
-        result = {
-          update: true,
-        };
+      let firstName = req.body.firstName;
+      let lastName = req.body.lastName;
+      
+      console.log(userId, email, firstName, lastName)
+      // const salt = await bcrypt.genSalt(12);
+      // const passwordHash = await bcrypt.hash(password, salt);
+      let result = await UserService.update(userId, email, firstName, lastName);
+      
+      // Verificando o resultado da atualização
+      if (result) {
+        res.json({ update: true });
       } else {
-        result = {
-          update: false,
-        };
+        res.json({ update: false });
       }
-      res.json(result);
     } catch (error) {
+      console.error("Error in update controller:", error);
       res.status(500).json({ error: "Internal Server Error" });
     }
   },
+  
 
   delete: async (req, res) => {
     try {

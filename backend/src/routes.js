@@ -3,14 +3,14 @@ const router = express.Router();
 const userController = require("./controllers/UserController");
 const UserController = require("./controllers/UserController");
 const jwt = require("jsonwebtoken");
-const UserService = require("./services/UserService");
 
 const SECRET = process.env.SECRET;
 
-router.get("/users", userController.findAll);
 router.get("/user/auth", verifyJWT, async (req, res) => {
   res.json({ user: req.userId });
 });
+
+router.get("/users", userController.findAll);
 router.get("/user", verifyJWT, userController.getUserById);
 router.post("/user", UserController.register);
 router.post("/login", UserController.login);

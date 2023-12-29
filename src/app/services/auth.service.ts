@@ -7,10 +7,8 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  
   navItemLogin = false;
   user: any;
-  currentUrl = '/';
 
   constructor(
     private http: HttpClient,
@@ -18,50 +16,72 @@ export class AuthService {
     private snackBar: MatSnackBar
   ) {}
 
-  getUser(){
+  getUser() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
-    this.http
-      .get('http://localhost:3000/api/user', { headers })
-      .subscribe((res: any) => {
+    this.http.get('http://localhost:3000/api/user', { headers }).subscribe(
+      (res: any) => {
         this.user = res.email;
       },
-        error => {
-          this.openSnackBar(error.error.msg, '❗');
-        });
-    
+      (error) => {
+        this.openSnackBar(error.error.msg, '❗');
+      }
+    );
   }
 
   login(email: string, password: string) {
     this.http
       .post('http://localhost:3000/api/login', { email, password })
-      .subscribe( (res: any) => {
-        
-        let token = res.token;
-        localStorage.setItem('token', token);
+      .subscribe(
+        (res: any) => {
+          let token = res.token;
+          localStorage.setItem('token', token);
 
-        this.router.navigate(['home']);
-        this.openSnackBar('Login successful!', res.user.email);
-        
-      },
-      error => { 
-        this.openSnackBar(error.error.msg, '❗');
-      });
+          this.router.navigate(['home']);
+          this.openSnackBar('Login successful!', res.user.email);
+        },
+        (error) => {
+          this.openSnackBar(error.error.msg, '❗');
+        }
+      );
   }
 
   register(email: string, password: string, confirmPassword: string) {
     this.http
-      .post('http://localhost:3000/api/user', { email, password, confirmPassword })
-      .subscribe((res: any) => {
-        if(res.register){
-          this.router.navigate(['']);
-          this.openSnackBar('Register successful!', '✅');
+      .post('http://localhost:3000/api/user', {
+        email,
+        password,
+        confirmPassword,
+      })
+      .subscribe(
+        (res: any) => {
+          if (res.register) {
+            this.router.navigate(['']);
+            this.openSnackBar('Register successful!', '✅');
+          }
+        },
+        (error) => {
+          this.openSnackBar(error.error.msg, '❗');
         }
-      },
-      error => { 
-        this.openSnackBar(error.error.msg, '❗');
-      });
+      );
   }
+
+  updateProfile(email: string, firstName: string, lastName: string) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('authorization', `${token}`);
+    this.http
+      .put('http://localhost:3000/api/user', { email, firstName, lastName }, { headers })
+      .subscribe(
+        (res: any) => {
+          console.log(res);
+        },
+        (error) => {
+          console.log(error);
+          this.openSnackBar(error.error.msg, '❗');
+        }
+      );
+  }
+  
 
   loggedIn() {
     const token = localStorage.getItem('token');
@@ -69,16 +89,18 @@ export class AuthService {
     this.http.get('http://localhost:3000/api/user/auth', { headers }).subscribe(
       (res: any) => {
         console.log(this.router.url);
-        if(this.router.url == this.currentUrl){
+        if (this.router.url == '/' || this.router.url == '/register') {
           this.router.navigate(['home']);
-          this.openSnackBar('You are already logged in', '');
-         
+          this.openSnackBar('You are already logged in', '✅');
         }
         this.navItemLogin = true;
       },
       (error: any) => {
-        this.router.navigate(['']);
-        this.openSnackBar(error.error.msg, '❗');
+        if (this.router.url == '/' || this.router.url == '/register') {
+        } else {
+          this.router.navigate(['']);
+          this.openSnackBar(error.error.msg, '❗');
+        }
       }
     );
   }

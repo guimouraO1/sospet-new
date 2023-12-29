@@ -73,21 +73,24 @@ module.exports = {
     });
   },
   
-  update: (id, email, password) => {
+  update: (id, email, firstName, lastName) => {
     return new Promise((accept, reject) => {
       db.query(
-        "UPDATE user SET email = ?, password = ? WHERE id = ?",
-        [email, password, id],
+        "UPDATE user SET email = ?, firstName = ?, lastName = ? WHERE id = ?",
+        [email, firstName, lastName, id],
         (error, results) => {
           if (error) {
+            console.error("Error updating user:", error);
             reject(error);
             return;
           }
+          console.log("User updated successfully");
           accept(results);
         }
       );
     });
   },
+  
 
   delete: (id) => {
     return new Promise((accept, reject) => {
