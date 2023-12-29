@@ -13,7 +13,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit {
   user = { email: '', password: '' };
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.loggedIn();
+  }
 
   constructor(
     private router: Router,

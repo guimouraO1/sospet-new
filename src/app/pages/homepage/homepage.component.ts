@@ -24,6 +24,7 @@ export class HomepageComponent implements OnInit {
     this.authService.loggedIn();
     this.getUser();
   }
+  
   getUser() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);

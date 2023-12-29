@@ -10,7 +10,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './profile.component.css',
 })
 export class ProfileComponent implements OnInit {
+  
   user: any;
+
   constructor(
     private router: Router,
     public dialog: MatDialog,

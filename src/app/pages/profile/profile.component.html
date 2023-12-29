@@ -1,7 +1,7 @@
 <div class="total">
   <div class="corpo">
     <div class="card-info">
-      <h1>Hi there, {{user.email}}</h1>
+      <h1>Hi there, {{ user?.email }}</h1>
       <div class="userPanel">
         <div class="card-user-header">
           <form class="form" enctype="multipart/form-data">
@@ -10,7 +10,8 @@
               type="btn"
               class="btn"
               mat-raised-button
-            >Change Wallpaper
+            >
+              Change Wallpaper
             </button>
             <div class="card-img">
               <mat-icon class="img-icon">account_circle</mat-icon>
@@ -33,7 +34,8 @@
               class="btn"
               style="background-color: #673ab7; color: white"
               mat-raised-button
-            > Update Profile
+            >
+              Update Profile
             </button>
           </form>
         </div>
@@ -42,18 +44,21 @@
           <input
             class="userParent"
             type="text"
-            placeholder="Email "
-            value="{{user.email}}"
+            placeholder="First name "
+            value="{{ user?.firstName }}"
           />
-          <input
-          class="userParent"
-          type="text"
-          placeholder="New Password "
-        />
           <input
             class="userParent"
             type="text"
-            placeholder="User Name "
+            placeholder="Last name "
+            value="{{ user?.lastName }}"
+          />
+
+          <input
+            class="userParent"
+            type="text"
+            placeholder="Email "
+            value="{{ user?.email }}"
           />
           <!-- <input
             autofocus
@@ -62,13 +67,15 @@
             placeholder="CPF"
             type="text"
           /> -->
-          <input
+          <!-- <input
             class="userParent"
-            type="tel"
+            type="text"
             mask="(00) 0 0000 0000"
             prefix="+55 "
             placeholder="Telephone"
-          />
+            value="{{ user.telephone }}"
+          /> -->
+
           <!-- <input class="userParent" type="text" placeholder="Endereço " /> -->
           <!-- <input
             class="userParent"

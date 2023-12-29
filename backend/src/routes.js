@@ -7,7 +7,7 @@ const UserService = require("./services/UserService");
 
 const SECRET = process.env.SECRET;
 
-// router.get("/users", userController.findAll);
+router.get("/users", userController.findAll);
 router.get("/user/auth", verifyJWT, async (req, res) => {
   res.json({ user: req.userId });
 });

@@ -10,6 +10,8 @@ export class AuthService {
   
   navItemLogin = false;
   user: any;
+  currentUrl = '/';
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -22,7 +24,6 @@ export class AuthService {
     this.http
       .get('http://localhost:3000/api/user', { headers })
       .subscribe((res: any) => {
-        console.log(res);
         this.user = res.email;
       },
         error => {
@@ -67,6 +68,12 @@ export class AuthService {
     const headers = new HttpHeaders().set('authorization', `${token}`);
     this.http.get('http://localhost:3000/api/user/auth', { headers }).subscribe(
       (res: any) => {
+        console.log(this.router.url);
+        if(this.router.url == this.currentUrl){
+          this.router.navigate(['home']);
+          this.openSnackBar('You are already logged in', '');
+         
+        }
         this.navItemLogin = true;
       },
       (error: any) => {

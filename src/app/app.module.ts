@@ -47,9 +47,10 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     MatButtonModule, 
     MatMenuModule,
     NgxMaskDirective,
+    
   ],
   providers: [    
-    provideNgxMask({ /* opções de cfg */ }),
+    provideNgxMask({ }),
 
   ],
   bootstrap: [AppComponent],

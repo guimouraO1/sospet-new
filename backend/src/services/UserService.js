@@ -19,7 +19,7 @@ module.exports = {
   getUserById: (id) => {
     return new Promise((accept, reject) => {
       db.query(
-        "SELECT user.id, user.email FROM user WHERE id = ?",
+        "SELECT user.id, user.email, user.firstName, user.lastName FROM user WHERE id = ?",
         [id],
         (error, results) => {
           if (error) {
