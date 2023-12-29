@@ -102,6 +102,24 @@ module.exports = {
     }
   },
   
+  updateFilename: async (req, res) => {
+    try {
+      let userId = req.userId;
+      let filename = req.file.originalname;     
+
+      let result = await UserService.updateFilename(userId, filename);
+      
+      // Verificando o resultado da atualização
+      if (result) {
+        res.json({ update: true });
+      } else {
+        res.json({ update: false });
+      }
+    } catch (error) {
+      console.error("Error in update controller:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  },
 
   delete: async (req, res) => {
     try {

@@ -128,4 +128,23 @@ module.exports = {
     });
   },
 
+  updateFilename: (id, filename) => {
+    return new Promise((accept, reject) => {
+      db.query(
+        "UPDATE user SET filename = ? WHERE id = ?",
+        [filename, id],
+        (error, results) => {
+          if (error) {
+            console.error("Error updating user image:", error);
+            reject(error);
+            return;
+          }
+          console.log("User image updated successfully");
+          accept(results);
+        }
+      );
+    });
+  },
+  
+
 };

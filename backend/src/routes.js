@@ -28,10 +28,7 @@ router.get("/user/auth", verifyJWT, async (req, res) => {
   res.json({ user: req.userId });
 });
 
-router.post("/upload", verifyJWT, upload.single("file"), (req, res) => {
-  res.json(req.file.originalname);
-});
-
+router.post("/upload", verifyJWT, upload.single("file"), userController.updateFilename);
 router.get("/users", userController.findAll);
 router.get("/user", verifyJWT, userController.getUserById);
 router.post("/user", UserController.register);
