@@ -84,8 +84,6 @@ module.exports = {
       let email = req.body.email;
       let firstName = req.body.firstName;
       let lastName = req.body.lastName;
-      
-      console.log(userId, email, firstName, lastName)
       // const salt = await bcrypt.genSalt(12);
       // const passwordHash = await bcrypt.hash(password, salt);
       let result = await UserService.update(userId, email, firstName, lastName);

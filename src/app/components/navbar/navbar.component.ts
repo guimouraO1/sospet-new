@@ -2,6 +2,9 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { EmmitNavToHomeService } from '../../services/emmit-nav-to-home.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +12,29 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
+  user: any;
+  ouvir: Subscription;
+
   constructor(
     private router: Router,
     public dialog: MatDialog,
-    public authService: AuthService
-  ) {}
+    public authService: AuthService,
+    private http: HttpClient,
+    private clickEventService: EmmitNavToHomeService
 
-  ngOnInit(): void {}
+  ) {
+    this.ouvir = this.clickEventService
+    .getClickEvent()
+    .subscribe((bol: any) => {
+      if (bol) {
+        this.getUser();
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    this.getUser();
+  }
 
   toHome() {
    if(this.authService.navItemLogin){
@@ -37,5 +56,18 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('token');
     this.authService.navItemLogin = false;
     this.router.navigate(['']);
+  }
+  getUser() {
+    
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('authorization', `${token}`);
+    this.http.get('http://localhost:3000/api/user', { headers }).subscribe(
+      (res: any) => {
+        this.user = res;
+      },
+      (error) => {
+        this.authService.openSnackBar(error.error.msg, '❗');
+      }
+    );
   }
 }

@@ -80,11 +80,11 @@ module.exports = {
         [email, firstName, lastName, id],
         (error, results) => {
           if (error) {
-            console.error("Error updating user:", error);
+            // console.error("Error updating user:", error);
             reject(error);
             return;
           }
-          console.log("User updated successfully");
+          // console.log("User updated successfully");
           accept(results);
         }
       );

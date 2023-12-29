@@ -83,3 +83,9 @@ mat-icon{
   transform: scale(3);
   color: #ffffff;
 }
+.userPerfilImg{
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}

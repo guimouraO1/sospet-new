@@ -20,8 +20,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ConfirmationModalComponent } from './pages/profile/confirmation-modal/confirmation-modal.component';
-
-
+import { EmmitNavToHomeService } from './services/emmit-nav-to-home.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +54,7 @@ import { ConfirmationModalComponent } from './pages/profile/confirmation-modal/c
   ],
   providers: [    
     provideNgxMask({ }),
-
+    EmmitNavToHomeService
   ],
   bootstrap: [AppComponent],
 })

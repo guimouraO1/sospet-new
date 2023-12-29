@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { EmmitNavToHomeService } from './emmit-nav-to-home.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,9 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private clickEventService: EmmitNavToHomeService
+
   ) {}
 
   getUser() {
@@ -36,7 +39,7 @@ export class AuthService {
         (res: any) => {
           let token = res.token;
           localStorage.setItem('token', token);
-
+          this.clickEventService.emitir();
           this.router.navigate(['home']);
           this.openSnackBar('Login successful!', res.user.email);
         },

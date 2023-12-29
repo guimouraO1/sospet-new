@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
+import { EmmitNavToHomeService } from '../../services/emmit-nav-to-home.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,12 +14,13 @@ import { ConfirmationModalComponent } from './confirmation-modal/confirmation-mo
 export class ProfileComponent implements OnInit {
   userForm: FormGroup;
   user: any;
-
   constructor(
     private http: HttpClient,
     private authService: AuthService,
     private fb: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private clickEventService: EmmitNavToHomeService
+
   ) {
     this.userForm = this.fb.group({
       email: [
@@ -118,6 +120,7 @@ export class ProfileComponent implements OnInit {
           try { 
             if(response.update){
               this.getUser();
+              this.clickEventService.emitir();
               this.authService.openSnackBar("Image successfully uploaded!", '✅');
             } else{
               this.authService.openSnackBar("Image upload failed. Please try again", '❗');
