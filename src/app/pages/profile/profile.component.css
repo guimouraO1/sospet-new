@@ -28,9 +28,7 @@ h1 {
     min-width: 70vw;
     min-height: 500px;
     border-radius: 10px;
-    box-shadow: 0px 0px 9px 4px rgba(0, 0, 0, 0.041);
-
-
+    box-shadow: inset 0px 0px 68px -8px rgba(0,0,0,0.1);
 }
 
 .userPanel {
@@ -75,6 +73,7 @@ h1 {
     background-color: #673ab7;  
     border: 1px solid #673ab7;
     overflow: hidden;
+    
 }
 
 .card-img img {
@@ -160,6 +159,9 @@ input::placeholder {
 }
 .userPerfilImg{
     position: absolute;
+    box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.1);
+
+
 }
 .img-icon:hover{
     cursor: auto;

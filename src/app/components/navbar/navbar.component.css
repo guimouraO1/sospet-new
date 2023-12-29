@@ -85,7 +85,15 @@ mat-icon{
 }
 .userPerfilImg{
   border-radius: 100%;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  overflow: hidden;
+  
+}
+.userPerfilImg img{
+  width: 60px;
+  height: 60px;
   object-fit: cover;
+  
 }

@@ -10,7 +10,9 @@
     <li *ngIf="this.authService.navItemLogin">
       <div [matMenuTriggerFor]="menu" class="nav-icon">
         <mat-icon *ngIf="!user.filename">account_circle</mat-icon>
-        <img *ngIf="user.filename" class="userPerfilImg" src="http://localhost/loginPage/backend/upload/{{ user.id }}/{{ user.filename }}" alt="">
+        <div *ngIf="user.filename" class="userPerfilImg">
+        <img src="http://localhost/loginPage/backend/upload/{{ user.id }}/{{ user.filename }}" alt="">
+        </div>
         <mat-menu #menu="matMenu">
           <button (click)="toProfile()" mat-menu-item>
             <span>Profile</span>
