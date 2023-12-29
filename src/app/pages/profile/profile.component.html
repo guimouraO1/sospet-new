@@ -28,7 +28,7 @@
           </form>
         </div>
 
-        <form class="form2" (ngSubmit)="onSubmit()" [formGroup]="userForm">
+        <form class="form2" [formGroup]="userForm">
           <div class="parent">
             <mat-form-field appearance="outline">
               <mat-label>First Name</mat-label>
@@ -61,6 +61,7 @@
             </mat-form-field>
           </div>
           <button
+            (click)="openDialog()"
             class="btn"
             type="submit"
             style="background-color: #673ab7; color: white"

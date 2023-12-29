@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +17,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private authService: AuthService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public dialog: MatDialog
   ) {
     this.userForm = this.fb.group({
       email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
@@ -60,7 +63,7 @@ export class ProfileComponent implements OnInit {
     const control = this.userForm.get(controlName);
 
     if (!control) {
-      return ''; // Return an empty string if the control is null
+      return '';
     }
 
     if (control.hasError('required')) {
@@ -74,6 +77,16 @@ export class ProfileComponent implements OnInit {
     return '';
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(ConfirmationModalComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.onSubmit();
+      }else{
+        console.log(result);
+      }
+    });
+  }
   updateProfile(email: string, firstName: string, lastName: string) {
     this.authService.updateProfile(email, firstName, lastName);
   }

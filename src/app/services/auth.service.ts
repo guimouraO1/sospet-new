@@ -73,7 +73,9 @@ export class AuthService {
       .put('http://localhost:3000/api/user', { email, firstName, lastName }, { headers })
       .subscribe(
         (res: any) => {
-          console.log(res);
+          if(res.update === true){
+            this.openSnackBar('Profile updated successfully!', '✅');
+          }
         },
         (error) => {
           console.log(error);

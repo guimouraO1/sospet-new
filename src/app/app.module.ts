@@ -19,6 +19,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { ConfirmationModalComponent } from './pages/profile/confirmation-modal/confirmation-modal.component';
+
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    ConfirmationModalComponent
   ],
   imports: [
     RouterModule,
