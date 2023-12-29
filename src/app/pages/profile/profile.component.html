@@ -12,19 +12,10 @@
               <form class="icon" enctype="multipart/form-data">
                 <label class="file-label">
                   <mat-icon #fileIcon>add_a_photo</mat-icon>
-                  <input #fileInput type="file" class="form-control" />
+                  <input #fileInput type="file" class="form-control" (change)="handleFileInput($event)" />
                 </label>
               </form>
             </div>
-
-            <label class="file-label">
-              <input
-                #fileInput
-                type="file"
-                class="form-control"
-                style="display: none"
-              />
-            </label>
           </form>
         </div>
 

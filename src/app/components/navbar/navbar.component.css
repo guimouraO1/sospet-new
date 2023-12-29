@@ -11,18 +11,19 @@
 .logo {
   display: flex;
   justify-content: flex-start;
-  margin-left: 40px;
+  margin-left: 5vw;
   font-size: 30px;
   font-weight: 100;
   color: #dce1de;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .navSection {
   list-style: none;
   display: flex;
   flex-direction: row;
-  padding-right: 100px;
+  padding-right: 5vw;
   align-items: center;
 }
 
@@ -47,11 +48,6 @@
   background-color: #F8F8FF;
   color: #673ab7;
 
-}
-
-.logo {
-
-  text-decoration: none;
 }
 
 .navMode {

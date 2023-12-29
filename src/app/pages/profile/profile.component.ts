@@ -21,11 +21,15 @@ export class ProfileComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.userForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
+      email: [
+        '',
+        [Validators.required, Validators.email, Validators.maxLength(100)],
+      ],
       firstName: ['', [Validators.maxLength(60)]],
       lastName: ['', [Validators.maxLength(60)]],
     });
   }
+  selectedFile: File | null = null;
 
   ngOnInit(): void {
     this.authService.loggedIn();
@@ -82,12 +86,42 @@ export class ProfileComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.onSubmit();
-      }else{
+      } else {
         console.log(result);
       }
     });
   }
+
   updateProfile(email: string, firstName: string, lastName: string) {
     this.authService.updateProfile(email, firstName, lastName);
+  }
+
+
+  
+  handleFileInput(event: any): void {
+    const files: FileList = event.target.files;
+    if (files && files.length > 0) {
+      this.selectedFile = files[0];
+      this.uploadImage();
+    }
+
+    console.log(event);
+  }
+
+  uploadImage(): void {
+    if (this.selectedFile) {
+      const formData: FormData = new FormData();
+      formData.append('file', this.selectedFile);
+      // formData.append('email', this.user.email);
+      this.http
+        .post('http://localhost:3000/api/upload', formData)
+        .subscribe((response: any) => {
+          try {
+            console.log('Imagem enviada com sucesso!', response);
+          } catch (e) {}
+        });
+    } else {
+      console.warn('Nenhuma imagem selecionada.');
+    }
   }
 }
