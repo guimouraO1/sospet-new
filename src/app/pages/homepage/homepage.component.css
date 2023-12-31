@@ -11,15 +11,30 @@
 }
 .search{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: 20vw;
     height: 90vh;
     box-shadow: inset 0px 0px 68px -8px rgba(0,0,0,0.1);
 }
-.item{
-   margin-top: 100px;
-   
+.searchHeader{
+    display: flex;
+    width: 16vw;
+    justify-content:  space-around;
+    margin: 40px;
+    margin-top: 60px;
+    border-bottom: 1px solid rgba(56, 56, 56, 0.288);
+    color: rgba(56, 56, 56, 0.288);
+    cursor: pointer;
+
 }
+
+mat-form-field{
+    width: 300px;
+
+ }
+ 
+
 .cards-container{
     margin: 50px;
     margin-top: 30px;
@@ -99,5 +114,3 @@ mat-paginator{
     align-items: center;
 
 }
-
-
