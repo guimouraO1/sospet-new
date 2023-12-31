@@ -24,6 +24,7 @@ import { EmmitNavToHomeService } from './services/emmit-nav-to-home.service';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NgxMaskDirective,
     MatDividerModule,
     MatListModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    CommonModule
   ],
   providers: [provideNgxMask({}), EmmitNavToHomeService],
   bootstrap: [AppComponent],

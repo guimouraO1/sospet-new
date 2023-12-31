@@ -7,29 +7,27 @@
     <div class="item">
       <mat-form-field appearance="outline">
         <mat-label>Search for name</mat-label>
-        <input
-          type="text"
-          (input)="filterfirstName($event)"
-          matInput
-        />
+        <input type="text" (input)="filterfirstName($event)" matInput />
       </mat-form-field>
     </div>
   </div>
   <div class="usersList">
     <div class="cards-container">
-      <mat-list class="cards" *ngFor="let listaUser of paginatedUsers">
+      @for (listaUser of paginatedUsers; track $index) {
+      <mat-list class="cards">
         <div class="header-card">
-          <mat-icon color="primary" *ngIf="!listaUser?.filename" class="icon"
-            >account_circle</mat-icon
-          >
+          @if(!listaUser?.filename){
+          <mat-icon color="primary" class="icon">account_circle</mat-icon>
+          }@else {
+          <!-- ngIf="listaUser?.filename" -->
           <img
-            *ngIf="listaUser?.filename"
             class="img-icon"
             src="http://localhost/loginPage/backend/upload/{{ listaUser.id }}/{{
               listaUser.filename
             }}"
             alt=""
           />
+          }
           <mat-icon color="primary">person_add</mat-icon>
         </div>
         <mat-divider></mat-divider>
@@ -45,6 +43,9 @@
           </button>
         </div>
       </mat-list>
+      } @empty {
+      <h1>No more users</h1>
+      }
     </div>
     <div class="pagination-container">
       <mat-paginator

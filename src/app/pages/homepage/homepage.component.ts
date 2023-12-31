@@ -23,8 +23,6 @@ export class HomepageComponent implements OnInit {
   currentPage: number = 1; // Página atual
 
   constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
     public dialog: MatDialog,
     private http: HttpClient,
     private authService: AuthService
@@ -68,6 +66,9 @@ export class HomepageComponent implements OnInit {
     this.currentPage = event.pageIndex + 1;
     this.updatePaginatedUsers();
   }
+  trackByIndex(index: number, item: any): number {
+  return index;
+}
 
   // Atualiza a lista de usuários exibidos na página atual
   updatePaginatedUsers() {

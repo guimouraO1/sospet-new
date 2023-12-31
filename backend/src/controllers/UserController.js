@@ -156,4 +156,15 @@ module.exports = {
       res.status(500).json(json);
     }
   },
+
+  getPublications: async (req, res) => {
+    try {
+      
+      let publications = await userService.getPublications();
+
+      res.json(publications);
+    } catch (error) {
+      res.status(500).json({ error: "Internal Server Error"});
+    }
+  },
 };

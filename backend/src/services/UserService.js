@@ -145,5 +145,18 @@ module.exports = {
     });
   },
   
-
+  getPublications: () => {
+    return new Promise((accept, reject) => {
+      db.query(
+        "SELECT * FROM publications",
+        (error, results) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+          accept(results);
+        }
+      );
+    });
+  },
 };

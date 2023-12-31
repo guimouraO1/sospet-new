@@ -3,16 +3,25 @@
   <ul class="navSection">
     <li (click)="toHome()"><a class="navItens">Home</a></li>
     <!-- <li (click)="toProfile()"><a class="navItens">Profile</a></li> -->
-    <li *ngIf="!this.authService.navItemLogin" (click)="toLogin()">
+    @if (!this.authService.navItemLogin) {
+    <li (click)="toLogin()">
       <a class="navItens">Sign in</a>
     </li>
-
-    <li *ngIf="this.authService.navItemLogin">
+    }@else {
+    <li>
       <div [matMenuTriggerFor]="menu" class="nav-icon">
-        <mat-icon *ngIf="!user.filename">account_circle</mat-icon>
-        <div *ngIf="user.filename" class="userPerfilImg">
-        <img src="http://localhost/loginPage/backend/upload/{{ user.id }}/{{ user.filename }}" alt="">
+        @if (!user.filename) {
+        <mat-icon>account_circle</mat-icon>
+        }@else {
+        <div class="userPerfilImg">
+          <img
+            src="http://localhost/loginPage/backend/upload/{{ user.id }}/{{
+              user.filename
+            }}"
+            alt=""
+          />
         </div>
+        }
         <mat-menu #menu="matMenu">
           <button (click)="toProfile()" mat-menu-item>
             <span>Profile</span>
@@ -23,5 +32,6 @@
         </mat-menu>
       </div>
     </li>
+    }
   </ul>
 </div>

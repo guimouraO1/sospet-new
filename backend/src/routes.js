@@ -20,6 +20,7 @@ router.get("/user", verifyJWT, userController.getUserById);
 router.post("/user", UserController.register);
 router.post("/login", UserController.login);
 router.post("/upload", verifyJWT, upload.single("file"), userController.updateFilename);
+router.get("/publications", UserController.getPublications); // FINALIZAR
 router.put("/user", verifyJWT, UserController.update);
 router.delete("/user/:id", UserController.delete);
 

@@ -8,13 +8,26 @@
         <div class="card-user-header">
           <form class="form" enctype="multipart/form-data">
             <div class="card-img">
-              <mat-icon *ngIf="!user?.filename" class="img-icon">account_circle</mat-icon>
-              <img *ngIf="user?.filename" class="userPerfilImg" src="http://localhost/loginPage/backend/upload/{{ user.id }}/{{ user.filename }}" alt="">
-              
+              @if(user?.filename){
+              <img
+                class="userPerfilImg"
+                src="http://localhost/loginPage/backend/upload/{{ user.id }}/{{
+                  user.filename
+                }}"
+                alt=""
+              />
+              }@else{
+              <mat-icon class="img-icon">account_circle</mat-icon>
+              }
               <form class="icon" enctype="multipart/form-data">
                 <label class="file-label">
                   <mat-icon #fileIcon>add_a_photo</mat-icon>
-                  <input #fileInput type="file" class="form-control" (change)="handleFileInput($event)" />
+                  <input
+                    #fileInput
+                    type="file"
+                    class="form-control"
+                    (change)="handleFileInput($event)"
+                  />
                 </label>
               </form>
             </div>
