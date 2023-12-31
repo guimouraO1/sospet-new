@@ -1,9 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 .main {
+    display: flex;
     width: 100vw;
     height: 90vh;
-    background-color: #F8F8FF;
+
+}
+.search{
+    display: flex;
+    justify-content: center;
+    width: 20vw;
+    height: 90vh;
+    box-shadow: inset 0px 0px 68px -8px rgba(0,0,0,0.1);
+}
+.item{
+   margin-top: 100px;
+   
+}
+.cards-container{
+    margin: 50px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column; */
+    gap: 30px;
+    flex-wrap: wrap;
+
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 300px;
+    box-shadow: inset 0px 0px 68px -8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+.header-card{
+    height: 100px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.img-icon{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+.btn-div{
     display: flex;
     align-items: center;
     justify-content: center;
 }
+.btn{
+    margin: 20px;
+    width: 200px;
+}
+.icon{
+    border-radius: 100%;
+
+}
+mat-icon:first-child {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(2.8);
+}
+
+mat-icon:last-child {
+    transform: scale(1.4);
+    margin-right: 20px;
+    cursor: pointer;
+}
+mat-paginator{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: inset 0px 0px 68px -8px rgba(0,0,0,0.1);
+
+}
+.pagination-container{
+    height: 10vh;
+}
+.usersList {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
 

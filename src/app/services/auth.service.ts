@@ -104,7 +104,7 @@ export class AuthService {
         if (this.router.url == '/' || this.router.url == '/register') {
         } else {
           this.router.navigate(['']);
-          this.openSnackBar(error.error.msg, '❗');
+          // this.openSnackBar(error.error.msg, '❗');
         }
       }
     );

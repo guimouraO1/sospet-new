@@ -4,9 +4,9 @@ require("dotenv").config({ path: "variaveis.env" });
 
 module.exports = {
   
-  findAll: () => {
+  findAll: (userId) => {
     return new Promise((accept, reject) => {
-      db.query("SELECT * FROM user", (error, results) => {
+      db.query("SELECT user.id, user.email, user.firstName, user.filename FROM user WHERE id != ?", [ userId ], (error, results) => {
         if (error) {
           reject(error);
           return;
@@ -91,7 +91,6 @@ module.exports = {
     });
   },
   
-
   delete: (id) => {
     return new Promise((accept, reject) => {
       db.query("DELETE FROM user WHERE id = ?", [id], (error, results) => {

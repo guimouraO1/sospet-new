@@ -6,17 +6,10 @@ module.exports = {
   
   findAll: async (req, res) => {
     try {
-      let json = { error: "", result: [] };
+      
+      let users = await userService.findAll(req.userId);
 
-      let users = await userService.findAll();
-
-      for (let i in users) {
-        json.result.push({
-          id: users[i].id,
-          email: users[i].email,
-        });
-      }
-      res.json(json);
+      res.json(users);
     } catch (error) {
       res.status(500).json({ error: "Internal Server Error", result: [] });
     }

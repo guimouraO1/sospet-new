@@ -15,7 +15,7 @@ const upload = multer({ storage: storage });
 router.get("/user/auth", verifyJWT, async (req, res) => {
   res.json({ user: req.userId });
 });
-router.get("/users", userController.findAll);
+router.get("/users", verifyJWT, userController.findAll);
 router.get("/user", verifyJWT, userController.getUserById);
 router.post("/user", UserController.register);
 router.post("/login", UserController.login);

@@ -1,3 +1,57 @@
 <div class="main">
-  <h1>Welcome to homepage!</h1>
+  <div class="search">
+    <div class="item">
+      <mat-form-field appearance="outline">
+        <mat-label>Search for name</mat-label>
+        <input
+          type="text"
+          (input)="filterUsers($event)"
+          matInput
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="usersList">
+    <div class="cards-container">
+      <mat-list class="cards" *ngFor="let listaUser of paginatedUsers">
+        <div class="header-card">
+          <mat-icon color="primary" *ngIf="!listaUser?.filename" class="icon"
+            >account_circle</mat-icon
+          >
+          <img
+            *ngIf="listaUser?.filename"
+            class="img-icon"
+            src="http://localhost/loginPage/backend/upload/{{ listaUser.id }}/{{
+              listaUser.filename
+            }}"
+            alt=""
+          />
+          <mat-icon color="primary">person_add</mat-icon>
+        </div>
+        <mat-divider></mat-divider>
+
+        <mat-list-item>ID: {{ listaUser.id }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Email: {{ listaUser.email }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Name: {{ listaUser.firstName }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <div class="btn-div">
+          <button type="submit" class="btn" mat-raised-button color="primary">
+            Message
+          </button>
+        </div>
+      </mat-list>
+    </div>
+    <div class="pagination-container">
+      <mat-paginator
+        [length]="listaUsers.length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[6]"
+        aria-label="Select page"
+        (page)="pageChange($event)"
+      >
+      </mat-paginator>
+    </div>
+  </div>
 </div>

@@ -1,12 +1,9 @@
-
 .corpo {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 30vh;
     width: 100vw;
-    background-color: #ffffff;
-
 }
 
 h1 {

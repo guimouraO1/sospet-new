@@ -9,7 +9,7 @@
           <form class="form" enctype="multipart/form-data">
             <div class="card-img">
               <mat-icon *ngIf="!user?.filename" class="img-icon">account_circle</mat-icon>
-              <img *ngIf="user?.filename"  class="userPerfilImg" src="http://localhost/loginPage/backend/upload/{{ user.id }}/{{ user.filename }}" alt="">
+              <img *ngIf="user?.filename" class="userPerfilImg" src="http://localhost/loginPage/backend/upload/{{ user.id }}/{{ user.filename }}" alt="">
               
               <form class="icon" enctype="multipart/form-data">
                 <label class="file-label">
