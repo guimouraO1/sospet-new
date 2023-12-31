@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -9,18 +9,20 @@
     height: 90vh;
 
 }
-.search{
+
+.search {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 20vw;
     height: 90vh;
-    box-shadow: inset 0px 0px 68px -8px rgba(0,0,0,0.1);
+    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
 }
-.searchHeader{
+
+.searchHeader {
     display: flex;
     width: 16vw;
-    justify-content:  space-around;
+    justify-content: space-around;
     margin: 40px;
     margin-top: 60px;
     border-bottom: 1px solid rgba(56, 56, 56, 0.288);
@@ -29,14 +31,14 @@
 
 }
 
-mat-form-field{
+mat-form-field {
     width: 16vw;
 
- }
- 
+}
 
-.cards-container{
-    margin: 50px;
+
+.cards-container {
+    /* margin: 50px; */
     margin-top: 30px;
     display: flex;
     justify-content: center;
@@ -46,15 +48,16 @@ mat-form-field{
 
 }
 
-.cards{
+.cards {
     display: flex;
     flex-direction: column;
     width: 400px;
     height: 300px;
-    box-shadow: inset 0px 0px 68px -8px rgba(0,0,0,0.1);
+    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
-.header-card{
+
+.header-card {
     height: 100px;
     margin: 10px;
     display: flex;
@@ -62,25 +65,30 @@ mat-form-field{
     align-items: center;
 
 }
-.img-icon{
+
+.img-icon {
     width: 60px;
     height: 60px;
     border-radius: 100%;
     object-fit: cover;
 }
-.btn-div{
+
+.btn-div {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.btn{
+
+.btn {
     margin: 20px;
     width: 200px;
 }
-.icon{
+
+.icon {
     border-radius: 100%;
 
 }
+
 mat-icon:first-child {
     margin: 20px;
     display: flex;
@@ -94,19 +102,22 @@ mat-icon:last-child {
     margin-right: 20px;
     cursor: pointer;
 }
-mat-paginator{
+
+mat-paginator {
     width: 50vw;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     margin-bottom: 10px;
-    box-shadow: inset 0px 0px 68px -8px rgba(0,0,0,0.1);
+    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
 
 }
-.pagination-container{
+
+.pagination-container {
     height: 10vh;
 }
+
 .usersList {
     width: 80vw;
     display: flex;
