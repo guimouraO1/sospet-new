@@ -18,7 +18,6 @@ export class HomepageComponent implements OnInit {
   user: any;
   listaUsers?: any = [];
   users: any;
-  page: number = 1; // Página atual da lista
   paginatedUsers: any[] = []; // Lista de usuários exibidos na página atual
   pageSize: number = 6; // Tamanho da página
   currentPage: number = 1; // Página atual
@@ -66,7 +65,6 @@ export class HomepageComponent implements OnInit {
   }
   // Método chamado quando a página é alterada
   pageChange(event: PageEvent) {
-    console.log(event)
     this.currentPage = event.pageIndex + 1;
     this.updatePaginatedUsers();
   }
@@ -78,7 +76,7 @@ export class HomepageComponent implements OnInit {
     this.paginatedUsers = this.listaUsers.slice(startIndex, endIndex);
   }
   
-  filterUsers(event: any) {
+  filterfirstName(event: any) {
     const searchTerm = event.target.value;
   
     if (!searchTerm) {
