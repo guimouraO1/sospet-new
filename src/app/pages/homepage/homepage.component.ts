@@ -1,11 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import {
-  FormBuilder,
-} from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 
 
@@ -54,7 +50,6 @@ export class HomepageComponent implements OnInit {
       (res: any) => {
         this.listaUsers = res;
         this.updatePaginatedUsers();
-        console.log(this.listaUsers);
       },
       (error) => {
         this.authService.openSnackBar(error.error.msg, '❗');

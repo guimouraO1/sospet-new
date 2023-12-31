@@ -33,6 +33,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.loggedIn();
     this.getUser();
   }
 
@@ -60,7 +61,6 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['']);
   }
   getUser() {
-    
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
     this.http.get('http://localhost:3000/api/user', { headers }).subscribe(

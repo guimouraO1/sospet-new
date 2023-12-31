@@ -4,14 +4,14 @@
     <li (click)="toHome()"><a class="navItens">Home</a></li>
     <!-- <li (click)="toProfile()"><a class="navItens">Profile</a></li> -->
     @if (!this.authService.navItemLogin) {
-    <li (click)="toLogin()">
-      <a class="navItens">Sign in</a>
-    </li>
+      <!-- @defer(on timer(5s)){
+      } @placeholder {
+      } -->
     }@else {
     <li>
       <div [matMenuTriggerFor]="menu" class="nav-icon">
-        @if (!user.filename) {
-        <mat-icon>account_circle</mat-icon>
+        @if (!user?.filename) {
+          <mat-icon>account_circle</mat-icon>
         }@else {
         <div class="userPerfilImg">
           <img

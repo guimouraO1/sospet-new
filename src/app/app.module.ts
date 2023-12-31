@@ -25,6 +25,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { CommonModule } from '@angular/common';
     MatDividerModule,
     MatListModule,
     MatPaginatorModule,
-    CommonModule
+    CommonModule,
+    MatProgressBarModule
   ],
   providers: [provideNgxMask({}), EmmitNavToHomeService],
   bootstrap: [AppComponent],

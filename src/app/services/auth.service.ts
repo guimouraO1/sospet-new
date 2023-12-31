@@ -8,7 +8,7 @@ import { EmmitNavToHomeService } from './emmit-nav-to-home.service';
   providedIn: 'root',
 })
 export class AuthService {
-  navItemLogin = false;
+  navItemLogin?: boolean;
   user: any;
 
   constructor(
@@ -88,7 +88,7 @@ export class AuthService {
   }
   
 
-  loggedIn() {
+ loggedIn() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
     this.http.get('http://localhost:3000/api/user/auth', { headers }).subscribe(

@@ -43,9 +43,12 @@
           </button>
         </div>
       </mat-list>
-      } @empty {
-      <h1>No more users</h1>
-      }
+      } @empty { @defer () {
+      <h1>No More users in this page</h1>
+      } @loading (minimum 2000ms) {
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <h1>Loading all users...</h1>
+      } }
     </div>
     <div class="pagination-container">
       <mat-paginator
