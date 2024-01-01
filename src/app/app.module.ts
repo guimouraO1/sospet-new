@@ -28,7 +28,7 @@ import { CommonModule } from '@angular/common';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { PublicationsComponent } from './pages/publications/publications.component';
 import { MatSelectModule } from '@angular/material/select';
-import { PubPetComponent } from './pages/pub-pet/pub-pet.component';
+import { PostPetComponent } from './pages/post-pet/post-pet.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { PubPetComponent } from './pages/pub-pet/pub-pet.component';
     ProfileComponent,
     ConfirmationModalComponent,
     PublicationsComponent,
-    PubPetComponent
+    PostPetComponent
   ],
   imports: [
     RouterModule,

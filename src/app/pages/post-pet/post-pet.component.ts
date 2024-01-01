@@ -6,11 +6,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-pub-pet',
-  templateUrl: './pub-pet.component.html',
-  styleUrl: './pub-pet.component.css',
+  selector: 'app-post-pet',
+  templateUrl: './post-pet.component.html',
+  styleUrl: './post-pet.component.css',
 })
-export class PubPetComponent implements OnInit {
+export class PostPetComponent implements OnInit {
   petForm: FormGroup;
 
   constructor(
@@ -21,12 +21,12 @@ export class PubPetComponent implements OnInit {
     private router: Router,
   ) {
     this.petForm = this.fb.group({
-      petName: ['', [Validators.required]],
-      petRace: ['', [Validators.required]],
+      petName: ['Unknown', [Validators.required]],
+      petRace: ['Unknown', [Validators.required]],
       petSpecies: ['', [Validators.required]],
       petSex: ['', [Validators.required]],
       status: ['', [Validators.required]],
-      petLastLocation: ['', [Validators.required]],
+      petLastLocation: ['Unknown', [Validators.required]],
     });
   }
   selectedFile: File | null = null;

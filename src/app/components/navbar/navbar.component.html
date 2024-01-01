@@ -1,9 +1,9 @@
 <div class="navContainer">
-  <a (click)="toHome()" class="logo">Next chat</a>
+  <a (click)="toHome()" class="logo">SOSPET</a>
   <ul class="navSection">
     <li (click)="toHome()"><a class="navItens">Home</a></li>
-    <li (click)="toPubPet()"><a class="navItens">Report Pet</a></li>
-    <li (click)="toPublications()"><a class="navItens">Lost Pets</a></li>
+    <li (click)="toPubPet()"><a class="navItens">Post Pet</a></li>
+    <li (click)="toPublications()"><a class="navItens">Find Pet</a></li>
     @if (!this.authService.navItemLogin) {
     <li (click)="toLogin()"><a class="navItens">Login</a></li>
     }@else {

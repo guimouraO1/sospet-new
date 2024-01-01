@@ -20,18 +20,11 @@ button{
     font-size: 20px;
     margin: 0;
   }
+
   .btns{
     display: flex;
   }
-
-
-
-.material-symbols-outlined {
-  padding: 20px;
-  transform: scale(3);
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+.icon{
+  margin: 20px;
+  transform: scale(2);
 }

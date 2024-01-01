@@ -88,6 +88,9 @@ mat-form-field {
     margin: 20px;
     width: 200px;
 }
+.btn-lost{
+    color: red !important;
+}
 
 .icon {
     border-radius: 100%;
