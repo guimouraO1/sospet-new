@@ -75,13 +75,13 @@
     </div>
     <div class="pagination-container">
       <mat-paginator
-        [length]="petList.length"
-        [pageSize]="pageSize"
-        [pageSizeOptions]="[6]"
-        aria-label="Select page"
-        (page)="pageChange($event)"
-      >
-      </mat-paginator>
+      [length]="totalItems"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[6]"
+      aria-label="Select page"
+      (page)="pageChange($event)"
+    >
+    </mat-paginator>
     </div>
   </div>
 </div>
