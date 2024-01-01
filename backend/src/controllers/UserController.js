@@ -167,4 +167,24 @@ module.exports = {
       res.status(500).json({ error: "Internal Server Error"});
     }
   },
+
+  postPublication: async (req, res) => {
+    try {
+      let userId = req.userId;
+
+      let petFileName = req.body.petFileName;
+      let petName = req.body.petName;
+      let petRace = req.body.petRace;
+      let petSpecies = req.body.petSpecies;
+      let petSex = req.body.petSex;
+      let status = req.body.status;
+      let petLastLocation = req.body.petLastLocation;
+      
+      let publication = await userService.postPublication(userId, petFileName, petName, petRace, petSex, petLastLocation, status, petSpecies);
+
+      res.json(publication);
+    } catch (error) {
+      res.status(500).json({ error: "Internal Server Error"});
+    }
+  },
 };

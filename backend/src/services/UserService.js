@@ -148,9 +148,26 @@ module.exports = {
   getPublications: () => {
     return new Promise((accept, reject) => {
       db.query(
-        "SELECT * FROM publications",
+        "SELECT publications.*, user.filename AS user_filename, user.firstName AS user_first_name FROM publications JOIN user ON publications.user_id = user.id;",
         (error, results) => {
           if (error) {
+            reject(error);
+            return;
+          }
+          accept(results);
+        }
+      );
+    });
+  },
+
+  postPublication: (userId, petFileName, petName, petRace, petSex, petLastLocation, status, petSpecies) => {
+    return new Promise((accept, reject) => {
+      db.query(
+        "INSERT INTO `publications` (`user_id`, `pet_filename`, `pet_name`, `pet_race`, `pet_species`, `pet_sex`, `status`, `pet_last_location`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        [userId, petFileName, petName, petRace, petSpecies, petSex, status, petLastLocation],
+        (error, results) => {
+          if (error) {
+            console.error(error); // Adicione essa linha para logar o erro no console
             reject(error);
             return;
           }

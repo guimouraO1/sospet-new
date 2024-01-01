@@ -2,16 +2,15 @@
   <a (click)="toHome()" class="logo">Next chat</a>
   <ul class="navSection">
     <li (click)="toHome()"><a class="navItens">Home</a></li>
-    <!-- <li (click)="toProfile()"><a class="navItens">Profile</a></li> -->
+    <li (click)="toPubPet()"><a class="navItens">Report Pet</a></li>
+    <li (click)="toPublications()"><a class="navItens">Lost Pets</a></li>
     @if (!this.authService.navItemLogin) {
-      <!-- @defer(on timer(5s)){
-      } @placeholder {
-      } -->
+    <li (click)="toLogin()"><a class="navItens">Login</a></li>
     }@else {
     <li>
       <div [matMenuTriggerFor]="menu" class="nav-icon">
         @if (!user?.filename) {
-          <mat-icon>account_circle</mat-icon>
+        <mat-icon>account_circle</mat-icon>
         }@else {
         <div class="userPerfilImg">
           <img

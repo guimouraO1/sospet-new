@@ -26,6 +26,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { PublicationsComponent } from './pages/publications/publications.component';
+import { MatSelectModule } from '@angular/material/select';
+import { PubPetComponent } from './pages/pub-pet/pub-pet.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     RegisterComponent,
     ProfileComponent,
     ConfirmationModalComponent,
+    PublicationsComponent,
+    PubPetComponent
   ],
   imports: [
     RouterModule,
@@ -59,7 +64,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatListModule,
     MatPaginatorModule,
     CommonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSelectModule
   ],
   providers: [provideNgxMask({}), EmmitNavToHomeService],
   bootstrap: [AppComponent],

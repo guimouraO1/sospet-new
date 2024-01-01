@@ -1,0 +1,87 @@
+<div class="main">
+  <div class="search">
+    <div class="searchHeader">
+      <h1>Search</h1>
+      <mat-icon>search</mat-icon>
+    </div>
+    <div class="item">
+      <mat-form-field appearance="outline">
+        <mat-label>Filter by Species</mat-label>
+        <mat-select (selectionChange)="filter($event)">
+          <mat-option value="all">All</mat-option>
+          <mat-option value="dog">Dog</mat-option>
+          <mat-option value="cat">Cat</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="petList">
+    <div class="cards-container">
+      @for (petList of paginatedUsers; track $index) {
+      <mat-list class="cards">
+        <div class="header-card">
+          @if(!petList?.pet_filename){
+            <mat-icon color="primary" class="icon">account_circle</mat-icon>
+          }@else {
+            <img
+                class="img-icon"
+                src="http://localhost/loginPage/backend/upload/{{
+                petList.user_id
+                }}/{{ petList.user_filename }}"
+            />
+          }
+          <h2 class="userName">{{ petList.user_first_name }}</h2>
+        </div>
+
+        <div class="pet_image">
+            <img
+            class="img-pet"
+            src="http://localhost/loginPage/backend/upload/{{
+              petList.user_id
+            }}/{{ petList.pet_filename}}"
+          />
+        </div>
+
+        <mat-list-item></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Pet Name: {{ petList.pet_name }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Race: {{ petList.pet_race}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Species: {{ petList.pet_species }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Sex: {{ petList.pet_sex }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Status: {{ petList.status }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Last Location: {{ petList.pet_last_location }}</mat-list-item>
+        <mat-divider></mat-divider>
+        
+        <div class="btn-div">
+          <button type="submit" class="btn" mat-raised-button color="primary">
+           Rescue Pet
+          </button>
+        </div>
+
+      </mat-list>
+      } @empty { @defer () {
+        <h1>No pets found.</h1>
+      } @loading (minimum 2000ms) {
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        <h1>Loading all lost pets...</h1>
+      } }
+    </div>
+    <div class="pagination-container">
+      <mat-paginator
+        [length]="petList.length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[6]"
+        aria-label="Select page"
+        (page)="pageChange($event)"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

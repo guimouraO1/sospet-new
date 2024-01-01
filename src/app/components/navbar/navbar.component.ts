@@ -39,7 +39,17 @@ export class NavbarComponent implements OnInit {
 
   toHome() {
    if(this.authService.navItemLogin){
-    this.router.navigate(['/home']);
+      this.router.navigate(['/home']);
+   }else{
+    this.authService.openSnackBar('Sorry, you do not have permission to access this page.', '❗');
+   }
+  }
+  toPublications() {
+    this.router.navigate(['publications']);
+  }
+  toPubPet() {
+    if(this.authService.navItemLogin){
+      this.router.navigate(['postPet']);
    }else{
     this.authService.openSnackBar('Sorry, you do not have permission to access this page.', '❗');
    }

@@ -5,6 +5,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { PublicationsComponent } from './pages/publications/publications.component';
+import { PubPetComponent } from './pages/pub-pet/pub-pet.component';
 
 
 const routes: Routes = [ 
@@ -15,6 +17,14 @@ const routes: Routes = [
 {
   path:'home',
   component: HomepageComponent,
+},
+{
+  path:'publications',
+  component: PublicationsComponent,
+},
+{
+  path:'postPet',
+  component: PubPetComponent,
 },
 {
   path:'register',

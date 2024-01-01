@@ -1,0 +1,84 @@
+<div class="main">
+  <div class="card">
+    <h1>Publication pet</h1>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="petForm" class="parent">
+      <mat-form-field appearance="outline" class="item">
+        <mat-label>Pet Name</mat-label>
+        <input matInput placeholder="Exemple Rex" formControlName="petName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="item">
+        <mat-label>Specie</mat-label>
+        <mat-select placeholder="Select the species" formControlName="petSpecies">
+          <mat-option value="Dog">Dog</mat-option>
+          <mat-option value="Cat">Cat</mat-option>
+          <mat-option value="Bird">Bird</mat-option>
+          <mat-option value="Other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="item">
+        <mat-label>Race</mat-label>
+        <input
+          matInput
+          placeholder="Exemple Border collie"
+          formControlName="petRace"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="item">
+        <mat-label>Sex</mat-label>
+        <mat-select placeholder="Select the sex" formControlName="petSex">
+          <mat-option value="Female">Female</mat-option>
+          <mat-option value="Male">Male</mat-option>
+          <mat-option value="Unknown">Unknown</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="item">
+        <mat-label>Last location</mat-label>
+        <input
+          matInput
+          placeholder="Tóquio 423, Parque São Quirino"
+          formControlName="petLastLocation"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="item">
+        <mat-label>Status</mat-label>
+        <mat-select placeholder="Select Status" formControlName="status">
+          <mat-option value="Lost"
+            >Lost <span>(I lost my pet)</span></mat-option
+          >
+          <mat-option value="found"
+            >Found <span>(I found a lost pet)</span></mat-option
+          >
+          <mat-option value="Seen nearby">Seen nearby</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="footer">
+        <form
+          class="form2"
+          (submit)="uploadImage()"
+          enctype="multipart/form-data"
+        >
+          <label for="inputGroupFile02" class="custom-file-upload">
+            <input
+              type="file"
+              id="inputGroupFile02"
+              class="form-control"
+              (change)="handleFileInput($event)"
+            />
+            Upload Pet Image
+          </label>
+        </form>
+
+        <button color="primary" class="btn" mat-raised-button type="submit">
+          Register
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

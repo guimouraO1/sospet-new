@@ -15,7 +15,7 @@ export class HomepageComponent implements OnInit {
   listaUsers?: any = [];
   users: any;
   paginatedUsers: any[] = []; // Lista de usuários exibidos na página atual
-  pageSize: number = 6; // Tamanho da página
+  pageSize: number = 3; // Tamanho da página
   currentPage: number = 1; // Página atual
 
   constructor(

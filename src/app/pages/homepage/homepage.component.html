@@ -17,9 +17,8 @@
       <mat-list class="cards">
         <div class="header-card">
           @if(!listaUser?.filename){
-          <mat-icon color="primary" class="icon">account_circle</mat-icon>
+           <mat-icon color="primary" class="icon">account_circle</mat-icon>
           }@else {
-          <!-- ngIf="listaUser?.filename" -->
           <img
             class="img-icon"
             src="http://localhost/loginPage/backend/upload/{{ listaUser.id }}/{{
@@ -30,13 +29,13 @@
           }
           <mat-icon color="primary">person_add</mat-icon>
         </div>
-        <mat-divider></mat-divider>
-        <mat-list-item>ID: {{ listaUser.id }}</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Email: {{ listaUser.email }}</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Name: {{ listaUser.firstName }}</mat-list-item>
-        <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
+          <mat-list-item>ID: {{ listaUser.id }}</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Email: {{ listaUser.email }}</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Name: {{ listaUser.firstName }}</mat-list-item>
+          <mat-divider></mat-divider>
         <div class="btn-div">
           <button type="submit" class="btn" mat-raised-button color="primary">
             Message
