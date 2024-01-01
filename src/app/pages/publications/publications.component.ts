@@ -48,17 +48,19 @@ export class PublicationsComponent {
   getPublications() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
-    this.http.get('http://localhost:3000/api/publications', { headers }).subscribe(
-      (res: any) => {
-        this.petList = res;
-        // Atualize o comprimento total da lista para a variável petList.length
-        this.totalItems = this.petList.length;
-        this.updatePaginatedUsers();
-      },
-      (error) => {
-        this.authService.openSnackBar(error.error.msg, '❗');
-      }
-    );
+    this.http
+      .get('http://localhost:3000/api/publications', { headers })
+      .subscribe(
+        (res: any) => {
+          this.petList = res;
+          // Atualize o comprimento total da lista para a variável petList.length
+          this.totalItems = this.petList.length;
+          this.updatePaginatedUsers();
+        },
+        (error) => {
+          this.authService.openSnackBar(error.error.msg, '❗');
+        }
+      );
   }
   // Método chamado quando a página é alterada
   pageChange(event: PageEvent) {
@@ -73,9 +75,14 @@ export class PublicationsComponent {
   updatePaginatedUsers() {
     let filteredList = this.petList;
 
-    if (this.currentFilter && this.currentFilter.length > 0 && !this.currentFilter.includes('all')) {
-      filteredList = this.petList
-        .filter((pet: any) => this.currentFilter.includes(pet.pet_species?.toLowerCase()));
+    if (
+      this.currentFilter &&
+      this.currentFilter.length > 0 &&
+      !this.currentFilter.includes('all')
+    ) {
+      filteredList = this.petList.filter((pet: any) =>
+        this.currentFilter.includes(pet.pet_species?.toLowerCase())
+      );
     }
 
     const startIndex = (this.currentPage - 1) * this.pageSize;
@@ -83,9 +90,10 @@ export class PublicationsComponent {
 
     // Ajuste para garantir que a quantidade de animais por página seja consistente
     const remainingItems = filteredList.length - startIndex;
-    this.paginatedUsers = remainingItems >= this.pageSize
-      ? filteredList.slice(startIndex, endIndex)
-      : filteredList.slice(startIndex);
+    this.paginatedUsers =
+      remainingItems >= this.pageSize
+        ? filteredList.slice(startIndex, endIndex)
+        : filteredList.slice(startIndex);
 
     // Atualize o comprimento total da lista para a variável totalItems
     this.totalItems = filteredList.length;
@@ -111,5 +119,16 @@ export class PublicationsComponent {
       )
       .slice(0, this.pageSize);
     this.updatePaginatedUsers();
+  }
+
+  rescue() {
+    try {
+      if (!this.authService.navItemLogin) {
+        this.authService.openSnackBar(
+          "You do not have permission to access this function, please log'in .",
+          '❗'
+        );
+      }
+    } catch (error) {}
   }
 }

@@ -15,7 +15,7 @@ export class HomepageComponent implements OnInit {
   listaUsers?: any = [];
   users: any;
   paginatedUsers: any[] = []; // Lista de usuários exibidos na página atual
-  pageSize: number = 3; // Tamanho da página
+  pageSize: number = 6; // Tamanho da página
   currentPage: number = 1; // Página atual
 
   constructor(
@@ -35,7 +35,6 @@ export class HomepageComponent implements OnInit {
     this.http.get('http://localhost:3000/api/user', { headers }).subscribe(
       (res: any) => {
         this.user = res;
-        console.log(this.user);
       },
       (error) => {
         this.authService.openSnackBar(error.error.msg, '❗');

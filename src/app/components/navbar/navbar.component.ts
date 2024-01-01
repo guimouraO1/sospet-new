@@ -65,11 +65,13 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(['profile']);
      }
   }
+  
   signOut() {
     localStorage.removeItem('token');
     this.authService.navItemLogin = false;
     this.router.navigate(['']);
   }
+
   getUser() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);

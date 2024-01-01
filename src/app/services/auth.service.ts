@@ -93,7 +93,6 @@ export class AuthService {
     const headers = new HttpHeaders().set('authorization', `${token}`);
     this.http.get('http://localhost:3000/api/user/auth', { headers }).subscribe(
       (res: any) => {
-        console.log(this.router.url);
         if (this.router.url == '/' || this.router.url == '/register') {
           this.router.navigate(['home']);
           this.openSnackBar('You are already logged in', '✅');
