@@ -22,7 +22,7 @@
       @for (petList of paginatedUsers; track $index) {
       <mat-list class="cards">
         <div class="header-card">
-          @if(!petList?.pet_filename){
+          @if(!petList?.user_filename){
             <mat-icon color="primary" class="icon">account_circle</mat-icon>
           }@else {
             <img
@@ -33,6 +33,8 @@
             />
           }
           <h2 class="userName">{{ petList.user_first_name }}</h2>
+          <button class="btn-header"
+           mat-stroked-button> {{ petList.status }}</button>
         </div>
 
         <div class="pet_image">
@@ -50,11 +52,9 @@
         <mat-divider></mat-divider>
         <mat-list-item>Race: {{ petList.pet_race}}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Species: {{ petList.pet_species }}</mat-list-item>
+        <mat-list-item>Specie: {{ petList.pet_species }}</mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item>Sex: {{ petList.pet_sex }}</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Status: {{ petList.status }}</mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item>Last Location: {{ petList.pet_last_location }}</mat-list-item>
         <mat-divider></mat-divider>
