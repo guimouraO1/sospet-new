@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 export class NavbarComponent implements OnInit {
   user: any;
   ouvir: Subscription;
+  messages: any | null; 
 
   constructor(
     private router: Router,
@@ -35,6 +36,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.authService.loggedIn();
     this.getUser();
+    // this.messages = 1
   }
 
   toHome() {

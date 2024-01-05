@@ -29,6 +29,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { PublicationsComponent } from './pages/publications/publications.component';
 import { MatSelectModule } from '@angular/material/select';
 import { PostPetComponent } from './pages/post-pet/post-pet.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { PostPetComponent } from './pages/post-pet/post-pet.component';
     MatPaginatorModule,
     CommonModule,
     MatProgressBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatBadgeModule
   ],
   providers: [provideNgxMask({}), EmmitNavToHomeService],
   bootstrap: [AppComponent],

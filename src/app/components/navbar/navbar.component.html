@@ -8,7 +8,7 @@
     <li (click)="toLogin()"><a class="navItens">Login</a></li>
     }@else {
     <li>
-      <div [matMenuTriggerFor]="menu" class="nav-icon">
+      <div matBadge={{messages}} matBadgeColor="warn" [matMenuTriggerFor]="menu" class="nav-icon">
         @if (!user?.filename) {
         <mat-icon>account_circle</mat-icon>
         }@else {
@@ -24,6 +24,9 @@
         <mat-menu #menu="matMenu">
           <button (click)="toProfile()" mat-menu-item>
             <span>Profile</span>
+          </button>
+          <button matBadge={{messages}} matBadgeColor="warn" class="item" mat-menu-item>
+            <span>Messages</span>
           </button>
           <button (click)="signOut()" mat-menu-item>
             <span>Sign out</span>

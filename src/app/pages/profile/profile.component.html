@@ -136,10 +136,10 @@
           </mat-list>
           } @empty { 
                 @defer () {
-                <h1>You have no published pets</h1>
+                <h2>You have no publications</h2>
           } @loading (minimum 2000ms) {
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-            <h1>Loading all lost pets...</h1>
+            <h2>Uploading your posts...</h2>
           } }
         </div>
         <div class="pagination-container">

@@ -96,3 +96,13 @@ mat-icon{
   object-fit: cover;
   
 }
+
+.item{
+  padding-right: 50px !important;
+
+}
+
+::ng-deep .item .mat-badge-content{
+  top: 12px !important;
+  right: 15px !important;
+}
