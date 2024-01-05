@@ -1,12 +1,10 @@
 .navContainer {
-  width: 100vw;
   height: 10vh;
   min-height: 80px;
   background-color: #673ab7;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .logo {

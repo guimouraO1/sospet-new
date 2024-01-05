@@ -24,6 +24,8 @@ router.put("/user", verifyJWT, UserController.update);
 router.delete("/user/:id", UserController.delete);
 
 router.get("/publications", UserController.getPublications); // FINALIZAR
+router.get("/userPublications", verifyJWT, UserController.getUserPublications); // FINALIZAR
+
 router.post("/publication", verifyJWT, UserController.postPublication); // FINALIZAR
 router.post("/uploadPet", verifyJWT, upload.single("file"), async (req, res) => {
   res.json({ true: true });

@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
 import { EmmitNavToHomeService } from '../../services/emmit-nav-to-home.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,15 @@ import { EmmitNavToHomeService } from '../../services/emmit-nav-to-home.service'
 export class ProfileComponent implements OnInit {
   userForm: FormGroup;
   user: any;
+
+  petList?: any = [];
+  paginaterdPets: any[] = []; // Lista de pets exibidos na página atual
+  pageSize: number = 3; // Tamanho da página
+  currentPage: number = 1; // Página atual
+  currentFilter: any;
+  totalItems: number = 0;
+
+  
   constructor(
     private http: HttpClient,
     private authService: AuthService,
@@ -36,6 +46,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.authService.loggedIn();
     this.getUser();
+    this.getPublications();
   }
 
   getUser() {
@@ -130,5 +141,45 @@ export class ProfileComponent implements OnInit {
           }
         });
     }
+  }
+
+
+  getPublications() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('authorization', `${token}`);
+    this.http
+      .get('http://localhost:3000/api/userPublications', { headers })
+      .subscribe(
+        (res: any) => {
+          this.petList = res;
+          this.totalItems = this.petList.length;
+          this.updatepaginaterdPets('all');
+        },
+        (error) => {
+          this.authService.openSnackBar(error.error.msg, '❗');
+        }
+      );
+  }
+
+  // Método chamado quando a página é alterada
+  pageChange(event: PageEvent) {
+    this.currentPage = event.pageIndex + 1;
+    this.updatepaginaterdPets('all');
+  }
+
+  updatepaginaterdPets(filter: any) {
+    let filteredList = this.petList;
+
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+
+    // Ajuste para garantir que a quantidade de animais por página seja consistente
+    const remainingItems = filteredList.length - startIndex;
+    this.paginaterdPets = remainingItems >= this.pageSize
+        ? filteredList.slice(startIndex, endIndex)
+        : filteredList.slice(startIndex);
+
+    // Atualize o comprimento total da lista para a variável totalItems
+    this.totalItems = filteredList.length;
   }
 }

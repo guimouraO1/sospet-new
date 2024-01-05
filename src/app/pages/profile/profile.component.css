@@ -1,16 +1,27 @@
-.corpo {
+.container-info {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 30vh;
-    width: 100vw;
+    height: 90vh;
+    margin: 0;
 }
-
+.container-posts{
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+    margin: 0;
+    margin-top: 10vh;
+    
+}
 h1 {
     padding-top: 30px;
     padding-left: 50px;
     text-wrap: wrap;
+    color: #673ab7;
 
+}
+h2{
+    color: #673ab7;
 }
 .cardH1{
     text-wrap: wrap;
@@ -26,6 +37,7 @@ h1 {
     min-height: 500px;
     border-radius: 10px;
     box-shadow: inset 0px 0px 68px -8px rgba(0,0,0,0.1);
+    margin-top: 30vh;
 }
 
 .userPanel {
@@ -186,4 +198,104 @@ input::placeholder {
 
 mat-form-field{
     width: 30vw !important;
+}
+.cards-container {
+    /* margin: 50px; */
+ 
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column; */
+    gap: 30px;
+    flex-wrap: wrap;
+
+
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 650px;
+    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.header-card {
+    height: 100px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.userName{
+    margin: 0;
+    padding: 0;
+    margin-left: 2%;
+    font-weight: 100;
+}
+
+.btn-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    margin: 20px;
+    width: 200px;
+}
+.btn-lost{
+    color: red !important;
+}
+
+mat-paginator {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
+
+}
+
+.pagination-container {
+    height: 10vh;
+}
+
+.petList {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.pet_image{
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+}
+.img-pet{
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.btn-header{
+    text-transform: uppercase;
+    color: red !important;
+    width: 100px;
+    border: 1px solid rgba(100, 100, 100, 0.103) !important;
+    transition: none;
+    box-shadow: none;
+
+}
+
+.img-icon2 {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    object-fit: cover;
 }

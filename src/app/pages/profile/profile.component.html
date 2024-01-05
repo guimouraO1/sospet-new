@@ -1,5 +1,5 @@
-<div class="total">
-  <div class="corpo">
+<div class="main">
+  <div class="container-info">
     <div class="card">
       <div class="cardH1">
         <h1>Hello {{ user?.firstName }}</h1>
@@ -80,4 +80,64 @@
       </div>
     </div>
   </div>
+  
+  <div class="container-posts" id="container-posts">
+      <div class="petList">
+        <h2>Your posts</h2>
+        <div class="cards-container">
+          @for (pet of paginaterdPets; track $index) {
+          <mat-list class="cards">
+            <div class="header-card">
+              @if(!pet?.user_filename){
+              <mat-icon color="primary" class="icon">account_circle</mat-icon>
+              }@else {
+              <img class="img-icon2" src="http://localhost/loginPage/backend/upload/{{
+                  pet.user_id
+                }}/{{ pet.user_filename }}" />
+              }
+              <h2 class="userName">{{ pet.user_first_name }}</h2>
+              <button class="btn-header" mat-stroked-button>
+                {{ pet.status }}
+              </button>
+            </div>
+    
+            <div class="pet_image">
+              <img class="img-pet" src="http://localhost/loginPage/backend/upload/{{
+                  pet.user_id
+                }}/{{ pet.pet_filename }}" />
+            </div>
+    
+            <mat-list-item></mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Pet Name: {{ pet.pet_name }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Race: {{ pet.pet_race }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Specie: {{ pet.pet_species }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Sex: {{ pet.pet_sex }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Last Location: {{ pet.pet_last_location }}</mat-list-item>
+            <mat-divider></mat-divider>
+    
+            <div class="btn-div">
+              <button type="submit" class="btn" mat-raised-button color="primary">
+                Edit post
+              </button>
+            </div>
+          </mat-list>
+          } @empty { 
+                @defer () {
+                <h1>You have no published pets</h1>
+          } @loading (minimum 2000ms) {
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            <h1>Loading all lost pets...</h1>
+          } }
+        </div>
+        <div class="pagination-container">
+          <mat-paginator [length]="totalItems" [pageSize]="pageSize" (page)="pageChange($event)">
+          </mat-paginator>
+        </div>
+      </div>
+    </div>
 </div>

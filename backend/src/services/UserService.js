@@ -160,6 +160,22 @@ module.exports = {
     });
   },
 
+  getUserPublications: (userId) => {
+    return new Promise((accept, reject) => {
+      db.query(
+        "SELECT publications.*, user.filename AS user_filename, user.firstName AS user_first_name FROM publications JOIN user ON publications.user_id = user.id WHERE user.id = ?;", 
+        [userId],
+        (error, results) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+          accept(results);
+        }
+      );
+    });
+  },
+
   postPublication: (userId, petFileName, petName, petRace, petSex, petLastLocation, status, petSpecies) => {
     return new Promise((accept, reject) => {
       db.query(

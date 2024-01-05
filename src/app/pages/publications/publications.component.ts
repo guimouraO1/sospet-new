@@ -13,7 +13,7 @@ export class PublicationsComponent {
   user: any;
   petList?: any = [];
   users: any;
-  paginatedUsers: any[] = []; // Lista de usuários exibidos na página atual
+  paginaterdPets: any[] = []; // Lista de pets exibidos na página atual
   pageSize: number = 3; // Tamanho da página
   currentPage: number = 1; // Página atual
   currentFilter: any;
@@ -53,26 +53,23 @@ export class PublicationsComponent {
       .subscribe(
         (res: any) => {
           this.petList = res;
-          // Atualize o comprimento total da lista para a variável petList.length
           this.totalItems = this.petList.length;
-          this.updatePaginatedUsers();
+          this.updatepaginaterdPets('all');
         },
         (error) => {
           this.authService.openSnackBar(error.error.msg, '❗');
         }
       );
   }
+
   // Método chamado quando a página é alterada
   pageChange(event: PageEvent) {
     this.currentPage = event.pageIndex + 1;
-    this.updatePaginatedUsers();
+    this.updatepaginaterdPets('all');
   }
 
-  trackByIndex(index: number, item: any): number {
-    return index;
-  }
-
-  updatePaginatedUsers() {
+  
+  updatepaginaterdPets(filter: any) {
     let filteredList = this.petList;
 
     if (
@@ -80,9 +77,14 @@ export class PublicationsComponent {
       this.currentFilter.length > 0 &&
       !this.currentFilter.includes('all')
     ) {
-      filteredList = this.petList.filter((pet: any) =>
-        this.currentFilter.includes(pet.pet_species?.toLowerCase())
-      );
+      filteredList = this.petList.filter((pet: any) => {
+        if (filter === 'status') {
+          return this.currentFilter.includes(pet.status?.toLowerCase());
+        } else if (filter === 'petSpecies') {
+          return this.currentFilter.includes(pet.pet_species?.toLowerCase());
+        }
+        return false;
+      });
     }
 
     const startIndex = (this.currentPage - 1) * this.pageSize;
@@ -90,8 +92,7 @@ export class PublicationsComponent {
 
     // Ajuste para garantir que a quantidade de animais por página seja consistente
     const remainingItems = filteredList.length - startIndex;
-    this.paginatedUsers =
-      remainingItems >= this.pageSize
+    this.paginaterdPets = remainingItems >= this.pageSize
         ? filteredList.slice(startIndex, endIndex)
         : filteredList.slice(startIndex);
 
@@ -99,26 +100,45 @@ export class PublicationsComponent {
     this.totalItems = filteredList.length;
   }
 
-  filter(event: any) {
-    const selectedSpecies = event.value;
+  filter(event: any, filter: any) {
+    if (filter === 'status') {
+      const selectedStatus = event.value;
+      this.currentFilter = selectedStatus;
+      if (
+        !selectedStatus ||
+        selectedStatus.length === 0 ||
+        selectedStatus.includes('all')
+      ) {
+        this.updatepaginaterdPets(filter);
+        return;
+      }
 
-    this.currentFilter = selectedSpecies;
-
-    if (
-      !selectedSpecies ||
-      selectedSpecies.length === 0 ||
-      selectedSpecies.includes('all')
-    ) {
-      this.updatePaginatedUsers();
-      return;
+      this.paginaterdPets = this.petList
+        .filter((pet: any) =>
+          selectedStatus.includes(pet.status?.toLowerCase())
+        )
+        .slice(0, this.pageSize);
+      this.updatepaginaterdPets(filter);
     }
 
-    this.paginatedUsers = this.petList
-      .filter((pet: any) =>
-        selectedSpecies.includes(pet.pet_species?.toLowerCase())
-      )
-      .slice(0, this.pageSize);
-    this.updatePaginatedUsers();
+    if (filter === 'petSpecies') {
+      const selectedSpecies = event.value;
+      this.currentFilter = selectedSpecies;
+      if (
+        !selectedSpecies ||
+        selectedSpecies.length === 0 ||
+        selectedSpecies.includes('all')
+      ) {
+        this.updatepaginaterdPets(filter);
+        return;
+      }
+
+      this.paginaterdPets = this.petList
+        .filter((pet: any) =>
+          selectedSpecies.includes(pet.petSpecies?.toLowerCase()))
+        .slice(0, this.pageSize);
+      this.updatepaginaterdPets(filter);
+    }
   }
 
   rescue() {

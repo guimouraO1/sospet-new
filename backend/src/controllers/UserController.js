@@ -168,6 +168,17 @@ module.exports = {
     }
   },
 
+  getUserPublications: async (req, res) => {
+    try {
+      let userId = req.userId;
+      let publications = await userService.getUserPublications(userId);
+
+      res.json(publications);
+    } catch (error) {
+      res.status(500).json({ error: "Internal Server Error"});
+    }
+  },
+
   postPublication: async (req, res) => {
     try {
       let userId = req.userId;
