@@ -5,14 +5,7 @@
     height: 90vh;
     margin: 0;
 }
-.container-posts{
-    display: flex;
-    justify-content: center;
-    height: 90vh;
-    margin: 0;
-    margin-top: 10vh;
-    
-}
+
 h1 {
     padding-top: 30px;
     padding-left: 50px;
@@ -20,14 +13,21 @@ h1 {
     color: #673ab7;
 
 }
+.icon2{
+    border-radius: 100%;
+}
 h2{
     color: #673ab7;
 }
+
 .cardH1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     text-wrap: wrap;
     flex-wrap: wrap;
     overflow: hidden;
-    width: 30vw;
+    width: 100%;
 }
 .card {
     display: flex;
@@ -105,7 +105,7 @@ mat-icon {
     transition: opacity 0.5s ease 0s;
 }
 
-mat-icon:hover {
+.icon:hover {
     opacity: 0.3;
     color: #ffffff;
 
@@ -198,6 +198,19 @@ input::placeholder {
 
 mat-form-field{
     width: 30vw !important;
+}
+
+
+ /* CONTAINER POSTS */
+
+
+.container-posts{
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+    margin: 0;
+    margin-top: 10vh;
+    
 }
 .cards-container {
     /* margin: 50px; */
@@ -298,4 +311,19 @@ mat-paginator {
     height: 60px;
     border-radius: 100%;
     object-fit: cover;
+}
+
+
+.icon2:first-child {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(2.8);
+}
+
+.icon2:last-child {
+    transform: scale(1.4);
+    margin-right: 20px;
+    cursor: pointer;
 }

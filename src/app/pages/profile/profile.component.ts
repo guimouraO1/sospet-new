@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
@@ -29,7 +29,8 @@ export class ProfileComponent implements OnInit {
     private authService: AuthService,
     private fb: FormBuilder,
     public dialog: MatDialog,
-    private clickEventService: EmmitNavToHomeService
+    private clickEventService: EmmitNavToHomeService,
+    private el: ElementRef
 
   ) {
     this.userForm = this.fb.group({
@@ -182,4 +183,16 @@ export class ProfileComponent implements OnInit {
     // Atualize o comprimento total da lista para a variável totalItems
     this.totalItems = filteredList.length;
   }
+
+  scrollToContainer() {
+    // Obtenha uma referência ao elemento com id 'container'
+    const containerElement = this.el.nativeElement.querySelector('#container-posts');
+
+    // Verifique se o elemento foi encontrado
+    if (containerElement) {
+      // Rola até o elemento
+      containerElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
 }

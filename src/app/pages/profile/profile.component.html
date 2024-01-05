@@ -3,6 +3,13 @@
     <div class="card">
       <div class="cardH1">
         <h1>Hello {{ user?.firstName }}</h1>
+        <button
+        (click)="scrollToContainer()"
+        class="btn"
+        style="background-color: #673ab7; color: white"
+        mat-raised-button >
+        See your posts
+      </button>
       </div>
       <div class="userPanel">
         <div class="card-user-header">
@@ -36,6 +43,7 @@
 
         <form class="form2" [formGroup]="userForm">
           <div class="parent">
+            
             <mat-form-field appearance="outline">
               <mat-label>First Name</mat-label>
               <input
@@ -89,7 +97,7 @@
           <mat-list class="cards">
             <div class="header-card">
               @if(!pet?.user_filename){
-              <mat-icon color="primary" class="icon">account_circle</mat-icon>
+              <mat-icon color="primary" class="icon2">account_circle</mat-icon>
               }@else {
               <img class="img-icon2" src="http://localhost/loginPage/backend/upload/{{
                   pet.user_id
