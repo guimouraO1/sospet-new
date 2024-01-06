@@ -19,7 +19,7 @@ module.exports = {
   getUserById: (id) => {
     return new Promise((accept, reject) => {
       db.query(
-        "SELECT user.id, user.email, user.firstName, user.lastName, user.filename FROM user WHERE id = ?",
+        "SELECT user.id, user.firstName, user.lastName, user.cep, user.address, user.telephone, user.filename FROM user WHERE id = ?",
         [id],
         (error, results) => {
           if (error) {
@@ -73,11 +73,11 @@ module.exports = {
     });
   },
   
-  update: (id, email, firstName, lastName) => {
+  update: (id, firstName, lastName, telephone, cep, address) => {
     return new Promise((accept, reject) => {
       db.query(
-        "UPDATE user SET email = ?, firstName = ?, lastName = ? WHERE id = ?",
-        [email, firstName, lastName, id],
+        "UPDATE user SET firstName = ?, lastName = ?, telephone = ?, cep = ?, address = ? WHERE id = ?",
+        [firstName, lastName, telephone, cep, address, id],
         (error, results) => {
           if (error) {
             // console.error("Error updating user:", error);

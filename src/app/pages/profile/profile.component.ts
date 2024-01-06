@@ -34,12 +34,11 @@ export class ProfileComponent implements OnInit {
 
   ) {
     this.userForm = this.fb.group({
-      email: [
-        '',
-        [Validators.required, Validators.email, Validators.maxLength(100)],
-      ],
       firstName: ['', [Validators.maxLength(60)]],
       lastName: ['', [Validators.maxLength(60)]],
+      telephone: ['', [Validators.maxLength(60)]],
+      address: ['', [Validators.maxLength(60)]],
+      cep: ['', [Validators.maxLength(60)]]
     });
   }
   selectedFile: File | null = null;
@@ -57,10 +56,11 @@ export class ProfileComponent implements OnInit {
       (res: any) => {
         this.user = res;
         this.userForm.patchValue({
-          email: this.user.email,
           firstName: this.user.firstName,
           lastName: this.user.lastName,
-
+          telephone: this.user.telephone,
+          address: this.user.address,
+          cep: this.user.cep
         });
       },
       (error) => {
@@ -71,13 +71,15 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     if (this.userForm.valid) {
-      const email = this.userForm.get('email')!.value;
       const firstName = this.userForm.get('firstName')!.value;
       const lastName = this.userForm.get('lastName')!.value;
-      // console.log(email, firstName, lastName);
-      this.updateProfile(email, firstName, lastName);
+      const telephone = this.userForm.get('telephone')!.value;
+      const cep = this.userForm.get('cep')!.value;
+      const address = this.userForm.get('address')!.value;
+      this.updateProfile(firstName, lastName, telephone, cep, address);
     }
   }
+
   getErrorMessage(controlName: string): string {
     const control = this.userForm.get(controlName);
 
@@ -107,8 +109,8 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  updateProfile(email: string, firstName: string, lastName: string) {
-    this.authService.updateProfile(email, firstName, lastName);
+  updateProfile(firstName: string, lastName: string, telephone: any, cep: any, address: any) {
+    this.authService.updateProfile(firstName, lastName, telephone, cep, address);
   }
 
   handleFileInput(event: any): void {

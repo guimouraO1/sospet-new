@@ -74,13 +74,13 @@ module.exports = {
   update: async (req, res) => {
     try {
       let userId = req.userId;
-      let email = req.body.email;
       let firstName = req.body.firstName;
       let lastName = req.body.lastName;
-      // const salt = await bcrypt.genSalt(12);
-      // const passwordHash = await bcrypt.hash(password, salt);
-      let result = await UserService.update(userId, email, firstName, lastName);
-      
+      let telephone = req.body.telephone;
+      let cep = req.body.cep;
+      let address = req.body.address;
+
+      let result = await UserService.update(userId, firstName, lastName, telephone, cep, address);
       // Verificando o resultado da atualização
       if (result) {
         res.json({ update: true });

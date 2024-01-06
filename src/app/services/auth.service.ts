@@ -69,11 +69,11 @@ export class AuthService {
       );
   }
 
-  updateProfile(email: string, firstName: string, lastName: string) {
+  updateProfile(firstName: string, lastName: string, telephone: any, cep: any, address: any) {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
     this.http
-      .put('http://localhost:3000/api/user', { email, firstName, lastName }, { headers })
+      .put('http://localhost:3000/api/user', { firstName, lastName, telephone, cep, address }, { headers })
       .subscribe(
         (res: any) => {
           if(res.update === true){
@@ -86,7 +86,6 @@ export class AuthService {
         }
       );
   }
-  
 
  loggedIn() {
     const token = localStorage.getItem('token');

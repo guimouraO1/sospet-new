@@ -11,6 +11,7 @@
           <mat-option value="all">All</mat-option>
           <mat-option value="dog">Dog</mat-option>
           <mat-option value="cat">Cat</mat-option>
+          <mat-option value="bird">Bird</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -31,14 +32,16 @@
     <div class="cards-container">
       @for (petList of paginaterdPets; track $index) {
       <mat-list class="cards">
-        
         <div class="header-card">
           @if(!petList?.user_filename){
           <mat-icon color="primary" class="icon">account_circle</mat-icon>
           }@else {
-          <img class="img-icon" src="http://localhost/loginPage/backend/upload/{{
+          <img
+            class="img-icon"
+            src="http://localhost/loginPage/backend/upload/{{
               petList.user_id
-            }}/{{ petList.user_filename }}" />
+            }}/{{ petList.user_filename }}"
+          />
           }
           <h2 class="userName">{{ petList.user_first_name }}</h2>
           <button class="btn-header" mat-stroked-button>
@@ -47,9 +50,12 @@
         </div>
 
         <div class="pet_image">
-          <img class="img-pet" src="http://localhost/loginPage/backend/upload/{{
+          <img
+            class="img-pet"
+            src="http://localhost/loginPage/backend/upload/{{
               petList.user_id
-            }}/{{ petList.pet_filename }}" />
+            }}/{{ petList.pet_filename }}"
+          />
         </div>
 
         <mat-list-item></mat-list-item>
@@ -66,21 +72,31 @@
         <mat-divider></mat-divider>
 
         <div class="btn-div">
-          <button (click)="rescue()" type="submit" class="btn" mat-raised-button color="primary">
+          <button
+            (click)="rescue()"
+            type="submit"
+            class="btn"
+            mat-raised-button
+            color="primary"
+          >
             Rescue Pet
           </button>
         </div>
       </mat-list>
-      } @empty { 
-            @defer () {
-            <h1>Pets not found.</h1>
+      } @empty { @defer () {
+      <h1>Pets not found.</h1>
       } @loading (minimum 2000ms) {
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-        <h1>Loading all lost pets...</h1>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <h1>Loading all lost pets...</h1>
       } }
     </div>
     <div class="pagination-container">
-      <mat-paginator [length]="totalItems" [pageSize]="pageSize" aria-label="Select page" (page)="pageChange($event)">
+      <mat-paginator
+        [length]="totalItems"
+        [pageSize]="pageSize"
+        aria-label="Select page"
+        (page)="pageChange($event)"
+      >
       </mat-paginator>
     </div>
   </div>
