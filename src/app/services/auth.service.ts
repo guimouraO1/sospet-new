@@ -23,7 +23,7 @@ export class AuthService {
       .post('http://localhost:3000/api/login', { email, password })
       .subscribe({
         next: (res: any) => {
-          localStorage.setItem('token', res.token);
+          localStorage.setItem('token', res.authToken);
           this.clickEventService.emitir();
           this.router.navigate(['home']);
           this.openSnackBar('Login successful!', res.user.email);
@@ -61,8 +61,8 @@ export class AuthService {
     cep: any,
     address: any
   ) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('authorization', `${token}`);
+    const authToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('authorization', `${authToken}`);
 
     this.http
       .put(
@@ -84,8 +84,8 @@ export class AuthService {
   }
 
   loggedIn() {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('authorization', `${token}`);
+    const authToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('authorization', `${authToken}`);
 
     this.http
       .get('http://localhost:3000/api/user/auth', { headers })

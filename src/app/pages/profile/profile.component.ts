@@ -168,7 +168,7 @@ export class ProfileComponent implements OnInit {
         next: (res: any) => {
           this.petList = res;
           this.totalItems = this.petList.length;
-          this.updatepaginaterdPets('all');
+          this.updatepaginaterdPets();
         },
         error: (error) => {
           this.authService.openSnackBar(error.error.msg, '❗');
@@ -179,10 +179,10 @@ export class ProfileComponent implements OnInit {
   // Método chamado quando a página é alterada
   pageChange(event: PageEvent) {
     this.currentPage = event.pageIndex + 1;
-    this.updatepaginaterdPets('all');
+    this.updatepaginaterdPets();
   }
 
-  updatepaginaterdPets(filter: any) {
+  updatepaginaterdPets() {
     let filteredList = this.petList;
 
     const startIndex = (this.currentPage - 1) * this.pageSize;

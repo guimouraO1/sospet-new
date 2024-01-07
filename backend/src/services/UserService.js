@@ -117,8 +117,8 @@ module.exports = {
           }
           if (results.length > 0) {
             let payload = { userId: results[0].id };
-            let token = jwt.sign(payload, SECRET, { expiresIn: '30d' });
-            accept({ user: results[0], token });
+            let authToken = jwt.sign(payload, SECRET, { expiresIn: '30d' });
+            accept({ user: results[0], authToken });
           } else {
             reject();
           }
