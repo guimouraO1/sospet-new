@@ -6,6 +6,7 @@
   padding: 0;
   font-family: "Roboto", sans-serif;
 }
+
 html,
 body {
   background-color: #ffffff;
@@ -13,24 +14,21 @@ body {
   height: 100%;
 
 }
+
 .mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action {
   color: #673ab7 !important;
 }
-
-
-
 
 body {
   --sb-track-color: rgb(255, 255, 255);
   --sb-thumb-color: #673ab7;
   --sb-size: 6px;
 
-  scrollbar-color: var(--sb-thumb-color) 
-                   var(--sb-track-color);
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
 }
 
 body::-webkit-scrollbar {
-  width: var(--sb-size) 
+  width: var(--sb-size)
 }
 
 body::-webkit-scrollbar-track {
@@ -39,5 +37,5 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
-  
-  }
+
+}

@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 export class NavbarComponent implements OnInit {
   user: any;
   ouvir: Subscription;
-  messages: any | null; 
+  messages: any | null;
 
   constructor(
     private router: Router,
@@ -22,15 +22,14 @@ export class NavbarComponent implements OnInit {
     public authService: AuthService,
     private http: HttpClient,
     private clickEventService: EmmitNavToHomeService
-
   ) {
     this.ouvir = this.clickEventService
-    .getClickEvent()
-    .subscribe((bol: any) => {
-      if (bol) {
-        this.getUser();
-      }
-    });
+      .getClickEvent()
+      .subscribe((bol: any) => {
+        if (bol) {
+          this.getUser();
+        }
+      });
   }
 
   ngOnInit(): void {
@@ -40,21 +39,28 @@ export class NavbarComponent implements OnInit {
   }
 
   toHome() {
-   if(this.authService.navItemLogin){
+    if (this.authService._loggedIn) {
       this.router.navigate(['/home']);
-   }else{
-    this.authService.openSnackBar('Sorry, you do not have permission to access this page.', '❗');
-   }
+    } else {
+      this.authService.openSnackBar(
+        'Sorry, you do not have permission to access this page.',
+        '❗'
+      );
+    }
+    //  this.router.navigate(['/home']);
   }
   toPublications() {
     this.router.navigate(['publications']);
   }
   toPubPet() {
-    if(this.authService.navItemLogin){
+    if (this.authService._loggedIn) {
       this.router.navigate(['post']);
-   }else{
-    this.authService.openSnackBar('Sorry, you do not have permission to access this page.', '❗');
-   }
+    } else {
+      this.authService.openSnackBar(
+        'Sorry, you do not have permission to access this page.',
+        '❗'
+      );
+    }
   }
   toLogin() {
     this.router.navigate(['']);
@@ -62,28 +68,29 @@ export class NavbarComponent implements OnInit {
   toRegister() {
     this.router.navigate(['register']);
   }
+
   toProfile() {
-    if(this.authService.navItemLogin){
+    if (this.authService._loggedIn) {
       this.router.navigate(['profile']);
-     }
+    }
   }
-  
+
   signOut() {
-    localStorage.removeItem('token');
-    this.authService.navItemLogin = false;
+    localStorage.clear();
+    this.authService._loggedIn = false;
     this.router.navigate(['']);
   }
 
   getUser() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
-    this.http.get('http://localhost:3000/api/user', { headers }).subscribe(
-      (res: any) => {
+    this.http.get('http://localhost:3000/api/user', { headers }).subscribe({
+      next: (res: any) => {
         this.user = res;
       },
-      (error) => {
-        // this.authService.openSnackBar(error.error.msg, '❗');
-      }
-    );
+      error: (e: any) => {
+        this.authService.openSnackBar(e.error.msg, '❗');
+      },
+    });
   }
 }

@@ -26,23 +26,7 @@ export class PublicationsComponent {
   ) {}
 
   ngOnInit(): void {
-    // this.authService.loggedIn();
-    // this.getUser();
     this.getPublications();
-  }
-
-  getUser() {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('authorization', `${token}`);
-    this.http.get('http://localhost:3000/api/user', { headers }).subscribe(
-      (res: any) => {
-        this.user = res;
-        console.log(this.user);
-      },
-      (error) => {
-        this.authService.openSnackBar(error.error.msg, '❗');
-      }
-    );
   }
 
   getPublications() {
@@ -50,16 +34,16 @@ export class PublicationsComponent {
     const headers = new HttpHeaders().set('authorization', `${token}`);
     this.http
       .get('http://localhost:3000/api/publications', { headers })
-      .subscribe(
-        (res: any) => {
+      .subscribe({
+        next: (res: any) => {
           this.petList = res;
           this.totalItems = this.petList.length;
           this.updatepaginaterdPets('all');
         },
-        (error) => {
+        error: (error) => {
           this.authService.openSnackBar(error.error.msg, '❗');
-        }
-      );
+        },
+      });
   }
 
   // Método chamado quando a página é alterada
@@ -68,7 +52,6 @@ export class PublicationsComponent {
     this.updatepaginaterdPets('all');
   }
 
-  
   updatepaginaterdPets(filter: any) {
     let filteredList = this.petList;
 
@@ -92,7 +75,8 @@ export class PublicationsComponent {
 
     // Ajuste para garantir que a quantidade de animais por página seja consistente
     const remainingItems = filteredList.length - startIndex;
-    this.paginaterdPets = remainingItems >= this.pageSize
+    this.paginaterdPets =
+      remainingItems >= this.pageSize
         ? filteredList.slice(startIndex, endIndex)
         : filteredList.slice(startIndex);
 
@@ -135,7 +119,8 @@ export class PublicationsComponent {
 
       this.paginaterdPets = this.petList
         .filter((pet: any) =>
-          selectedSpecies.includes(pet.petSpecies?.toLowerCase()))
+          selectedSpecies.includes(pet.petSpecies?.toLowerCase())
+        )
         .slice(0, this.pageSize);
       this.updatepaginaterdPets(filter);
     }
@@ -143,7 +128,7 @@ export class PublicationsComponent {
 
   rescue() {
     try {
-      if (!this.authService.navItemLogin) {
+      if (!this.authService._loggedIn) {
         this.authService.openSnackBar(
           "You do not have permission to access this function, please log'in .",
           '❗'

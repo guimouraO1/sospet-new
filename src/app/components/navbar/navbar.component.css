@@ -63,7 +63,8 @@
   border-radius: 6px;
 
 }
-.nav-icon{
+
+.nav-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,38 +72,40 @@
   border-radius: 100%;
   transition: 0.8s;
   width: 60px;
-  height:  60px;
+  height: 60px;
   cursor: pointer;
   font-weight: 100;
   margin: 0px 10px;
 
 }
 
-mat-icon{
+mat-icon {
   transform: scale(3);
   color: #ffffff;
 }
-.userPerfilImg{
+
+.userPerfilImg {
   border-radius: 100%;
   width: 60px;
   height: 60px;
   background-color: #ffffff;
   overflow: hidden;
-  
+
 }
-.userPerfilImg img{
+
+.userPerfilImg img {
   width: 60px;
   height: 60px;
   object-fit: cover;
-  
+
 }
 
-.item{
+.item {
   padding-right: 50px !important;
 
 }
 
-::ng-deep .item .mat-badge-content{
+::ng-deep .item .mat-badge-content {
   top: 12px !important;
   right: 15px !important;
 }

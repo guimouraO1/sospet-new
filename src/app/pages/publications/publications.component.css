@@ -66,7 +66,7 @@ mat-form-field {
     justify-content: space-around;
 }
 
-.userName{
+.userName {
     margin: 0;
     padding: 0;
     margin-left: 2%;
@@ -90,7 +90,8 @@ mat-form-field {
     margin: 20px;
     width: 200px;
 }
-.btn-lost{
+
+.btn-lost {
     color: red !important;
 }
 
@@ -136,18 +137,20 @@ mat-paginator {
     align-items: center;
 
 }
-.pet_image{
-    width: 400px;
-    height: 300px;
-    object-fit: cover;
-}
-.img-pet{
+
+.pet_image {
     width: 400px;
     height: 300px;
     object-fit: cover;
 }
 
-.btn-header{
+.img-pet {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.btn-header {
     text-transform: uppercase;
     color: red !important;
     width: 100px;

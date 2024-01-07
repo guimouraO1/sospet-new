@@ -25,11 +25,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { PublicationsComponent } from './pages/publications/publications.component';
 import { MatSelectModule } from '@angular/material/select';
 import { PostPetComponent } from './pages/post-pet/post-pet.component';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     ProfileComponent,
     ConfirmationModalComponent,
     PublicationsComponent,
-    PostPetComponent
+    PostPetComponent,
   ],
   imports: [
     RouterModule,
@@ -67,7 +67,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     CommonModule,
     MatProgressBarModule,
     MatSelectModule,
-    MatBadgeModule
+    MatBadgeModule,
   ],
   providers: [provideNgxMask({}), EmmitNavToHomeService],
   bootstrap: [AppComponent],

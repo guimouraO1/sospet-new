@@ -15,7 +15,6 @@ import { PageEvent } from '@angular/material/paginator';
 export class ProfileComponent implements OnInit {
   userForm: FormGroup;
   user: any;
-
   petList?: any = [];
   paginaterdPets: any[] = []; // Lista de pets exibidos na página atual
   pageSize: number = 3; // Tamanho da página
@@ -23,7 +22,6 @@ export class ProfileComponent implements OnInit {
   currentFilter: any;
   totalItems: number = 0;
 
-  
   constructor(
     private http: HttpClient,
     private authService: AuthService,
@@ -31,14 +29,13 @@ export class ProfileComponent implements OnInit {
     public dialog: MatDialog,
     private clickEventService: EmmitNavToHomeService,
     private el: ElementRef
-
   ) {
     this.userForm = this.fb.group({
       firstName: ['', [Validators.maxLength(60)]],
       lastName: ['', [Validators.maxLength(60)]],
       telephone: ['', [Validators.maxLength(60)]],
       address: ['', [Validators.maxLength(60)]],
-      cep: ['', [Validators.maxLength(60)]]
+      cep: ['', [Validators.maxLength(60)]],
     });
   }
   selectedFile: File | null = null;
@@ -52,21 +49,21 @@ export class ProfileComponent implements OnInit {
   getUser() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
-    this.http.get('http://localhost:3000/api/user', { headers }).subscribe(
-      (res: any) => {
+    this.http.get('http://localhost:3000/api/user', { headers }).subscribe({
+      next: (res: any) => {
         this.user = res;
         this.userForm.patchValue({
           firstName: this.user.firstName,
           lastName: this.user.lastName,
           telephone: this.user.telephone,
           address: this.user.address,
-          cep: this.user.cep
+          cep: this.user.cep,
         });
       },
-      (error) => {
+      error: (error) => {
         this.authService.openSnackBar(error.error.msg, '❗');
-      }
-    );
+      },
+    });
   }
 
   onSubmit() {
@@ -109,8 +106,20 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  updateProfile(firstName: string, lastName: string, telephone: any, cep: any, address: any) {
-    this.authService.updateProfile(firstName, lastName, telephone, cep, address);
+  updateProfile(
+    firstName: string,
+    lastName: string,
+    telephone: any,
+    cep: any,
+    address: any
+  ) {
+    this.authService.updateProfile(
+      firstName,
+      lastName,
+      telephone,
+      cep,
+      address
+    );
   }
 
   handleFileInput(event: any): void {
@@ -126,42 +135,45 @@ export class ProfileComponent implements OnInit {
       const formData: FormData = new FormData();
       const token = localStorage.getItem('token');
       const headers = new HttpHeaders().set('authorization', `${token}`);
-      
+
       formData.append('file', this.selectedFile);
       this.http
         .post('http://localhost:3000/api/upload', formData, { headers })
         .subscribe((response: any) => {
-          try { 
-            if(response.update){
+          try {
+            if (response.update) {
               this.getUser();
               this.clickEventService.emitir();
-              this.authService.openSnackBar("Image successfully uploaded!", '✅');
-            } else{
-              this.authService.openSnackBar("Image upload failed. Please try again", '❗');
-             }
-          } catch (e) {
-            
-          }
+              this.authService.openSnackBar(
+                'Image successfully uploaded!',
+                '✅'
+              );
+            } else {
+              this.authService.openSnackBar(
+                'Image upload failed. Please try again',
+                '❗'
+              );
+            }
+          } catch (e) {}
         });
     }
   }
-
 
   getPublications() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
     this.http
       .get('http://localhost:3000/api/userPublications', { headers })
-      .subscribe(
-        (res: any) => {
+      .subscribe({
+        next: (res: any) => {
           this.petList = res;
           this.totalItems = this.petList.length;
           this.updatepaginaterdPets('all');
         },
-        (error) => {
+        error: (error) => {
           this.authService.openSnackBar(error.error.msg, '❗');
-        }
-      );
+        },
+      });
   }
 
   // Método chamado quando a página é alterada
@@ -178,7 +190,8 @@ export class ProfileComponent implements OnInit {
 
     // Ajuste para garantir que a quantidade de animais por página seja consistente
     const remainingItems = filteredList.length - startIndex;
-    this.paginaterdPets = remainingItems >= this.pageSize
+    this.paginaterdPets =
+      remainingItems >= this.pageSize
         ? filteredList.slice(startIndex, endIndex)
         : filteredList.slice(startIndex);
 
@@ -188,7 +201,8 @@ export class ProfileComponent implements OnInit {
 
   scrollToContainer() {
     // Obtenha uma referência ao elemento com id 'container'
-    const containerElement = this.el.nativeElement.querySelector('#container-posts');
+    const containerElement =
+      this.el.nativeElement.querySelector('#container-posts');
 
     // Verifique se o elemento foi encontrado
     if (containerElement) {
@@ -196,5 +210,4 @@ export class ProfileComponent implements OnInit {
       containerElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
 }

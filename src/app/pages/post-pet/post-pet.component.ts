@@ -18,7 +18,7 @@ export class PostPetComponent implements OnInit {
     private authService: AuthService,
     public dialog: MatDialog,
     private fb: FormBuilder,
-    private router: Router,
+    private router: Router
   ) {
     this.petForm = this.fb.group({
       petName: ['Unknown', [Validators.required]],
@@ -33,7 +33,6 @@ export class PostPetComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.loggedIn();
-    // this.authService.getUser();
   }
 
   handleFileInput(event: any): void {
@@ -49,7 +48,6 @@ export class PostPetComponent implements OnInit {
       const token = localStorage.getItem('token');
       const headers = new HttpHeaders().set('authorization', `${token}`);
       formData.append('file', this.selectedFile);
-
       this.http
         .post('http://localhost:3000/api/uploadPet', formData, { headers })
         .subscribe((response: any) => {
@@ -91,17 +89,17 @@ export class PostPetComponent implements OnInit {
         },
         { headers }
       )
-      .subscribe(
-        (res: any) => {
+      .subscribe({
+        next: (res: any) => {
           if (res) {
             this.router.navigate(['home']);
-            this.authService.openSnackBar('Register successful!', '✅');
+            this.authService.openSnackBar('Pet posted  successful!', '✅');
           }
         },
-        (error) => {
-          this.authService.openSnackBar(error.error.msg, '❗');
-        }
-      );
+        error: (e) => {
+          this.authService.openSnackBar(e.error.msg, '❗');
+        },
+      });
   }
 
   onSubmit() {
@@ -147,5 +145,5 @@ export class PostPetComponent implements OnInit {
     } else {
       this.authService.openSnackBar('All fields must be filled', '❗');
     }
-  } 
+  }
 }

@@ -4,11 +4,16 @@
     <li (click)="toHome()"><a class="navItens">Home</a></li>
     <li (click)="toPubPet()"><a class="navItens">Post Pet</a></li>
     <li (click)="toPublications()"><a class="navItens">Find Pet</a></li>
-    @if (!this.authService.navItemLogin) {
+    @if (!this.authService._loggedIn) {
     <li (click)="toLogin()"><a class="navItens">Login</a></li>
     }@else {
     <li>
-      <div matBadge={{messages}} matBadgeColor="warn" [matMenuTriggerFor]="menu" class="nav-icon">
+      <div
+        matBadge="{{ messages }}"
+        matBadgeColor="warn"
+        [matMenuTriggerFor]="menu"
+        class="nav-icon"
+      >
         @if (!user?.filename) {
         <mat-icon>account_circle</mat-icon>
         }@else {
@@ -25,7 +30,12 @@
           <button (click)="toProfile()" mat-menu-item>
             <span>Profile</span>
           </button>
-          <button matBadge={{messages}} matBadgeColor="warn" class="item" mat-menu-item>
+          <button
+            matBadge="{{ messages }}"
+            matBadgeColor="warn"
+            class="item"
+            mat-menu-item
+          >
             <span>Messages</span>
           </button>
           <button (click)="signOut()" mat-menu-item>

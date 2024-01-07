@@ -8,40 +8,40 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { PublicationsComponent } from './pages/publications/publications.component';
 import { PostPetComponent } from './pages/post-pet/post-pet.component';
 
-
-const routes: Routes = [ 
-{
-  path:'',
-  component: LoginComponent,
-},
-{
-  path:'home',
-  component: HomepageComponent,
-},
-{
-  path:'publications',
-  component: PublicationsComponent,
-},
-{
-  path:'post',
-  component: PostPetComponent,
-},
-{
-  path:'register',
-  component: RegisterComponent,
-},
-{
-  path:'profile',
-  component: ProfileComponent,
-},
-{
-  path:'**',
-  component: NotFoundComponent,
-},
+const routes: Routes = [
+  {
+    path: '',
+    component: LoginComponent,
+  },
+  {
+    path: 'home',
+    component: HomepageComponent,
+    // canActivate: [authGuard]
+  },
+  {
+    path: 'publications',
+    component: PublicationsComponent,
+  },
+  {
+    path: 'post',
+    component: PostPetComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
