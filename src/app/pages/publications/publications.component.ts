@@ -128,7 +128,7 @@ export class PublicationsComponent {
 
   rescue() {
     try {
-      if (!this.authService._loggedIn) {
+      if (!this.authService._isAuthenticated) {
         this.authService.openSnackBar(
           "You do not have permission to access this function, please log'in .",
           '❗'

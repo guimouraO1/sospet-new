@@ -4,7 +4,7 @@
     <li (click)="toHome()"><a class="navItens">Home</a></li>
     <li (click)="toPubPet()"><a class="navItens">Post Pet</a></li>
     <li (click)="toPublications()"><a class="navItens">Find Pet</a></li>
-    @if (!this.authService._loggedIn) {
+    @if (!this.authService._isAuthenticated) {
     <li (click)="toLogin()"><a class="navItens">Login</a></li>
     }@else {
     <li>

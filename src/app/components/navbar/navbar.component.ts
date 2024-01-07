@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
   }
 
   toHome() {
-    if (this.authService._loggedIn) {
+    if (this.authService._isAuthenticated) {
       this.router.navigate(['/home']);
     } else {
       this.authService.openSnackBar(
@@ -53,7 +53,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['publications']);
   }
   toPubPet() {
-    if (this.authService._loggedIn) {
+    if (this.authService._isAuthenticated) {
       this.router.navigate(['post']);
     } else {
       this.authService.openSnackBar(
@@ -70,14 +70,14 @@ export class NavbarComponent implements OnInit {
   }
 
   toProfile() {
-    if (this.authService._loggedIn) {
+    if (this.authService._isAuthenticated) {
       this.router.navigate(['profile']);
     }
   }
 
   signOut() {
     localStorage.clear();
-    this.authService._loggedIn = false;
+    this.authService._isAuthenticated = false;
     this.router.navigate(['']);
   }
 

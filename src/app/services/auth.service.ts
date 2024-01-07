@@ -8,7 +8,7 @@ import { EmmitNavToHomeService } from './emmit-nav-to-home.service';
   providedIn: 'root',
 })
 export class AuthService {
-  _loggedIn?: boolean;
+  _isAuthenticated?: boolean;
   user: any;
 
   constructor(
@@ -98,7 +98,7 @@ export class AuthService {
             this.router.navigate(['home']);
             this.openSnackBar('You are already logged in', '✅');
           } else if (res.loggedIn) {
-            this._loggedIn = true;
+            this._isAuthenticated = true;
           }
         },
         error: (e: any) => {
