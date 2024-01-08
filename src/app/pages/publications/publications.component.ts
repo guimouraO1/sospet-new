@@ -19,6 +19,11 @@ export class PublicationsComponent {
   currentFilter: any;
   totalItems: number = 0;
 
+  filter2: any = {
+    petSpecies: 'all',
+    status: 'all',
+  };
+
   constructor(
     public dialog: MatDialog,
     private http: HttpClient,
@@ -38,7 +43,7 @@ export class PublicationsComponent {
         next: (res: any) => {
           this.petList = res;
           this.totalItems = this.petList.length;
-          this.updatepaginaterdPets('all');
+          this.updatepaginaterdPets();
         },
         error: (error) => {
           this.authService.openSnackBar(error.error.msg, '❗');
@@ -49,25 +54,30 @@ export class PublicationsComponent {
   // Método chamado quando a página é alterada
   pageChange(event: PageEvent) {
     this.currentPage = event.pageIndex + 1;
-    this.updatepaginaterdPets('all');
+    this.updatepaginaterdPets();
   }
 
-  updatepaginaterdPets(filter: any) {
+  updatepaginaterdPets() {
     let filteredList = this.petList;
 
-    if (
-      this.currentFilter &&
-      this.currentFilter.length > 0 &&
-      !this.currentFilter.includes('all')
-    ) {
-      filteredList = this.petList.filter((pet: any) => {
-        if (filter === 'status') {
-          return this.currentFilter.includes(pet.status?.toLowerCase());
-        } else if (filter === 'petSpecies') {
-          return this.currentFilter.includes(pet.pet_species?.toLowerCase());
-        }
-        return false;
-      });
+    if (this.filter2.status !== 'all' || this.filter2.petSpecies !== 'all') {
+      if (this.filter2.status !== 'all' && this.filter2.petSpecies !== 'all') {
+        filteredList = this.petList
+          .filter((pet: any) =>
+            this.filter2.status.includes(pet.status?.toLowerCase())
+          )
+          .filter((pet: any) =>
+            this.filter2.petSpecies.includes(pet.pet_species?.toLowerCase())
+          );
+      } else if (this.filter2.status === 'all') {
+        filteredList = this.petList.filter((pet: any) =>
+          this.filter2.petSpecies.includes(pet.pet_species?.toLowerCase())
+        );
+      } else if (this.filter2.petSpecies === 'all') {
+        filteredList = this.petList.filter((pet: any) =>
+          this.filter2.status.includes(pet.status?.toLowerCase())
+        );
+      }
     }
 
     const startIndex = (this.currentPage - 1) * this.pageSize;
@@ -82,48 +92,19 @@ export class PublicationsComponent {
 
     // Atualize o comprimento total da lista para a variável totalItems
     this.totalItems = filteredList.length;
+
+    return this.paginaterdPets;
   }
 
   filter(event: any, filter: any) {
     if (filter === 'status') {
-      const selectedStatus = event.value;
-      this.currentFilter = selectedStatus;
-      if (
-        !selectedStatus ||
-        selectedStatus.length === 0 ||
-        selectedStatus.includes('all')
-      ) {
-        this.updatepaginaterdPets(filter);
-        return;
-      }
-
-      this.paginaterdPets = this.petList
-        .filter((pet: any) =>
-          selectedStatus.includes(pet.status?.toLowerCase())
-        )
-        .slice(0, this.pageSize);
-      this.updatepaginaterdPets(filter);
+      this.filter2.status = event.value;
     }
 
     if (filter === 'petSpecies') {
-      const selectedSpecies = event.value;
-      this.currentFilter = selectedSpecies;
-      if (
-        !selectedSpecies ||
-        selectedSpecies.length === 0 ||
-        selectedSpecies.includes('all')
-      ) {
-        this.updatepaginaterdPets(filter);
-        return;
-      }
-
-      this.paginaterdPets = this.petList
-        .filter((pet: any) =>
-          selectedSpecies.includes(pet.petSpecies?.toLowerCase())
-        )
-        .slice(0, this.pageSize);
-      this.updatepaginaterdPets(filter);
+      this.filter2.petSpecies = event.value;
     }
+    this.updatepaginaterdPets();
   }
 
   rescue() {

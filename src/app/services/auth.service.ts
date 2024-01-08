@@ -8,7 +8,7 @@ import { EmmitNavToHomeService } from './emmit-nav-to-home.service';
   providedIn: 'root',
 })
 export class AuthService {
-  _isAuthenticated?: boolean;
+  _isAuthenticated = false;
   user: any;
 
   constructor(
@@ -109,6 +109,9 @@ export class AuthService {
           }
         },
       });
+  }
+  isAuthenticatedUser(): boolean | undefined {
+    return this._isAuthenticated;
   }
 
   openSnackBar(message: string, action: string) {

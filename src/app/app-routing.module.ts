@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomepageComponent,
-    // canActivate: [authGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'publications',
