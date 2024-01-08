@@ -6,7 +6,7 @@
     </div>
     <div class="item">
       <mat-form-field appearance="outline">
-        <mat-label>Filter by Species</mat-label>
+        <mat-label>Filter by species</mat-label>
         <mat-select (selectionChange)="filter($event, 'petSpecies')">
           <mat-option value="all">All</mat-option>
           <mat-option value="dog">Dog</mat-option>
@@ -18,7 +18,7 @@
 
     <div class="item">
       <mat-form-field appearance="outline">
-        <mat-label>Filter by Species</mat-label>
+        <mat-label>Filter by status</mat-label>
         <mat-select (selectionChange)="filter($event, 'status')">
           <mat-option value="all">All</mat-option>
           <mat-option value="lost">LOST</mat-option>
@@ -62,7 +62,7 @@
         <mat-divider></mat-divider>
         <mat-list-item>Pet Name: {{ petList.pet_name }}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Race: {{ petList.pet_race }}</mat-list-item>
+        <mat-list-item>Breed: {{ petList.pet_race }}</mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item>Specie: {{ petList.pet_species }}</mat-list-item>
         <mat-divider></mat-divider>
