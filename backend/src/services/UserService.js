@@ -179,7 +179,7 @@ module.exports = {
   postPublication: (userId, petFileName, petName, petRace, petSex, petLastLocation, status, petSpecies) => {
     return new Promise((accept, reject) => {
       db.query(
-        "INSERT INTO `publications` (`user_id`, `pet_filename`, `pet_name`, `pet_race`, `pet_species`, `pet_sex`, `status`, `pet_last_location`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO `publications` (`user_id`, `pet_filename`, `pet_name`, `pet_breed`, `pet_species`, `pet_sex`, `status`, `pet_last_location`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
         [userId, petFileName, petName, petRace, petSpecies, petSex, status, petLastLocation],
         (error, results) => {
           if (error) {

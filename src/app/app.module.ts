@@ -30,6 +30,9 @@ import { PublicationsComponent } from './pages/publications/publications.compone
 import { MatSelectModule } from '@angular/material/select';
 import { PostPetComponent } from './pages/post-pet/post-pet.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 @NgModule({
   declarations: [
@@ -68,6 +71,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatProgressBarModule,
     MatSelectModule,
     MatBadgeModule,
+    MatStepperModule,
+    MatButtonToggleModule
   ],
   providers: [provideNgxMask({}), EmmitNavToHomeService],
   bootstrap: [AppComponent],

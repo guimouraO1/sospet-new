@@ -12,7 +12,9 @@
           <mat-option value="dog">Dog</mat-option>
           <mat-option value="cat">Cat</mat-option>
           <mat-option value="bird">Bird</mat-option>
+          <mat-option value="other">Other</mat-option>
         </mat-select>
+        <mat-hint>{{ getHintMessage() }}</mat-hint>
       </mat-form-field>
     </div>
 
@@ -21,8 +23,9 @@
         <mat-label>Filter by status</mat-label>
         <mat-select (selectionChange)="filter($event, 'status')">
           <mat-option value="all">All</mat-option>
-          <mat-option value="lost">LOST</mat-option>
-          <mat-option value="found">FOUND</mat-option>
+          <mat-option value="lost">Lost</mat-option>
+          <mat-option value="found">Found</mat-option>
+          <mat-option value="seen nearby">Seen nearby</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -62,7 +65,7 @@
         <mat-divider></mat-divider>
         <mat-list-item>Pet Name: {{ petList.pet_name }}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Breed: {{ petList.pet_race }}</mat-list-item>
+        <mat-list-item>Breed: {{ petList.pet_breed}}</mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item>Specie: {{ petList.pet_species }}</mat-list-item>
         <mat-divider></mat-divider>

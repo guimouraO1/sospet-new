@@ -1,3 +1,114 @@
 <div class="main">
-  <h1>OLÁ MUNDO</h1>
+  <div class="main-container">
+    <div class="header">
+      <h1>How to Find Your Lost Pet with SOSPET</h1>
+    </div>
+    <button class="help" (click)="help()" mat-stroked-button>
+      Help me!
+      <mat-icon color="primary">help</mat-icon>
+    </button>
+    @if (helper) {
+      <div class="stepper">
+        <div class="header-stepper">
+          <h2>Please select the action you want to take on the website</h2>
+          <mat-icon (click)="noHelp()">close</mat-icon>
+        </div>
+        <div class="action">
+          <mat-button-toggle-group
+            name="favoriteColor"
+            aria-label="Favorite Color"
+          >
+            <mat-button-toggle (click)="setFind()" value="red"
+              >Search for my pet</mat-button-toggle
+            >
+            <mat-button-toggle (click)="setPost()" value="green"
+              >Post my lost pet</mat-button-toggle
+            >
+            <mat-button-toggle (click)="setNone()" value="blue"
+              >Just discovering</mat-button-toggle
+            >
+          </mat-button-toggle-group>
+        </div>
+        @if (action === '') { } @else if (action === 'post') {
+        <mat-stepper>
+          <mat-step label="Step 1">
+            <p>You need to have an account to post your lost pet</p>
+            <div class="itens">
+              <button mat-raised-button color="primary" (click)="toLogin()">
+                Do you have an account? Click to login!
+              </button>
+              <button mat-raised-button color="accent"(click)="toRegister()">
+                Don't have an account? Register here!
+              </button>
+            </div>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step label="Step 2" state="chat">
+            <p>On the "Post Pet" page, fill in all the fields</p>
+            <p>Afther that click in "Post pet" button</p>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step label="Step 3">
+            <p>You have successfully published your lost pet!</p>
+            <p>Good luck, and I hope he is rescued soon!</p>
+          </mat-step>
+  
+          <!-- Icon overrides. -->
+          <ng-template matStepperIcon="phone">
+            <mat-icon>call_end</mat-icon>
+          </ng-template>
+          <ng-template matStepperIcon="chat">
+            <mat-icon>forum</mat-icon>
+          </ng-template>
+        </mat-stepper>
+        }@else if (action === 'find'){
+        <mat-stepper>
+          <mat-step class="stepper-find" label="Step 1">
+            <p>You need to have an account to redeem your pet</p>
+            <div class="itens">
+              <button mat-raised-button color="primary" (click)="toLogin()">
+                Do you have an account? Click to login!
+              </button>
+              <button mat-raised-button color="accent"(click)="toRegister()">
+                Don't have an account? Register here!
+              </button>
+            </div>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step label="Step 2" state="chat">
+            <p>Find your pet on the 'Find Pet' page</p>
+            <p>And click in the "Rescue Pet" button</p>
+            <div class="itens">
+              <button type="submit" mat-raised-button color="primary">
+                Rescue Pet
+              </button>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step label="Step 3">
+            <p>A FAZER</p>
+          </mat-step>
+  
+          <!-- Icon overrides. -->
+          <ng-template matStepperIcon="phone">
+            <mat-icon>call_end</mat-icon>
+          </ng-template>
+          <ng-template matStepperIcon="chat">
+            <mat-icon>forum</mat-icon>
+          </ng-template>
+        </mat-stepper>
+        }
+      </div>
+    }
+  </div>
 </div>

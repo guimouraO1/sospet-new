@@ -7,6 +7,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PublicationsComponent } from './pages/publications/publications.component';
 import { PostPetComponent } from './pages/post-pet/post-pet.component';
+import { authGuard } from './_guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomepageComponent,
-    // canActivate: [AuthGuard]
+    // canActivate: [authGuard]
   },
   {
     path: 'publications',

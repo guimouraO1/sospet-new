@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   user = { email: '', password: '' };
-
+  hide = true;
   ngOnInit(): void {
     this.authService.loggedIn();
   }

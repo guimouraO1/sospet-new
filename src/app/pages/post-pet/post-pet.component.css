@@ -1,3 +1,6 @@
+*{
+    font-family: 'Comic Neue', cursive !important;
+  }
 .main {
     display: flex;
     align-items: center;

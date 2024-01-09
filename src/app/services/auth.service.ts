@@ -8,7 +8,7 @@ import { EmmitNavToHomeService } from './emmit-nav-to-home.service';
   providedIn: 'root',
 })
 export class AuthService {
-  _isAuthenticated = false;
+  _isAuthenticated: boolean = false;
   user: any;
 
   constructor(
@@ -23,9 +23,10 @@ export class AuthService {
       .post('http://localhost:3000/api/login', { email, password })
       .subscribe({
         next: (res: any) => {
+          this._isAuthenticated = true;
           localStorage.setItem('token', res.authToken);
           this.clickEventService.emitir();
-          this.router.navigate(['home']);
+          this.router.navigate(['/home']);
           this.openSnackBar('Login successful!', res.user.email);
         },
         error: (e: any) => {
@@ -95,7 +96,7 @@ export class AuthService {
             this.router.url == '/' ||
             (this.router.url == '/register' && res.loggedIn)
           ) {
-            this.router.navigate(['home']);
+            this.router.navigate(['/home']);
             this.openSnackBar('You are already logged in', '✅');
           } else if (res.loggedIn) {
             this._isAuthenticated = true;

@@ -50,6 +50,20 @@ export class PublicationsComponent {
         },
       });
   }
+  getHintMessage(): string {
+    switch (this.filter2.petSpecies) {
+      case 'dog':
+        return 'Woof, woof!';
+      case 'cat':
+        return 'Meeeoooow!';
+      case 'bird':
+        return 'Tweet, tweet!';
+      case 'other':
+        return '';
+      default:
+        return '';
+    }
+  }
 
   // Método chamado quando a página é alterada
   pageChange(event: PageEvent) {
