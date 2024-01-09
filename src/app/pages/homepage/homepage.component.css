@@ -5,40 +5,43 @@
   padding: 0;
 
 }
-h1{
+
+h1 {
   font-family: 'Comic Neue', cursive !important;
   color: #673ab7;
 }
 
 .main {
-    font-family: 'Comic Neue', cursive !important;
-    width: 100vw;
-    height: 90vh;
+  font-family: 'Comic Neue', cursive !important;
+  width: 100vw;
+  min-height: 90vh;
 }
-h1{
+
+h1 {
   font-size: xx-large;
 }
-.header{
+
+.header {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 20vh;
 }
 
-.main-container{
+.main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.stepper{
+.stepper {
   margin-top: 40px;
   text-align: center;
   width: 80vw;
 }
 
-.action{
+.action {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +49,7 @@ h1{
   gap: 20px;
 }
 
-.itens{
+.itens {
   height: 10vh;
   gap: 20px;
   display: flex;
@@ -55,18 +58,21 @@ h1{
   gap: 10px;
 }
 
-mat-stepper{
+mat-stepper {
   margin: 20px !important;
-  
+
 }
-mat-icon:hover{
+
+mat-icon:hover {
   cursor: pointer;
   color: red;
 }
-h2{
+
+h2 {
   font-family: 'Comic Neue', cursive !important;
   margin: 0 !important;
 }
+
 .header-stepper {
   display: flex;
   justify-content: space-between;
@@ -74,14 +80,34 @@ h2{
 }
 
 .header-stepper h2 {
-  margin: 0; /* Remove as margens padrão do h2 */
-  flex-grow: 1; /* Faz com que o h2 ocupe o espaço restante disponível */
+  margin: 0;
+  /* Remove as margens padrão do h2 */
+  flex-grow: 1;
+  /* Faz com que o h2 ocupe o espaço restante disponível */
 }
 
 .header-stepper mat-icon {
-  margin-left: 10px; /* Ajuste conforme necessário para criar espaço entre o h2 e o mat-icon */
+  margin-left: 10px;
+  /* Ajuste conforme necessário para criar espaço entre o h2 e o mat-icon */
 }
-.help{
-  transform: scale(1.5);
 
+.help {
+  padding: 0 16px;
+  transform: scale(1.2);
+
+}
+
+button {
+  padding: 0 16px;
+}
+
+.footer {
+
+  height: 10vh;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
 }

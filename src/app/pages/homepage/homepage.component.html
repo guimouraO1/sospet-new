@@ -3,10 +3,6 @@
     <div class="header">
       <h1>How to Find Your Lost Pet with SOSPET</h1>
     </div>
-    <button class="help" (click)="help()" mat-stroked-button>
-      Help me!
-      <mat-icon color="primary">help</mat-icon>
-    </button>
     @if (helper) {
       <div class="stepper">
         <div class="header-stepper">
@@ -111,4 +107,11 @@
       </div>
     }
   </div>
+</div>
+
+<div class="footer">
+  <button class="help" (click)="help()" mat-stroked-button>
+    Help me!
+    <mat-icon color="warn">help</mat-icon>
+  </button>
 </div>
