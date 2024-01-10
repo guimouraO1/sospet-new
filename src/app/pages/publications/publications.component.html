@@ -33,7 +33,7 @@
 
   <div class="petList">
     <div class="cards-container">
-      @for (petList of paginaterdPets; track $index) {
+      @for (petList of paginaterdPets; track petList.publication_id) {
       <mat-list class="cards">
         <div class="header-card">
           @if(!petList?.user_filename){

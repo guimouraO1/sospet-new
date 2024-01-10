@@ -126,7 +126,7 @@
     <div class="petList">
       <h2>Your posts</h2>
       <div class="cards-container">
-        @for (pet of paginaterdPets; track $index) {
+        @for (pet of paginaterdPets; track pet.publication_id) {
         <mat-list class="cards">
           <div class="header-card">
             @if(!pet?.user_filename){

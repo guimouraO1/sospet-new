@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../../services/auth.service';
 import { PageEvent } from '@angular/material/paginator';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-publications',
