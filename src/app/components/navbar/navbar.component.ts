@@ -37,9 +37,6 @@ export class NavbarComponent implements OnInit {
     this.getUser();
     // this.messages = 1
   }
-  modeToggle(){
-    
-  }
   toHome() {
     if (this.authService._isAuthenticated) {
       this.router.navigate(['/home']);

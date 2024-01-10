@@ -1,10 +1,11 @@
 @use './../../../assets/styles/colors.scss' as *;
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 h1 {
   font-family: 'Comfortaa', sans-serif !important;;
   /* font-family: 'Comic Neue', cursive !important; */
-  color: $primary;
+  color: $primary !important;
+  font-weight: 100;
+  font-size: 30px;
 }
 
 .main {
@@ -12,10 +13,6 @@ h1 {
   /* font-family: 'Comic Neue', cursive !important; */
   width: 100vw;
   min-height: 90vh;
-}
-
-h1 {
-  font-size: 30px;
 }
 
 .header {
@@ -36,9 +33,25 @@ h1 {
   margin-top: 40px;
   text-align: center;
   width: 80vw;
+  border-radius: 10px;
   box-shadow: $cardShadowPrimary;
+  background-color: $backgroundColorCard;
+
+}
+mat-stepper{
+  background-color: transparent !important;
+  color: white;
+}  
+::ng--deep .mat-step-label.mat-step-label-active {
+  color: red !important; /* Substitua "red" pela cordesejada */
 }
 
+
+.stepper-find{
+  color: white !important;
+  box-shadow: $cardShadowPrimary;
+
+}
 .action {
   display: flex;
   align-items: center;
@@ -58,7 +71,7 @@ h1 {
 
 mat-stepper {
   margin: 20px !important;
-
+  color: $primary !important;
 }
 
 mat-icon:hover {
@@ -70,6 +83,7 @@ h2 {
   font-family: 'Comfortaa', sans-serif !important;;
   /* font-family: 'Comic Neue', cursive !important; */
   margin: 0 !important;
+  color: $primary !important;
 }
 
 .header-stepper {
@@ -104,7 +118,6 @@ button {
 }
 
 .footer {
-
   height: 10vh;
   width: 90vw;
   display: flex;
