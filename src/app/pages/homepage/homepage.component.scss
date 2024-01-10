@@ -1,15 +1,10 @@
+@use './../../../assets/styles/colors.scss' as *;
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-
-}
 
 h1 {
   font-family: 'Comfortaa', sans-serif !important;;
   /* font-family: 'Comic Neue', cursive !important; */
-  color: #673ab7;
+  color: $primary;
 }
 
 .main {
@@ -20,7 +15,7 @@ h1 {
 }
 
 h1 {
-  font-size: xx-large;
+  font-size: 30px;
 }
 
 .header {
@@ -41,6 +36,7 @@ h1 {
   margin-top: 40px;
   text-align: center;
   width: 80vw;
+  box-shadow: $cardShadowPrimary;
 }
 
 .action {
@@ -67,7 +63,7 @@ mat-stepper {
 
 mat-icon:hover {
   cursor: pointer;
-  color: red;
+  color:  $primary;
 }
 
 h2 {
@@ -91,17 +87,20 @@ h2 {
 
 .header-stepper mat-icon {
   margin-left: 10px;
+
   /* Ajuste conforme necessário para criar espaço entre o h2 e o mat-icon */
 }
 
 .help {
   padding: 0 16px;
   transform: scale(1.2);
-
+  color: white !important;
+  background-color: $primary;
 }
 
 button {
   padding: 0 16px;
+  
 }
 
 .footer {

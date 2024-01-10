@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-post-pet',
   templateUrl: './post-pet.component.html',
-  styleUrl: './post-pet.component.css',
+  styleUrl: './post-pet.component.scss',
 })
 export class PostPetComponent implements OnInit {
   petForm: FormGroup;

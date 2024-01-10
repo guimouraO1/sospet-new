@@ -1,3 +1,5 @@
+@use './../../../assets/styles/colors.scss' as *;
+
 * {
     margin: 0;
     padding: 0;
@@ -29,8 +31,10 @@ mat-option, h2 {
     align-items: center;
     width: 20vw;
     height: 90vh;
-    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
+    box-shadow: $cardShadowPrimary;
     gap: 10px;
+    background-color: $backgroundColorCard !important;
+
 }
 
 .searchHeader {
@@ -67,8 +71,10 @@ mat-form-field {
     flex-direction: column;
     width: 400px;
     height: 650px;
-    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
+    box-shadow: $cardShadowPrimary;
     border-radius: 10px;
+    background-color: $backgroundColorCard !important;
+
 }
 
 .header-card {
@@ -110,6 +116,7 @@ mat-form-field {
 }
 
 .icon {
+    color: $primary;
     border-radius: 100%;
 
 }
@@ -135,7 +142,9 @@ mat-paginator {
     align-items: center;
     border-radius: 10px;
     margin-bottom: 10px;
-    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
+    box-shadow: $cardShadowPrimary;
+    margin-top: 20px;
+    background-color: $backgroundColorCard !important;
 
 }
 
@@ -172,4 +181,9 @@ mat-paginator {
     transition: none;
     box-shadow: none;
 
+}
+
+.btn {
+    background-color: $primary !important;
+    color: #F8F8F8 !important;
 }

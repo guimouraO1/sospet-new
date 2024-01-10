@@ -1,3 +1,5 @@
+@use './../../../assets/styles/colors.scss' as *;
+
 * {
     font-family: 'Comfortaa', sans-serif !important;;
     /* font-family: 'Comic Neue', cursive !important; */
@@ -7,7 +9,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 /* i {
@@ -25,11 +26,12 @@
     min-width: 50vw;
     min-height: 500px;
     border-radius: 10px;
-    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
+    box-shadow: $cardShadowPrimary;
+    background-color: $backgroundColorCard !important;
 }
 
 .card h1 {
-    color: #673ab7;
+    color: $primary;
 }
 
 .parent {
@@ -52,7 +54,7 @@
     font-weight: 500;
     height: 35px;
     width: 200px;
-    color: #673ab7;
+    color: $primary;
     border: 1px solid rgba(49, 49, 49, 0.075);
 }
 
@@ -63,6 +65,8 @@
 
 .btn {
     width: 200px;
+    background-color: $primary !important;
+    color: #F8F8F8 !important;
 }
 
 mat-form-field {

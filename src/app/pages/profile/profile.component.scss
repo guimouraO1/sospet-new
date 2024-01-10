@@ -1,3 +1,5 @@
+@use './../../../assets/styles/colors.scss' as *;
+
 .container-info {
     display: flex;
     align-items: center;
@@ -10,7 +12,7 @@ h1 {
     padding-top: 30px;
     padding-left: 50px;
     text-wrap: wrap;
-    color: #673ab7;
+    color: $primary;
     font-family: 'Comfortaa', sans-serif !important;;
     /* font-family: 'Comic Neue', cursive !important; */
 
@@ -29,7 +31,7 @@ h1 {
 h2 {
     font-family: 'Comfortaa', sans-serif !important;;
     /* font-family: 'Comic Neue', cursive !important; */
-    color: #673ab7;
+    color: $primary;
 }
 
 .cardH1 {
@@ -49,8 +51,10 @@ h2 {
     min-width: 70vw;
     min-height: 500px;
     border-radius: 10px;
-    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
+    box-shadow: $cardShadowPrimary;
     margin-top: 30vh;
+    background-color: $backgroundColorCard !important;
+
 }
 
 .userPanel {
@@ -80,7 +84,8 @@ h2 {
 .btn {
 
     min-width: 240px;
-    color: white;
+    background-color: $primary !important;
+    color: #F8F8F8 !important;
 }
 
 .card-img {
@@ -92,8 +97,8 @@ h2 {
     height: 280px;
     width: 280px;
     background-size: cover;
-    background-color: #673ab7;
-    border: 1px solid #673ab7;
+    background-color: $primary;
+    border: 1px solid $primary;
     overflow: hidden;
 
 }
@@ -163,7 +168,7 @@ input::placeholder {
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f0f0f0;
-    color: #673ab7;
+    color: $primary;
 
 }
 
@@ -205,15 +210,6 @@ input::placeholder {
 
 }
 
-/* .img{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    object-fit: cover;
-    width: 300px;
-    background-color: aqua;
-} */
-
 mat-form-field {
     width: 30vw !important;
 }
@@ -248,8 +244,10 @@ mat-form-field {
     flex-direction: column;
     width: 400px;
     height: 650px;
-    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
+    box-shadow: $cardShadowPrimary;
     border-radius: 10px;
+    background-color: $backgroundColorCard !important;
+
 }
 
 .header-card {
@@ -290,7 +288,10 @@ mat-paginator {
     align-items: center;
     border-radius: 10px;
     margin-bottom: 10px;
-    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
+    box-shadow: $cardShadowPrimary;
+    background-color: transparent !important;
+    margin-top: 20px;
+    background-color: $backgroundColorCard !important;
 
 }
 

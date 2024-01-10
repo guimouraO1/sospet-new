@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css',
+  styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent implements OnInit {
   user: any;
@@ -37,7 +37,9 @@ export class NavbarComponent implements OnInit {
     this.getUser();
     // this.messages = 1
   }
-
+  modeToggle(){
+    
+  }
   toHome() {
     if (this.authService._isAuthenticated) {
       this.router.navigate(['/home']);

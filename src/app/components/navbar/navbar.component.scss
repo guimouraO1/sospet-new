@@ -1,7 +1,9 @@
+@use './../../../assets/styles/colors.scss' as *;
+
 .navContainer {
   height: 10vh;
   min-height: 80px;
-  background-color: #673ab7;
+  background-color: $primary;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,20 +34,20 @@
   align-items: center;
   color: rgb(255, 255, 255);
   text-decoration: none;
-  font-size: 30px;
   margin: 0px 10px;
+  width: 200px;
   transition: 0.8s;
-  width: 6em;
   height: 45px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 100;
+  font-size: 25px;
 }
 
 .navItens:hover {
 
   background-color: #F8F8FF;
-  color: #673ab7;
+  color: $primary;
 
 }
 
@@ -61,7 +63,6 @@
   width: 6em;
   height: 45px;
   border-radius: 6px;
-
 }
 
 .nav-icon {

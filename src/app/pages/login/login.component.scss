@@ -1,7 +1,7 @@
+@use './../../../assets/styles/colors.scss' as *;
 .main {
     width: 100vw;
     height: 90vh;
-    background-color: #F8F8FF;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,18 +15,22 @@
     width: 400px;
     height: 500px;
     border-radius: 10px;
-    box-shadow: inset 0px 0px 68px -8px rgba(0, 0, 0, 0.1);
+    box-shadow: $cardShadowPrimary;
+    background-color: $backgroundColorCard !important;
+
 }
 
 button {
     width: 150px;
 }
 
-form {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+p {
+    margin: 20px;
+}
+
+span {
+    color: $primary;
+    cursor: pointer;
 }
 
 .card-icon {
@@ -36,15 +40,19 @@ form {
     border-radius: 100%;
     width: 100px;
     height: 100px;
-    margin: 20px;
-    background-color: #673ab7;
-    border: 1px solid #673ab7;
+    margin: 40px;
+    background-color: $primary;
+    border: 1px solid $primary;
 
 }
 
 .main-card-icon {
-    margin: 0 !important;
     transform: scale(5);
     padding: 0 !important;
-    color: #F8F8FF;
+    color: $backgroundColorCard;
+}
+
+.btn{
+    background-color: $primary !important;
+    color: #ffffff !important;
 }

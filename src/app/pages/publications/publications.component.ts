@@ -8,7 +8,7 @@ import { take } from 'rxjs';
 @Component({
   selector: 'app-publications',
   templateUrl: './publications.component.html',
-  styleUrl: './publications.component.css',
+  styleUrl: './publications.component.scss',
 })
 export class PublicationsComponent {
   user: any;
