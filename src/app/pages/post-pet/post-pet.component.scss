@@ -28,6 +28,7 @@
     border-radius: 10px;
     box-shadow: $cardShadowPrimary;
     background-color: $backgroundColorCard !important;
+    border: 1px solid $primary;
 }
 
 .card h1 {
@@ -55,7 +56,7 @@
     height: 35px;
     width: 200px;
     color: $primary;
-    border: 1px solid rgba(49, 49, 49, 0.075);
+    border: 1px solid $primary;
 }
 
 .custom-file-upload input {
