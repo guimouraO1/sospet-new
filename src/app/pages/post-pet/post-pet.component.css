@@ -1,6 +1,8 @@
-*{
-    font-family: 'Comic Neue', cursive !important;
-  }
+* {
+    font-family: 'Comfortaa', sans-serif !important;;
+    /* font-family: 'Comic Neue', cursive !important; */
+}
+
 .main {
     display: flex;
     align-items: center;

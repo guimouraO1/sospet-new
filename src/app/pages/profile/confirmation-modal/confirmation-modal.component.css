@@ -17,7 +17,8 @@ button {
 }
 
 h1 {
-  font-family: 'Comic Neue', cursive !important;
+  font-family: 'Comfortaa', sans-serif !important;;
+  /* font-family: 'Comic Neue', cursive !important; */
   font-size: 20px;
   margin: 0;
 }

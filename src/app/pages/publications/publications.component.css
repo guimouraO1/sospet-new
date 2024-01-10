@@ -4,14 +4,14 @@
 }
 
 mat-option, h2 {
-
-    font-family: 'Comic Neue', cursive !important;
+    font-family: 'Comfortaa', sans-serif !important;;
+    /* font-family: 'Comic Neue', cursive !important; */
 
 }
 
 ::ng-deep .mdc-list-item__primary-text {
-
-    font-family: 'Comic Neue', cursive !important;
+    font-family: 'Comfortaa', sans-serif !important;;
+    /* font-family: 'Comic Neue', cursive !important; */
 
 }
 

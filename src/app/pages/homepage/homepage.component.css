@@ -7,12 +7,14 @@
 }
 
 h1 {
-  font-family: 'Comic Neue', cursive !important;
+  font-family: 'Comfortaa', sans-serif !important;;
+  /* font-family: 'Comic Neue', cursive !important; */
   color: #673ab7;
 }
 
 .main {
-  font-family: 'Comic Neue', cursive !important;
+  font-family: 'Comfortaa', sans-serif !important;;
+  /* font-family: 'Comic Neue', cursive !important; */
   width: 100vw;
   min-height: 90vh;
 }
@@ -69,7 +71,8 @@ mat-icon:hover {
 }
 
 h2 {
-  font-family: 'Comic Neue', cursive !important;
+  font-family: 'Comfortaa', sans-serif !important;;
+  /* font-family: 'Comic Neue', cursive !important; */
   margin: 0 !important;
 }
 
