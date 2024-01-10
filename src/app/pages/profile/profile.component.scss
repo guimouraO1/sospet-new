@@ -54,7 +54,6 @@ h2 {
     box-shadow: $cardShadowPrimary;
     margin-top: 30vh;
     background-color: $backgroundColorCard !important;
-    border: 1px solid $primary;
 }
 
 .userPanel {
@@ -247,7 +246,6 @@ mat-form-field {
     box-shadow: $cardShadowPrimary;
     border-radius: 10px;
     background-color: $backgroundColorCard !important;
-    border: 1px solid $primary;
 }
 
 .header-card {
@@ -292,7 +290,6 @@ mat-paginator {
     background-color: transparent !important;
     margin-top: 20px;
     background-color: $backgroundColorCard !important;
-    border: 1px solid $primary;
 }
 
 .pagination-container {
