@@ -19,12 +19,12 @@ body {
 }
 
 .mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action {
-  color: #673ab7 !important;
+  color: $primary !important;
 }
 
 body {
   --sb-track-color: $background;
-  --sb-thumb-color: #673ab7;
+  --sb-thumb-color: $primary;
   --sb-size: 6px;
 
   scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);

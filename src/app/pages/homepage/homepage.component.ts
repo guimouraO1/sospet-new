@@ -1,56 +1,39 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss',
 })
-
 export class HomepageComponent implements OnInit {
   date: any;
+  users: User[] = [];
 
-  action: string = '';
-  helper = false;
-
-  setFind() {
-    this.action = 'find';
-  }
-
-  setPost() {
-    this.action = 'post';
-  }
-  setNone(){
-    this.action = '';
-  }
-  help(){
-    this.helper = true;
-  }
-  noHelp(){
-    this.helper = false;
-  }
   constructor(
     public dialog: MatDialog,
     private http: HttpClient,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {}
+
+
   ngOnInit(): void {
     this.authService.loggedIn();
   }
-
-  dateNow(){
+  dateNow() {
     this.date = new Date();
-    console.log(this.date)
+    console.log(this.date);
   }
 
-  toLogin(){
+  toLogin() {
     this.router.navigate(['']);
   }
-  toRegister(){
+  toRegister() {
     this.router.navigate(['/register']);
   }
 }

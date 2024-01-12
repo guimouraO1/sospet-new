@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../../services/auth.service';
 import { PageEvent } from '@angular/material/paginator';
 import { take } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-publications',
@@ -19,7 +20,7 @@ export class PublicationsComponent {
   currentPage: number = 1; // Página atual
   currentFilter: any;
   totalItems: number = 0;
-
+  private urlApi = `${environment.urlApi}`;
   filter2: any = {
     petSpecies: 'all',
     status: 'all',
@@ -39,7 +40,7 @@ export class PublicationsComponent {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
     this.http
-      .get('http://localhost:3000/api/publications', { headers })
+      .get(`${this.urlApi}/publications`, { headers })
       .subscribe({
         next: (res: any) => {
           this.petList = res;

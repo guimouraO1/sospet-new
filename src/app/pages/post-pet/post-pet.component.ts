@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-post-pet',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class PostPetComponent implements OnInit {
   petForm: FormGroup;
+  private urlApi = `${environment.urlApi}`;
 
   constructor(
     private http: HttpClient,
@@ -49,7 +51,7 @@ export class PostPetComponent implements OnInit {
       const headers = new HttpHeaders().set('authorization', `${token}`);
       formData.append('file', this.selectedFile);
       this.http
-        .post('http://localhost:3000/api/uploadPet', formData, { headers })
+        .post(`${this.urlApi}/uploadPet`, formData, { headers })
         .subscribe((response: any) => {
           try {
             // this.authService.openSnackBar('Image successfully uploaded!', '✅');
@@ -77,7 +79,7 @@ export class PostPetComponent implements OnInit {
 
     this.http
       .post(
-        'http://localhost:3000/api/publication',
+        `${this.urlApi}/publication`,
         {
           petName,
           petRace,

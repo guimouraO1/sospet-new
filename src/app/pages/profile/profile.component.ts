@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
 import { EmmitNavToHomeService } from '../../services/emmit-nav-to-home.service';
 import { PageEvent } from '@angular/material/paginator';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -21,6 +22,7 @@ export class ProfileComponent implements OnInit {
   currentPage: number = 1; // Página atual
   currentFilter: any;
   totalItems: number = 0;
+  private urlApi = `${environment.urlApi}`;
 
   constructor(
     private http: HttpClient,
@@ -49,7 +51,7 @@ export class ProfileComponent implements OnInit {
   getUser() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
-    this.http.get('http://localhost:3000/api/user', { headers }).subscribe({
+    this.http.get(`${this.urlApi}/user`, { headers }).subscribe({
       next: (res: any) => {
         this.user = res;
         this.userForm.patchValue({
@@ -138,7 +140,7 @@ export class ProfileComponent implements OnInit {
 
       formData.append('file', this.selectedFile);
       this.http
-        .post('http://localhost:3000/api/upload', formData, { headers })
+        .post(`${this.urlApi}/upload`, formData, { headers })
         .subscribe((response: any) => {
           try {
             if (response.update) {
@@ -163,7 +165,7 @@ export class ProfileComponent implements OnInit {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
     this.http
-      .get('http://localhost:3000/api/userPublications', { headers })
+      .get(`${this.urlApi}/userPublications`, { headers })
       .subscribe({
         next: (res: any) => {
           this.petList = res;

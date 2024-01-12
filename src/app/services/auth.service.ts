@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { EmmitNavToHomeService } from './emmit-nav-to-home.service';
-import { take } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +11,7 @@ import { take } from 'rxjs';
 export class AuthService {
   _isAuthenticated: boolean = false;
   user: any;
+  private urlApi = `${environment.urlApi}`;
 
   constructor(
     private http: HttpClient,
@@ -18,10 +19,10 @@ export class AuthService {
     private snackBar: MatSnackBar,
     private clickEventService: EmmitNavToHomeService
   ) {}
-
+  
   login(email: string, password: string) {
     this.http
-      .post('http://localhost:3000/api/login', { email, password })
+      .post(`${this.urlApi}/login`, { email, password })
       .subscribe({
         next: (res: any) => {
           this._isAuthenticated = true;
@@ -38,7 +39,7 @@ export class AuthService {
 
   register(email: string, password: string, confirmPassword: string) {
     this.http
-      .post('http://localhost:3000/api/user', {
+      .post(`${this.urlApi}/user`, {
         email,
         password,
         confirmPassword,
@@ -68,7 +69,7 @@ export class AuthService {
 
     this.http
       .put(
-        'http://localhost:3000/api/user',
+        `${this.urlApi}/user`,
         { firstName, lastName, telephone, cep, address },
         { headers }
       )
@@ -90,7 +91,7 @@ export class AuthService {
     const headers = new HttpHeaders().set('authorization', `${authToken}`);
 
     this.http
-      .get('http://localhost:3000/api/user/auth', { headers })
+      .get(`${this.urlApi}/user/auth`, { headers })
       .subscribe({
         next: (res: any) => {
           if (

@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EmmitNavToHomeService } from '../../services/emmit-nav-to-home.service';
 import { Subscription } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -15,6 +16,7 @@ export class NavbarComponent implements OnInit {
   user: any;
   ouvir: Subscription;
   messages: any | null;
+  private urlApi = `${environment.urlApi}`;
 
   constructor(
     private router: Router,
@@ -83,7 +85,7 @@ export class NavbarComponent implements OnInit {
   getUser() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
-    this.http.get('http://localhost:3000/api/user', { headers }).subscribe({
+    this.http.get(`${this.urlApi}/user`, { headers }).subscribe({
       next: (res: any) => {
         this.user = res;
       },
