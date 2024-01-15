@@ -7,7 +7,7 @@
       <form (ngSubmit)="onSubmit()" [formGroup]="userForm" class="form2">
         <mat-form-field appearance="outline">
           <mat-label>{{ getErrorMessage("email") || "Email" }}</mat-label>
-          <input type="email" formControlName="email" matInput required />
+          <input type="email" formControlName="email" placeholder="Email" matInput required />
           <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
 
@@ -16,6 +16,7 @@
           <input
             type="password"
             formControlName="password"
+            placeholder="Password"
             matInput
             [type]="hideConfirmPassword ? 'password' : 'text'"
             required
@@ -42,6 +43,7 @@
             matInput
             [type]="hide ? 'password' : 'text'"
             required
+            placeholder="Confirm Password"
           />
           <button
             mat-icon-button
