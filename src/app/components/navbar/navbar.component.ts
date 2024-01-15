@@ -2,10 +2,8 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EmmitNavToHomeService } from '../../services/emmit-nav-to-home.service';
-import { Observable, Subscription } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { Subscription } from 'rxjs';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 
@@ -63,7 +61,6 @@ export class NavbarComponent implements OnInit {
         '❗'
       );
     }
-    //  this.router.navigate(['/home']);
   }
   toPublications() {
     this.router.navigate(['publications']);
