@@ -39,7 +39,6 @@ export class NavbarComponent implements OnInit {
         }
       });
   }
-
   ngOnInit(): void {
     this.authService.loggedIn();
     this._userService.getUser().subscribe({
@@ -47,9 +46,10 @@ export class NavbarComponent implements OnInit {
         this.user = _user;
       },
       error: (error) => {
-        console.error('Erro ao obter usuário:', error);
+        // console.error('Erro ao obter usuário:', error);
       },
     });
+
     // this.messages = 1
   }
   toHome() {
