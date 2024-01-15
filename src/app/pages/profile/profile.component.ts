@@ -7,6 +7,7 @@ import { ConfirmationModalComponent } from './confirmation-modal/confirmation-mo
 import { EmmitNavToHomeService } from '../../services/emmit-nav-to-home.service';
 import { PageEvent } from '@angular/material/paginator';
 import { environment } from '../../environments/environment';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -30,7 +31,8 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder,
     public dialog: MatDialog,
     private clickEventService: EmmitNavToHomeService,
-    private el: ElementRef
+    private el: ElementRef,
+    private _userService: UserService
   ) {
     this.userForm = this.fb.group({
       firstName: ['', [Validators.maxLength(60)]],

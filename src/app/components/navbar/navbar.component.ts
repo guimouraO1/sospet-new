@@ -4,8 +4,10 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EmmitNavToHomeService } from '../../services/emmit-nav-to-home.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,27 +18,33 @@ export class NavbarComponent implements OnInit {
   user: any;
   ouvir: Subscription;
   messages: any | null;
-  private urlApi = `${environment.urlApi}`;
 
   constructor(
     private router: Router,
     public dialog: MatDialog,
     public authService: AuthService,
-    private http: HttpClient,
+    private _userService: UserService,
     private clickEventService: EmmitNavToHomeService
   ) {
     this.ouvir = this.clickEventService
       .getClickEvent()
       .subscribe((bol: any) => {
         if (bol) {
-          this.getUser();
+          this._userService.getUser();
         }
       });
   }
 
   ngOnInit(): void {
     this.authService.loggedIn();
-    this.getUser();
+    this._userService.getUser().subscribe({
+      next: (_user: User[]) => {
+        this.user = _user;
+      },
+      error: (error) => {
+        console.error('Erro ao obter usuário:', error);
+      },
+    });
     // this.messages = 1
   }
   toHome() {
@@ -80,18 +88,5 @@ export class NavbarComponent implements OnInit {
     localStorage.clear();
     this.authService._isAuthenticated = false;
     this.router.navigate(['']);
-  }
-
-  getUser() {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('authorization', `${token}`);
-    this.http.get(`${this.urlApi}/user`, { headers }).subscribe({
-      next: (res: any) => {
-        this.user = res;
-      },
-      error: (e: any) => {
-        // this.authService.openSnackBar(e.error.msg, '❗');
-      },
-    });
   }
 }

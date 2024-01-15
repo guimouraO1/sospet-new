@@ -11,8 +11,6 @@ import { User } from '../../models/user.model';
   styleUrl: './homepage.component.scss',
 })
 export class HomepageComponent implements OnInit {
-  date: any;
-  users: User[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -25,11 +23,6 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.authService.loggedIn();
   }
-  dateNow() {
-    this.date = new Date();
-    console.log(this.date);
-  }
-
   toLogin() {
     this.router.navigate(['']);
   }
