@@ -107,7 +107,7 @@ export class AuthService {
         error: (e: any) => {
           if (this.router.url == '/' || this.router.url == '/register') {
           } else {
-            console.log(e.error.loggedIn);
+            // console.log(e.error.loggedIn);
             this.router.navigate(['']);
           }
         },

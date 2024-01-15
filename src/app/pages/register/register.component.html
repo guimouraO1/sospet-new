@@ -13,8 +13,23 @@
 
         <mat-form-field appearance="outline">
           <mat-label>{{ getErrorMessage("password") || "Password" }}</mat-label>
-          <input type="password" formControlName="password" matInput required />
-          <mat-icon matSuffix>password</mat-icon>
+          <input
+            type="password"
+            formControlName="password"
+            matInput
+            [type]="hideConfirmPassword ? 'password' : 'text'"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hideConfirmPassword = !hideConfirmPassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hideConfirmPassword"
+            type="button"
+          >
+            <mat-icon>{{ hideConfirmPassword ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -25,14 +40,22 @@
             type="password"
             formControlName="confirmPassword"
             matInput
+            [type]="hide ? 'password' : 'text'"
             required
           />
-          <mat-icon matSuffix>password</mat-icon>
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+            type="button"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
         </mat-form-field>
 
-        <button type="submit" mat-raised-button class="btn">
-          Register
-        </button>
+        <button type="submit" mat-raised-button class="btn">Register</button>
       </form>
       <p style="margin: 20px">
         Return to Login?

@@ -13,6 +13,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   userForm: FormGroup;
+  hide = true;
+  hideConfirmPassword = true;
+  
   ngOnInit(): void {
     this.authService.loggedIn();
    }

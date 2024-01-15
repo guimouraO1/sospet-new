@@ -90,7 +90,7 @@ export class NavbarComponent implements OnInit {
         this.user = res;
       },
       error: (e: any) => {
-        this.authService.openSnackBar(e.error.msg, '❗');
+        // this.authService.openSnackBar(e.error.msg, '❗');
       },
     });
   }
