@@ -8,6 +8,7 @@ import { EmmitNavToHomeService } from '../../services/emmit-nav-to-home.service'
 import { PageEvent } from '@angular/material/paginator';
 import { environment } from '../../environments/environment';
 import { UserService } from '../../services/user.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -46,16 +47,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.loggedIn();
-    this.getUser();
-    this.getPublications();
-  }
 
-  getUser() {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('authorization', `${token}`);
-    this.http.get(`${this.urlApi}/user`, { headers }).subscribe({
-      next: (res: any) => {
-        this.user = res;
+    this._userService.getUser().subscribe({
+      next: (_user: User[]) => {
+        this.user = _user;
         this.userForm.patchValue({
           firstName: this.user.firstName,
           lastName: this.user.lastName,
@@ -65,9 +60,10 @@ export class ProfileComponent implements OnInit {
         });
       },
       error: (error) => {
-        this.authService.openSnackBar(error.error.msg, '❗');
+        console.error('Erro ao obter usuário:', error);
       },
     });
+    this.getPublications();
   }
 
   onSubmit() {
@@ -146,7 +142,21 @@ export class ProfileComponent implements OnInit {
         .subscribe((response: any) => {
           try {
             if (response.update) {
-              this.getUser();
+              this._userService.getUser().subscribe({
+                next: (_user: User[]) => {
+                  this.user = _user;
+                  this.userForm.patchValue({
+                    firstName: this.user.firstName,
+                    lastName: this.user.lastName,
+                    telephone: this.user.telephone,
+                    address: this.user.address,
+                    cep: this.user.cep,
+                  });
+                },
+                error: (error) => {
+                  console.error('Erro ao obter usuário:', error);
+                },
+              });
               this.clickEventService.emitir();
               this.authService.openSnackBar(
                 'Image successfully uploaded!',
@@ -166,18 +176,16 @@ export class ProfileComponent implements OnInit {
   getPublications() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
-    this.http
-      .get(`${this.urlApi}/userPublications`, { headers })
-      .subscribe({
-        next: (res: any) => {
-          this.petList = res;
-          this.totalItems = this.petList.length;
-          this.updatepaginaterdPets();
-        },
-        error: (error) => {
-          this.authService.openSnackBar(error.error.msg, '❗');
-        },
-      });
+    this.http.get(`${this.urlApi}/userPublications`, { headers }).subscribe({
+      next: (res: any) => {
+        this.petList = res;
+        this.totalItems = this.petList.length;
+        this.updatepaginaterdPets();
+      },
+      error: (error) => {
+        this.authService.openSnackBar(error.error.msg, '❗');
+      },
+    });
   }
 
   // Método chamado quando a página é alterada

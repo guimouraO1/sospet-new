@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../../services/auth.service';
 import { PageEvent } from '@angular/material/paginator';
-import { take } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -12,16 +11,13 @@ import { environment } from '../../environments/environment';
   styleUrl: './publications.component.scss',
 })
 export class PublicationsComponent {
-  user: any;
   petList?: any = [];
-  users: any;
   paginaterdPets: any[] = []; // Lista de pets exibidos na página atual
   pageSize: number = 3; // Tamanho da página
   currentPage: number = 1; // Página atual
-  currentFilter: any;
   totalItems: number = 0;
   private urlApi = `${environment.urlApi}`;
-  filter2: any = {
+  pet: any = {
     petSpecies: 'all',
     status: 'all',
   };
@@ -53,7 +49,7 @@ export class PublicationsComponent {
       });
   }
   getHintMessage(): string {
-    switch (this.filter2.petSpecies) {
+    switch (this.pet.petSpecies) {
       case 'dog':
         return 'Woof, woof!';
       case 'cat':
@@ -76,22 +72,22 @@ export class PublicationsComponent {
   updatepaginaterdPets() {
     let filteredList = this.petList;
 
-    if (this.filter2.status !== 'all' || this.filter2.petSpecies !== 'all') {
-      if (this.filter2.status !== 'all' && this.filter2.petSpecies !== 'all') {
+    if (this.pet.status !== 'all' || this.pet.petSpecies !== 'all') {
+      if (this.pet.status !== 'all' && this.pet.petSpecies !== 'all') {
         filteredList = this.petList
           .filter((pet: any) =>
-            this.filter2.status.includes(pet.status?.toLowerCase())
+            this.pet.status.includes(pet.status?.toLowerCase())
           )
           .filter((pet: any) =>
-            this.filter2.petSpecies.includes(pet.pet_species?.toLowerCase())
+            this.pet.petSpecies.includes(pet.pet_species?.toLowerCase())
           );
-      } else if (this.filter2.status === 'all') {
+      } else if (this.pet.status === 'all') {
         filteredList = this.petList.filter((pet: any) =>
-          this.filter2.petSpecies.includes(pet.pet_species?.toLowerCase())
+          this.pet.petSpecies.includes(pet.pet_species?.toLowerCase())
         );
-      } else if (this.filter2.petSpecies === 'all') {
+      } else if (this.pet.petSpecies === 'all') {
         filteredList = this.petList.filter((pet: any) =>
-          this.filter2.status.includes(pet.status?.toLowerCase())
+          this.pet.status.includes(pet.status?.toLowerCase())
         );
       }
     }
@@ -114,11 +110,11 @@ export class PublicationsComponent {
 
   filter(event: any, filter: any) {
     if (filter === 'status') {
-      this.filter2.status = event.value;
+      this.pet.status = event.value;
     }
 
     if (filter === 'petSpecies') {
-      this.filter2.petSpecies = event.value;
+      this.pet.petSpecies = event.value;
     }
     this.updatepaginaterdPets();
   }

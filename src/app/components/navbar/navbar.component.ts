@@ -30,7 +30,14 @@ export class NavbarComponent implements OnInit {
       .getClickEvent()
       .subscribe((bol: any) => {
         if (bol) {
-          this._userService.getUser();
+          this._userService.getUser().subscribe({
+            next: (_user: User[]) => {
+              this.user = _user;
+            },
+            error: (error) => {
+              console.error('Erro ao obter usuário:', error);
+            },
+          });
         }
       });
   }
