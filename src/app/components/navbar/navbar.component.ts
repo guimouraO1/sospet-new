@@ -40,7 +40,7 @@ export class NavbarComponent implements OnInit {
       });
   }
   ngOnInit(): void {
-    this.authService.loggedIn();
+    // this.authService.loggedIn();
     this._userService.getUser().subscribe({
       next: (_user: User[]) => {
         this.user = _user;
@@ -52,40 +52,46 @@ export class NavbarComponent implements OnInit {
 
     // this.messages = 1
   }
+
+  
   toHome() {
-    if (this.authService._isAuthenticated) {
-      this.router.navigate(['/home']);
-    } else {
-      this.authService.openSnackBar(
-        'Sorry, you do not have permission to access this page.',
-        '❗'
-      );
-    }
+    // if (this.authService._isAuthenticated) {
+    //   this.router.navigate(['/home']);
+    // } else {
+    //   this.authService.openSnackBar(
+    //     'Sorry, you do not have permission to access this page.',
+    //     '❗'
+    //   );
+    // }
+    this.router.navigate(['/home']);
+
   }
   toPublications() {
     this.router.navigate(['publications']);
   }
   toPubPet() {
-    if (this.authService._isAuthenticated) {
+    // if (this.authService._isAuthenticated) {
+    //   this.router.navigate(['post']);
+    // } else {
+    //   this.authService.openSnackBar(
+    //     'Sorry, you do not have permission to access this page.',
+    //     '❗'
+    //   );
+    // }
       this.router.navigate(['post']);
-    } else {
-      this.authService.openSnackBar(
-        'Sorry, you do not have permission to access this page.',
-        '❗'
-      );
-    }
   }
   toLogin() {
-    this.router.navigate(['']);
+    this.router.navigate(['login']);
   }
   toRegister() {
     this.router.navigate(['register']);
   }
 
   toProfile() {
-    if (this.authService._isAuthenticated) {
-      this.router.navigate(['profile']);
-    }
+    // if (this.authService._isAuthenticated) {
+    //   this.router.navigate(['profile']);
+    // }
+    this.router.navigate(['profile']);
   }
 
   signOut() {

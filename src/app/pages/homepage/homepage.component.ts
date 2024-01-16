@@ -11,22 +11,15 @@ import { User } from '../../models/user.model';
   styleUrl: './homepage.component.scss',
 })
 export class HomepageComponent implements OnInit {
-
   constructor(
     public dialog: MatDialog,
     private http: HttpClient,
     private authService: AuthService,
-    private router: Router,
+    private router: Router
   ) {}
 
-
   ngOnInit(): void {
-    this.authService.loggedIn();
+    // this.authService.loggedIn();
   }
-  toLogin() {
-    this.router.navigate(['']);
-  }
-  toRegister() {
-    this.router.navigate(['/register']);
-  }
+
 }

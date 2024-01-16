@@ -13,9 +13,13 @@ export class LoginComponent implements OnInit {
   user = { email: '', password: '' };
   hide = true;
   
-  ngOnInit(): void {
-    this.authService.loggedIn();
-  }
+  async ngOnInit() {
+    let result =  await this.authService.loggedIn();
+    
+    if (result) {
+      this.router.navigate(['/home'])
+    } 
+  } 
 
   constructor(
     private router: Router,

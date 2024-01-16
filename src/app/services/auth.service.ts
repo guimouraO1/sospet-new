@@ -84,32 +84,24 @@ export class AuthService {
       });
   }
 
-  loggedIn() {
+  async loggedIn() {
     const authToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${authToken}`);
+    try {
+      const res: any = await this.http
+        .get(`${this.urlApi}/user/auth`, { headers })
+        .toPromise();
+  
+      this._isAuthenticated = res.loggedIn;
+      return res.loggedIn; 
+    } catch (e) {
+      return false;
+    }
+  }
 
-    this.http.get(`${this.urlApi}/user/auth`, { headers }).subscribe({
-      next: (res: any) => {
-        this._isAuthenticated = res.loggedIn;
-        if (
-          (this.router.url == '/' && res.loggedIn) ||
-          (this.router.url == '/register' && res.loggedIn)
-        ) {
-          this.router.navigate(['/home']);
-          this.openSnackBar('You are already logged in', '✅');
-        } else if (res.loggedIn) {
-          this._isAuthenticated = true;
-        }
-      },
-      error: (e: any) => {
-        if (this.router.url == '/' || this.router.url == '/register') {
-          // console.log(e);
-        } else {
-          // console.log(e.error.loggedIn);
-          this.router.navigate(['']);
-        }
-      },
-    });
+  async _isAuthUser(): Promise<boolean> {
+    await this.loggedIn();
+    return this._isAuthenticated;
   }
 
   openSnackBar(message: string, action: string) {

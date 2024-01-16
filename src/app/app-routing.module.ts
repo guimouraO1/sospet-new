@@ -7,37 +7,43 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PublicationsComponent } from './pages/publications/publications.component';
 import { PostPetComponent } from './pages/post-pet/post-pet.component';
-import { authGuard } from './_guard/auth.guard';
+import { authGuard, alwaysAllowAuthGuard } from './_guard/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    canActivate: [alwaysAllowAuthGuard],
+    children: [
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      {
+        path: 'publications',
+        component: PublicationsComponent,
+      },
+/*       {
+        path: '**',
+        component: NotFoundComponent,
+      }, */
+    ],
   },
   {
-    path: 'home',
-    component: HomepageComponent,
-    // canActivate: [authGuard]
-  },
-  {
-    path: 'publications',
-    component: PublicationsComponent,
-  },
-  {
-    path: 'post',
-    component: PostPetComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-  },
-  {
-    path: '**',
-    component: NotFoundComponent,
+    path: '',
+    canActivate: [authGuard],
+    children: [
+      {
+        path: 'home',
+        component: HomepageComponent,
+      },
+      {
+        path: 'post',
+        component: PostPetComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+    ],
   },
 ];
 
