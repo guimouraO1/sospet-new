@@ -17,8 +17,7 @@ export class RegisterComponent implements OnInit {
   hideConfirmPassword = true;
   
   ngOnInit(): void {
-    this.authService.loggedIn();
-   }
+  }
 
   constructor(
     private router: Router,

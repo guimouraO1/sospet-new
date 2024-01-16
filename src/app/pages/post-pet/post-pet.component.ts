@@ -34,7 +34,6 @@ export class PostPetComponent implements OnInit {
   selectedFile: File | null = null;
 
   ngOnInit(): void {
-   /*  this.authService.loggedIn(); */
   }
 
   handleFileInput(event: any): void {

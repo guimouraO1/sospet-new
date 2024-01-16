@@ -17,7 +17,4 @@ export class EmmitNavToHomeService {
   getClickEvent(): Observable<boolean> {
     return this.clickSubject.asObservable();
   }
-
-
-
 }

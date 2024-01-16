@@ -20,11 +20,11 @@ const routes: Routes = [
       {
         path: 'publications',
         component: PublicationsComponent,
-      },
-/*       {
-        path: '**',
-        component: NotFoundComponent,
-      }, */
+      },  
+      // {
+      //   path: '**',
+      //   component: NotFoundComponent,
+      // }
     ],
   },
   {

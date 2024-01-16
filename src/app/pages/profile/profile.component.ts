@@ -46,8 +46,6 @@ export class ProfileComponent implements OnInit {
   selectedFile: File | null = null;
 
   ngOnInit(): void {
-    this.authService.loggedIn();
-
     this._userService.getUser().subscribe({
       next: (_user: User[]) => {
         this.user = _user;

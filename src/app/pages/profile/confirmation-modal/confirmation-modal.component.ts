@@ -13,12 +13,10 @@ export class ConfirmationModalComponent {
   }
   
   confirm(): void {
-    
     this.dialogRef.close(true);
   }
 
   cancel(): void {
-
     this.dialogRef.close(false);
   }
 
