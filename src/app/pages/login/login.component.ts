@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     let result =  await this.authService.loggedIn();
     
     if (result) {
-      this.router.navigate(['/home'])
+      this.router.navigate(['/publications'])
     } 
   } 
 

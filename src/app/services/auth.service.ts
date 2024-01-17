@@ -26,7 +26,7 @@ export class AuthService {
         this._isAuthenticated = true;
         localStorage.setItem('token', res.authToken);
         this.clickEventService.emitir();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/publications']);
         this.openSnackBar('Login successful!', res.user.email);
       },
       error: (e: any) => {
@@ -91,10 +91,13 @@ export class AuthService {
       const res: any = await this.http
         .get(`${this.urlApi}/user/auth`, { headers })
         .toPromise();
-  
+
       this._isAuthenticated = res.loggedIn;
-      return res.loggedIn; 
+      return res.loggedIn;
     } catch (e) {
+      if (e) {
+        console.log(this.router.url);
+      }
       return false;
     }
   }

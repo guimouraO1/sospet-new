@@ -51,7 +51,10 @@ export class NavbarComponent implements OnInit {
     // this.messages = 1
   }
   toHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['home']);
+  }
+  toMap() {
+    this.router.navigate(['map']);
   }
   toPublications() {
     this.router.navigate(['publications']);

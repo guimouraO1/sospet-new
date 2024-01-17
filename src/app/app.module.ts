@@ -32,6 +32,7 @@ import { PostPetComponent } from './pages/post-pet/post-pet.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     ConfirmationModalComponent,
     PublicationsComponent,
     PostPetComponent,
+    MapComponent
   ],
   imports: [
     RouterModule,

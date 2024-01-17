@@ -8,6 +8,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { PublicationsComponent } from './pages/publications/publications.component';
 import { PostPetComponent } from './pages/post-pet/post-pet.component';
 import { authGuard, alwaysAllowAuthGuard } from './_guard/auth.guard';
+import { MapComponent } from './map/map.component';
 
 const routes: Routes = [
   {
@@ -20,11 +21,11 @@ const routes: Routes = [
       {
         path: 'publications',
         component: PublicationsComponent,
-      },  
-      // {
-      //   path: '**',
-      //   component: NotFoundComponent,
-      // }
+      },
+      {
+        path: 'map',
+        component: MapComponent,
+      },
     ],
   },
   {
