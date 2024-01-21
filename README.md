@@ -12,6 +12,8 @@ Sospet is a website built with Angular that allows users to share information ab
 
 - **Profile Management:** Users can view and edit their profile information.
 
+- **Lazy load:** Lazy loading defers the loading of non-essential resources until they are required, optimizing page performance.
+
 ## Project Structure
 
 ### 1. Frontend (Angular)

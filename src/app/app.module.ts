@@ -15,8 +15,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { provideNgxMask } from 'ngx-mask';
 import { ConfirmationModalComponent } from './pages/profile/confirmation-modal/confirmation-modal.component';
 import { EmmitNavToHomeService } from './services/emmit-nav-to-home.service';
-
-import { PublicationsComponent } from './pages/publications/publications.component';
+import { PublicationsComponent } from './pages/find-pet/find-pet.component';
 import { PostPetComponent } from './pages/post-pet/post-pet.component';
 import { MapComponent } from './pages/map/map.component';
 

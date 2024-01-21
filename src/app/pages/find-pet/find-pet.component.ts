@@ -13,7 +13,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-publications',
+  selector: 'app-find-pet',
   standalone: true,
   imports: [
     FormsModule,
@@ -27,8 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatSelectModule,
   
   ],
-  templateUrl: './publications.component.html',
-  styleUrl: './publications.component.scss',
+  templateUrl: './find-pet.component.html',
+  styleUrl: './find-pet.component.scss',
 })
 export class PublicationsComponent {
   petList?: any = [];

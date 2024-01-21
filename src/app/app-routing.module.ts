@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { LoginComponent } from './pages/login/login.component';
 import { authGuard, alwaysAllowAuthGuard } from './_guard/auth.guard';
 
 const routes: Routes = [
@@ -17,7 +15,10 @@ const routes: Routes = [
       {
         path: 'login',
         title: 'Login',
-        component: LoginComponent,
+        loadComponent: () =>
+        import('./pages/login/login.component').then(
+          (p) => p.LoginComponent
+        ),
       },
       {
         path: 'register',
@@ -31,7 +32,7 @@ const routes: Routes = [
         path: 'publications',
         title: 'Find Pet',
         loadComponent: () =>
-          import('./pages/publications/publications.component').then(
+          import('./pages/find-pet/find-pet.component').then(
             (p) => p.PublicationsComponent
           ),
       },
@@ -72,6 +73,13 @@ const routes: Routes = [
           ),
       },
     ],
+  },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./pages/not-found/not-found.component').then(
+        (p) => p.NotFoundComponent
+      ),
   },
 ];
 

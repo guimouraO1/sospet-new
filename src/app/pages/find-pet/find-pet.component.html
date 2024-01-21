@@ -5,7 +5,7 @@
       <mat-icon>search</mat-icon>
     </div>
     <div class="item">
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="forms">
         <mat-label>Filter by species</mat-label>
         <mat-select (selectionChange)="filter($event, 'petSpecies')">
           <mat-option value="all">All</mat-option>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="item">
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="forms">
         <mat-label>Filter by status</mat-label>
         <mat-select (selectionChange)="filter($event, 'status')">
           <mat-option value="all">All</mat-option>
