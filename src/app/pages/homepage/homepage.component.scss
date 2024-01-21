@@ -2,7 +2,6 @@
 
 h1 {
   font-family: 'Comfortaa', sans-serif !important;;
-  /* font-family: 'Comic Neue', cursive !important; */
   color: $primary !important;
   font-weight: 100;
   font-size: 30px;
@@ -10,7 +9,6 @@ h1 {
 
 .main {
   font-family: 'Comfortaa', sans-serif !important;;
-  /* font-family: 'Comic Neue', cursive !important; */
   width: 100vw;
   min-height: 90vh;
 }
@@ -81,7 +79,6 @@ mat-icon:hover {
 
 h2 {
   font-family: 'Comfortaa', sans-serif !important;;
-  /* font-family: 'Comic Neue', cursive !important; */
   margin: 0 !important;
   color: $primary !important;
 }
@@ -94,15 +91,11 @@ h2 {
 
 .header-stepper h2 {
   margin: 0;
-  /* Remove as margens padrão do h2 */
   flex-grow: 1;
-  /* Faz com que o h2 ocupe o espaço restante disponível */
 }
 
 .header-stepper mat-icon {
   margin-left: 10px;
-
-  /* Ajuste conforme necessário para criar espaço entre o h2 e o mat-icon */
 }
 
 .help {

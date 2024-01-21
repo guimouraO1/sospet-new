@@ -2,11 +2,31 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../../services/auth.service';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { environment } from '../../environments/environment';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-publications',
+  standalone: true,
+  imports: [
+    FormsModule,
+    MatIconModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatDividerModule,
+    MatListModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatSelectModule,
+  
+  ],
   templateUrl: './publications.component.html',
   styleUrl: './publications.component.scss',
 })
@@ -35,18 +55,16 @@ export class PublicationsComponent {
   getPublications() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
-    this.http
-      .get(`${this.urlApi}/publications`, { headers })
-      .subscribe({
-        next: (res: any) => {
-          this.petList = res;
-          this.totalItems = this.petList.length;
-          this.updatepaginaterdPets();
-        },
-        error: (error) => {
-          this.authService.openSnackBar(error.error.msg, '❗');
-        },
-      });
+    this.http.get(`${this.urlApi}/publications`, { headers }).subscribe({
+      next: (res: any) => {
+        this.petList = res;
+        this.totalItems = this.petList.length;
+        this.updatepaginaterdPets();
+      },
+      error: (error) => {
+        this.authService.openSnackBar(error.error.msg, '❗');
+      },
+    });
   }
   getHintMessage(): string {
     switch (this.pet.petSpecies) {

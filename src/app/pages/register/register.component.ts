@@ -1,13 +1,31 @@
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-register',
+  standalone: true,
+  imports: [
+    FormsModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
@@ -15,21 +33,28 @@ export class RegisterComponent implements OnInit {
   userForm: FormGroup;
   hide = true;
   hideConfirmPassword = true;
-  
-  ngOnInit(): void {
+
+  async ngOnInit(): Promise<void> {
+    let result = await this.authService.loggedIn();
+
+    if (result) {
+      this.router.navigate(['/publications']);
+    }
   }
 
   constructor(
     private router: Router,
     public dialog: MatDialog,
-    private http: HttpClient,
     private authService: AuthService,
     private snackBar: MatSnackBar,
     private fb: FormBuilder
   ) {
     this.userForm = this.fb.group(
       {
-        email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
+        email: [
+          '',
+          [Validators.required, Validators.email, Validators.maxLength(100)],
+        ],
         password: ['', [Validators.required, Validators.maxLength(60)]],
         confirmPassword: ['', [Validators.required, Validators.maxLength(60)]],
       },
@@ -110,5 +135,4 @@ export class RegisterComponent implements OnInit {
 
     return '';
   }
-
 }

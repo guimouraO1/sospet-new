@@ -2,12 +2,35 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-post-pet',
+  standalone: true,
+  imports: [
+    FormsModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    CommonModule,
+    MatSelectModule,
+  ],
   templateUrl: './post-pet.component.html',
   styleUrl: './post-pet.component.scss',
 })
@@ -33,8 +56,7 @@ export class PostPetComponent implements OnInit {
   }
   selectedFile: File | null = null;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   handleFileInput(event: any): void {
     const files: FileList = event.target.files;

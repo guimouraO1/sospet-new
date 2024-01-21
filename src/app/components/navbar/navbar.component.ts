@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -6,9 +6,14 @@ import { EmmitNavToHomeService } from '../../services/emmit-nav-to-home.service'
 import { Subscription } from 'rxjs';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-navbar',
+  standalone: true,
+  imports: [MatIconModule, MatMenuModule, MatBadgeModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })

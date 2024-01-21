@@ -5,25 +5,40 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { PublicationsComponent } from './pages/publications/publications.component';
 import { PostPetComponent } from './pages/post-pet/post-pet.component';
 import { authGuard, alwaysAllowAuthGuard } from './_guard/auth.guard';
-import { MapComponent } from './map/map.component';
+import { MapComponent } from './pages/map/map.component';
+import { PublicationsComponent } from './pages/publications/publications.component';
 
 const routes: Routes = [
   {
     path: '',
     canActivate: [alwaysAllowAuthGuard],
     children: [
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
+      {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
+      {
+        path: 'login',
+        title: 'Login',
+        component: LoginComponent,
+      },
+      {
+        path: 'register',
+        title: 'Register',
+        component: RegisterComponent,
+      },
       {
         path: 'publications',
+        title: 'Find Pet',
         component: PublicationsComponent,
+        // loadChildren: () => import('./pages/publications/publications.component').then((p) => p.PublicationsComponent),
       },
       {
         path: 'map',
+        title: 'Map Pet',
         component: MapComponent,
       },
     ],
@@ -34,14 +49,17 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
+        title: 'Home',
         component: HomepageComponent,
       },
       {
         path: 'post',
+        title: 'Post Pet',
         component: PostPetComponent,
       },
       {
         path: 'profile',
+        title: 'Profile',
         component: ProfileComponent,
       },
     ],

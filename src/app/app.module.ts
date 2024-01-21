@@ -30,51 +30,31 @@ import { PublicationsComponent } from './pages/publications/publications.compone
 import { MatSelectModule } from '@angular/material/select';
 import { PostPetComponent } from './pages/post-pet/post-pet.component';
 import { MatBadgeModule } from '@angular/material/badge';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import { MapComponent } from './map/map.component';
-
+import { MapComponent } from './pages/map/map.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    HomepageComponent,
-    NotFoundComponent,
+  declarations: [AppComponent],
+
+  imports: [
+    // Pages
     LoginComponent,
     RegisterComponent,
+    HomepageComponent,
+    PostPetComponent,
+    MapComponent,
+    NotFoundComponent,
     ProfileComponent,
     ConfirmationModalComponent,
     PublicationsComponent,
-    PostPetComponent,
-    MapComponent
-  ],
-  imports: [
+    NavbarComponent,
+
+    // Obrigatórios
     RouterModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatSlideToggleModule,
     AppRoutingModule,
-    // Obrigatórios
-    FormsModule,
-    MatIconModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatMenuModule,
-    NgxMaskDirective,
-    MatDividerModule,
-    MatListModule,
-    MatPaginatorModule,
-    CommonModule,
-    MatProgressBarModule,
-    MatSelectModule,
-    MatBadgeModule,
-    MatStepperModule,
-    MatButtonToggleModule
   ],
   providers: [provideNgxMask({}), EmmitNavToHomeService],
   bootstrap: [AppComponent],
