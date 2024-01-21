@@ -14,7 +14,7 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        title: 'Login',
+        title: 'SOSPET | Login',
         loadComponent: () =>
         import('./pages/login/login.component').then(
           (p) => p.LoginComponent
@@ -22,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'register',
-        title: 'Register',
+        title: 'SOSPET | Register',
         loadComponent: () =>
           import('./pages/register/register.component').then(
             (p) => p.RegisterComponent
@@ -30,7 +30,7 @@ const routes: Routes = [
       },
       {
         path: 'publications',
-        title: 'Find Pet',
+        title: 'SOSPET | Find Pet',
         loadComponent: () =>
           import('./pages/find-pet/find-pet.component').then(
             (p) => p.PublicationsComponent
@@ -38,7 +38,7 @@ const routes: Routes = [
       },
       {
         path: 'map',
-        title: 'Map Pet',
+        title: 'SOSPET | Map Pet',
         loadComponent: () =>
           import('./pages/map/map.component').then((p) => p.MapComponent),
       },
@@ -50,7 +50,7 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        title: 'Home',
+        title: 'SOSPET | Home',
         loadComponent: () =>
           import('./pages/homepage/homepage.component').then(
             (p) => p.HomepageComponent
@@ -58,7 +58,7 @@ const routes: Routes = [
       },
       {
         path: 'post',
-        title: 'Post Pet',
+        title: 'SOSPET | Post Pet',
         loadComponent: () =>
           import('./pages/post-pet/post-pet.component').then(
             (p) => p.PostPetComponent
@@ -66,7 +66,7 @@ const routes: Routes = [
       },
       {
         path: 'profile',
-        title: 'Profile',
+        title: 'SOSPET | Profile',
         loadComponent: () =>
           import('./pages/profile/profile.component').then(
             (p) => p.ProfileComponent
@@ -76,6 +76,7 @@ const routes: Routes = [
   },
   {
     path: '**',
+    title: '404',
     loadComponent: () =>
       import('./pages/not-found/not-found.component').then(
         (p) => p.NotFoundComponent
