@@ -1,14 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomepageComponent } from './pages/homepage/homepage.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { PostPetComponent } from './pages/post-pet/post-pet.component';
 import { authGuard, alwaysAllowAuthGuard } from './_guard/auth.guard';
-import { MapComponent } from './pages/map/map.component';
-import { PublicationsComponent } from './pages/publications/publications.component';
 
 const routes: Routes = [
   {
@@ -28,18 +22,24 @@ const routes: Routes = [
       {
         path: 'register',
         title: 'Register',
-        component: RegisterComponent,
+        loadComponent: () =>
+          import('./pages/register/register.component').then(
+            (p) => p.RegisterComponent
+          ),
       },
       {
         path: 'publications',
         title: 'Find Pet',
-        component: PublicationsComponent,
-        // loadChildren: () => import('./pages/publications/publications.component').then((p) => p.PublicationsComponent),
+        loadComponent: () =>
+          import('./pages/publications/publications.component').then(
+            (p) => p.PublicationsComponent
+          ),
       },
       {
         path: 'map',
         title: 'Map Pet',
-        component: MapComponent,
+        loadComponent: () =>
+          import('./pages/map/map.component').then((p) => p.MapComponent),
       },
     ],
   },
@@ -50,17 +50,26 @@ const routes: Routes = [
       {
         path: 'home',
         title: 'Home',
-        component: HomepageComponent,
+        loadComponent: () =>
+          import('./pages/homepage/homepage.component').then(
+            (p) => p.HomepageComponent
+          ),
       },
       {
         path: 'post',
         title: 'Post Pet',
-        component: PostPetComponent,
+        loadComponent: () =>
+          import('./pages/post-pet/post-pet.component').then(
+            (p) => p.PostPetComponent
+          ),
       },
       {
         path: 'profile',
         title: 'Profile',
-        component: ProfileComponent,
+        loadComponent: () =>
+          import('./pages/profile/profile.component').then(
+            (p) => p.ProfileComponent
+          ),
       },
     ],
   },
