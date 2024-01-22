@@ -184,6 +184,7 @@ input::placeholder {
     transform: scale(14);
     color: #ffffff;
     position: absolute;
+    
 }
 
 .userPerfilImg {
@@ -340,6 +341,9 @@ mat-paginator {
     align-items: center;
     justify-content: center;
     transform: scale(2.8);
+    color: $primary;
+    opacity: 1;
+
 }
 
 .icon2:last-child {

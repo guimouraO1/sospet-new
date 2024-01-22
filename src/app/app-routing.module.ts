@@ -14,7 +14,7 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        title: 'SOSPET | Login',
+        title: 'sospet | Login',
         loadComponent: () =>
         import('./pages/login/login.component').then(
           (p) => p.LoginComponent
@@ -22,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'register',
-        title: 'SOSPET | Register',
+        title: 'sospet | Register',
         loadComponent: () =>
           import('./pages/register/register.component').then(
             (p) => p.RegisterComponent
@@ -30,7 +30,7 @@ const routes: Routes = [
       },
       {
         path: 'publications',
-        title: 'SOSPET | Find Pet',
+        title: 'sospet | Find Pet',
         loadComponent: () =>
           import('./pages/find-pet/find-pet.component').then(
             (p) => p.PublicationsComponent
@@ -38,7 +38,7 @@ const routes: Routes = [
       },
       {
         path: 'map',
-        title: 'SOSPET | Map Pet',
+        title: 'sospet | Map Pet',
         loadComponent: () =>
           import('./pages/map/map.component').then((p) => p.MapComponent),
       },
@@ -50,7 +50,7 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        title: 'SOSPET | Home',
+        title: 'sospet | Home',
         loadComponent: () =>
           import('./pages/homepage/homepage.component').then(
             (p) => p.HomepageComponent
@@ -58,7 +58,7 @@ const routes: Routes = [
       },
       {
         path: 'post',
-        title: 'SOSPET | Post Pet',
+        title: 'sospet | Post Pet',
         loadComponent: () =>
           import('./pages/post-pet/post-pet.component').then(
             (p) => p.PostPetComponent
@@ -66,7 +66,7 @@ const routes: Routes = [
       },
       {
         path: 'profile',
-        title: 'SOSPET | Profile',
+        title: 'sospet | Profile',
         loadComponent: () =>
           import('./pages/profile/profile.component').then(
             (p) => p.ProfileComponent
