@@ -11,6 +11,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { Observable, lastValueFrom, of, take } from 'rxjs';
+import { Pet } from '../../models/pet.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-find-pet',
@@ -25,14 +28,16 @@ import { MatSelectModule } from '@angular/material/select';
     MatPaginatorModule,
     MatProgressBarModule,
     MatSelectModule,
+    CommonModule
   
   ],
   templateUrl: './find-pet.component.html',
   styleUrl: './find-pet.component.scss',
 })
 export class PublicationsComponent {
-  petList?: any = [];
-  paginaterdPets: any[] = []; // Lista de pets exibidos na página atual
+  petList: Pet[] = [];
+  updatedListPet$: Observable<Pet[]> | undefined;
+
   pageSize: number = 3; // Tamanho da página
   currentPage: number = 1; // Página atual
   totalItems: number = 0;
@@ -48,24 +53,26 @@ export class PublicationsComponent {
     private authService: AuthService
   ) {}
 
-  ngOnInit(): void {
-    this.getPublications();
+  async ngOnInit(): Promise<void> {
+    await this.getPublications();
   }
 
-  getPublications() {
+  async getPublications() {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${token}`);
-    this.http.get(`${this.urlApi}/publications`, { headers }).subscribe({
-      next: (res: any) => {
-        this.petList = res;
-        this.totalItems = this.petList.length;
-        this.updatepaginaterdPets();
-      },
-      error: (error) => {
-        this.authService.openSnackBar(error.error.msg, '❗');
-      },
-    });
+    
+    try {
+      const observable: Observable<Pet[]> = this.http.get<Pet[]>(`${this.urlApi}/publications`, { headers }).pipe(take(1));
+      const res: Pet[] = await lastValueFrom(observable);
+  
+      this.petList = res;
+      this.totalItems = this.petList.length;
+      this.updateupdatedListPet$();
+    } catch (error) {
+      // this.authService.openSnackBar(error, '❗');
+    }
   }
+  
   getHintMessage(): string {
     switch (this.pet.petSpecies) {
       case 'dog':
@@ -84,12 +91,12 @@ export class PublicationsComponent {
   // Método chamado quando a página é alterada
   pageChange(event: PageEvent) {
     this.currentPage = event.pageIndex + 1;
-    this.updatepaginaterdPets();
+    this.updateupdatedListPet$();
   }
 
-  updatepaginaterdPets() {
+  updateupdatedListPet$() {
     let filteredList = this.petList;
-
+  
     if (this.pet.status !== 'all' || this.pet.petSpecies !== 'all') {
       if (this.pet.status !== 'all' && this.pet.petSpecies !== 'all') {
         filteredList = this.petList
@@ -115,15 +122,15 @@ export class PublicationsComponent {
 
     // Ajuste para garantir que a quantidade de animais por página seja consistente
     const remainingItems = filteredList.length - startIndex;
-    this.paginaterdPets =
+    this.updatedListPet$ =
       remainingItems >= this.pageSize
-        ? filteredList.slice(startIndex, endIndex)
-        : filteredList.slice(startIndex);
+      ? of(filteredList.slice(startIndex, endIndex))
+      : of(filteredList.slice(startIndex));
 
     // Atualize o comprimento total da lista para a variável totalItems
     this.totalItems = filteredList.length;
 
-    return this.paginaterdPets;
+    return this.updatedListPet$;
   }
 
   filter(event: any, filter: any) {
@@ -134,7 +141,7 @@ export class PublicationsComponent {
     if (filter === 'petSpecies') {
       this.pet.petSpecies = event.value;
     }
-    this.updatepaginaterdPets();
+    this.updateupdatedListPet$();
   }
 
   rescue() {

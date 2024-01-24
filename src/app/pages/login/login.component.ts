@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   hide = true;
 
   async ngOnInit() {
-    let result = await this.authService.loggedIn();
+    let result = await this.authService.asycUserAuthentication();
 
     if (result) {
       this.router.navigate(['/publications']);

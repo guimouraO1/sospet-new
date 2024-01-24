@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { EmmitNavToHomeService } from '../../services/emmit-nav-to-home.service';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -33,7 +33,9 @@ export class NavbarComponent implements OnInit {
       .getClickEvent()
       .subscribe((bol: any) => {
         if (bol) {
-          this._userService.getUser().subscribe({
+          this._userService.getUser()
+          .pipe(take(1))
+          .subscribe({
             next: (_user: User[]) => {
               this.user = _user;
             },
@@ -45,7 +47,9 @@ export class NavbarComponent implements OnInit {
       });
   }
   ngOnInit(): void {
-    this._userService.getUser().subscribe({
+    this._userService.getUser()
+    .pipe(take(1))
+    .subscribe({
       next: (_user: User[]) => {
         this.user = _user;
       },
@@ -77,7 +81,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['profile']);
   }
 
-  signOut() {
+  logout() {
     localStorage.clear();
     this.authService._isAuthenticated = false;
     this.router.navigate(['']);

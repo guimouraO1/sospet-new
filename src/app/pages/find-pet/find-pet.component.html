@@ -33,57 +33,43 @@
 
   <div class="petList">
     <div class="cards-container">
-      @for (petList of paginaterdPets; track petList.publication_id) {
+      @for (pet of updatedListPet$ | async; track pet.publication_id) {
       <mat-list class="cards">
         <div class="header-card">
-          @if(!petList?.user_filename){
+          @if(!pet?.user_filename){
           <mat-icon class="icon">account_circle</mat-icon>
           }@else {
-          <img
-            class="img-icon"
-            src="http://localhost/loginPage/backend/upload/{{
-              petList.user_id
-            }}/{{ petList.user_filename }}"
-          />
+          <img class="img-icon" src="http://localhost/loginPage/backend/upload/{{ pet.user_id }}/{{
+              pet.user_filename
+            }}" />
           }
-          <h2 class="userName">{{ petList.user_first_name }}</h2>
+          <h2 class="userName">{{ pet.user_first_name }}</h2>
           <button class="btn-header" mat-stroked-button>
-            {{ petList.status }}
+            {{ pet.status }}
           </button>
         </div>
 
         <div class="pet_image">
-          <img
-            class="img-pet"
-            src="http://localhost/loginPage/backend/upload/{{
-              petList.user_id
-            }}/{{ petList.pet_filename }}"
-          />
+          <img class="img-pet" src="http://localhost/loginPage/backend/upload/{{ pet.user_id }}/{{
+              pet.pet_filename
+            }}" />
         </div>
 
         <mat-list-item></mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Pet Name: {{ petList.pet_name }}</mat-list-item>
+        <mat-list-item>Pet Name: {{ pet.pet_name }}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Breed: {{ petList.pet_breed}}</mat-list-item>
+        <mat-list-item>Breed: {{ pet.pet_breed }}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Specie: {{ petList.pet_species }}</mat-list-item>
+        <mat-list-item>Specie: {{ pet.pet_species }}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Sex: {{ petList.pet_sex }}</mat-list-item>
+        <mat-list-item>Sex: {{ pet.pet_sex }}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item
-          >Last Location: {{ petList.pet_last_location }}</mat-list-item
-        >
+        <mat-list-item>Last Location: {{ pet.pet_last_location }}</mat-list-item>
         <mat-divider></mat-divider>
 
         <div class="btn-div">
-          <button
-            (click)="rescue()"
-            type="submit"
-            class="btn"
-            mat-raised-button
-            
-          >
+          <button (click)="rescue()" type="submit" class="btn" mat-raised-button>
             Rescue Pet
           </button>
         </div>
@@ -96,12 +82,7 @@
       } }
     </div>
     <div class="pagination-container">
-      <mat-paginator
-        [length]="totalItems"
-        [pageSize]="pageSize"
-        aria-label="Select page"
-        (page)="pageChange($event)"
-      >
+      <mat-paginator [length]="totalItems" [pageSize]="pageSize" aria-label="Select page" (page)="pageChange($event)">
       </mat-paginator>
     </div>
   </div>

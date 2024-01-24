@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
   hideConfirmPassword = true;
 
   async ngOnInit(): Promise<void> {
-    let result = await this.authService.loggedIn();
+    let result = await this.authService.asycUserAuthentication();
 
     if (result) {
       this.router.navigate(['/publications']);

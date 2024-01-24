@@ -4,13 +4,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { EmmitNavToHomeService } from './emmit-nav-to-home.service';
 import { environment } from '../environments/environment';
+import { lastValueFrom, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   _isAuthenticated: boolean = false;
-  user: any;
   private urlApi = `${environment.urlApi}`;
 
   constructor(
@@ -21,18 +21,21 @@ export class AuthService {
   ) {}
 
   login(email: string, password: string) {
-    this.http.post(`${this.urlApi}/login`, { email, password }).subscribe({
-      next: (res: any) => {
-        this._isAuthenticated = true;
-        localStorage.setItem('token', res.authToken);
-        this.clickEventService.emitir();
-        this.router.navigate(['/publications']);
-        this.openSnackBar('Login successful!', res.user.email);
-      },
-      error: (e: any) => {
-        this.openSnackBar(e.error.msg, '❗');
-      },
-    });
+    this.http
+      .post(`${this.urlApi}/login`, { email, password })
+      .pipe(take(1))
+      .subscribe({
+        next: (res: any) => {
+          this._isAuthenticated = true;
+          localStorage.setItem('token', res.authToken);
+          this.clickEventService.emitir();
+          this.router.navigate(['/publications']);
+          this.openSnackBar('Login successful!', res.user.email);
+        },
+        error: (e: any) => {
+          this.openSnackBar(e.error.msg, '❗');
+        },
+      });
   }
 
   register(email: string, password: string, confirmPassword: string) {
@@ -42,6 +45,7 @@ export class AuthService {
         password,
         confirmPassword,
       })
+      .pipe(take(1))
       .subscribe({
         next: (res: any) => {
           if (res.register) {
@@ -71,6 +75,7 @@ export class AuthService {
         { firstName, lastName, telephone, cep, address },
         { headers }
       )
+      .pipe(take(1))
       .subscribe({
         next: (res: any) => {
           if (res.update) {
@@ -84,26 +89,25 @@ export class AuthService {
       });
   }
 
-  async loggedIn() {
+  async asycUserAuthentication() {
     const authToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('authorization', `${authToken}`);
+
     try {
-      const res: any = await this.http
-        .get(`${this.urlApi}/user/auth`, { headers })
-        .toPromise();
+      const res: any = await lastValueFrom(
+        this.http.get(`${this.urlApi}/user/auth`, { headers }).pipe(take(1))
+      );
 
       this._isAuthenticated = res.loggedIn;
       return res.loggedIn;
     } catch (e) {
-      if (e) {
-        console.log(this.router.url);
-      }
+      this._isAuthenticated = false;
       return false;
     }
   }
 
   async _isAuthUser(): Promise<boolean> {
-    await this.loggedIn();
+    await this.asycUserAuthentication();
     return this._isAuthenticated;
   }
 
