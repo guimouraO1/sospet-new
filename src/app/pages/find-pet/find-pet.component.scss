@@ -1,188 +1,212 @@
-@use './../../../assets/styles/colors.scss' as *;
+@use "./../../../assets/styles/colors.scss" as *;
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-mat-option, h2 {
-    font-family: 'Comfortaa', sans-serif !important;;
-    /* font-family: 'Comic Neue', cursive !important; */
-
+mat-option,
+h2 {
+  font-family: "Comfortaa", sans-serif !important;
+  /* font-family: 'Comic Neue', cursive !important; */
 }
 
 ::ng-deep .mdc-list-item__primary-text {
-    font-family: 'Comfortaa', sans-serif !important;;
-    /* font-family: 'Comic Neue', cursive !important; */
-
+  font-family: "Comfortaa", sans-serif !important;
+  /* font-family: 'Comic Neue', cursive !important; */
 }
 
-
 .main {
-    display: flex;
-    width: 100vw;
-    height: 90vh;
-
+  display: flex;
+  width: 100vw;
+  height: 90vh;
 }
 
 .search {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 20vw;
-    height: 90vh;
-    box-shadow: $cardShadowPrimary;
-    gap: 10px;
-    background-color: $backgroundColorCard !important;
+  margin: 30px 0px 0px 20px;
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  width: 20vw;
+  height: 85vh;
+  box-shadow: $cardShadowPrimary;
+  gap: 10px;
+  background-color: $backgroundColorCard;
 
 }
 
 .searchHeader {
-    display: flex;
-    width: 16vw;
-    justify-content: space-around;
-    margin: 40px;
-    margin-top: 60px;
-    border-bottom: 1px solid rgba(56, 56, 56, 0.288);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 14vw;
+  justify-content: space-between;
+  margin: 30px;
+  margin-top: 60px;
+  border-bottom: 1px solid rgba(56, 56, 56, 0.288);
+  color: rgba(56, 56, 56, 0.288);
+  cursor: pointer;
+  padding: 8px;
+  h1{
+    margin: 0;
+    padding: 0 !important;
     color: rgba(56, 56, 56, 0.288);
-    cursor: pointer;
-
+  }
+  mat-icon{
+    color: rgba(56, 56, 56, 0.288);
+  }
 }
 
 mat-form-field {
-    width: 16vw;
-
-
+  width: 16vw;
 }
 
 .cards-container {
-    /* margin: 50px; */
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    /* flex-direction: column; */
-    gap: 30px;
-    flex-wrap: wrap;
+  /* margin: 50px; */
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+  gap: 30px;
+  flex-wrap: wrap;
+}
 
+.error {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: $primary;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 50%;
+  gap: 20px;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  .loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
 }
 
 .cards {
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    height: 650px;
-    box-shadow: $cardShadowPrimary;
-    border-radius: 10px;
-    background-color: $backgroundColorCard !important;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 650px;
+  box-shadow: $cardShadowPrimary;
+  border-radius: 10px;
+  background-color: $backgroundColorCard !important;
 }
 
 .header-card {
-    height: 100px;
-    margin: 10px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: space-around;
+  height: 100px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
 }
 
 .userName {
-    margin: 0;
-    padding: 0;
-    margin-left: 2%;
-    font-weight: 100;
+  margin: 0;
+  padding: 0;
+  margin-left: 2%;
+  font-weight: 100;
 }
 
 .img-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 100%;
-    object-fit: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  object-fit: cover;
 }
 
 .btn-div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn {
-    margin: 20px;
-    width: 200px;
+  margin: 20px;
+  width: 200px;
 }
 
 .btn-lost {
-    color: red !important;
+  color: red !important;
 }
 
 .icon {
-    color: $primary;
-    border-radius: 100%;
-
+  color: $primary;
+  border-radius: 100%;
 }
 
 mat-icon:first-child {
-    margin: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: scale(2.8);
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(2.8);
 }
 
 mat-icon:last-child {
-    transform: scale(1.4);
-    margin-right: 20px;
-    cursor: pointer;
+  transform: scale(1.4);
+  margin-right: 20px;
+  cursor: pointer;
 }
 
 mat-paginator {
-    width: 50vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    box-shadow: $cardShadowPrimary;
-    margin-top: 20px;
-    background-color: $backgroundColorCard !important;
-
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: $cardShadowPrimary;
+  margin-top: 20px;
+  background-color: $backgroundColorCard !important;
 }
 
 .pagination-container {
-    height: 10vh;
+  height: 10vh;
 }
 
 .petList {
-    width: 80vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .pet_image {
-    width: 400px;
-    height: 300px;
-    object-fit: cover;
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
 }
 
 .img-pet {
-    width: 400px;
-    height: 300px;
-    object-fit: cover;
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
 }
 
 .btn-header {
-    text-transform: uppercase;
-    color: red !important;
-    width: 100px;
-    border: 1px solid rgba(100, 100, 100, 0.103) !important;
-    transition: none;
-    box-shadow: none;
-
+  text-transform: uppercase;
+  color: red !important;
+  width: 100px;
+  border: 1px solid rgba(100, 100, 100, 0.103) !important;
+  transition: none;
+  box-shadow: none;
 }
 
 .btn {
-    background-color: $primary !important;
-    color: #F8F8F8 !important;
+  background-color: $primary !important;
+  color: #f8f8f8 !important;
 }

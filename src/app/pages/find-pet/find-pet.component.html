@@ -4,6 +4,7 @@
       <h1>Search</h1>
       <mat-icon>search</mat-icon>
     </div>
+    
     <div class="item">
       <mat-form-field appearance="outline" class="forms">
         <mat-label>Filter by species</mat-label>
@@ -39,9 +40,12 @@
           @if(!pet?.user_filename){
           <mat-icon class="icon">account_circle</mat-icon>
           }@else {
-          <img class="img-icon" src="http://localhost/loginPage/backend/upload/{{ pet.user_id }}/{{
+          <img
+            class="img-icon"
+            src="http://localhost/loginPage/backend/upload/{{ pet.user_id }}/{{
               pet.user_filename
-            }}" />
+            }}"
+          />
           }
           <h2 class="userName">{{ pet.user_first_name }}</h2>
           <button class="btn-header" mat-stroked-button>
@@ -50,9 +54,12 @@
         </div>
 
         <div class="pet_image">
-          <img class="img-pet" src="http://localhost/loginPage/backend/upload/{{ pet.user_id }}/{{
+          <img
+            class="img-pet"
+            src="http://localhost/loginPage/backend/upload/{{ pet.user_id }}/{{
               pet.pet_filename
-            }}" />
+            }}"
+          />
         </div>
 
         <mat-list-item></mat-list-item>
@@ -65,24 +72,42 @@
         <mat-divider></mat-divider>
         <mat-list-item>Sex: {{ pet.pet_sex }}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>Last Location: {{ pet.pet_last_location }}</mat-list-item>
+        <mat-list-item
+          >Last Location: {{ pet.pet_last_location }}</mat-list-item
+        >
         <mat-divider></mat-divider>
 
         <div class="btn-div">
-          <button (click)="rescue()" type="submit" class="btn" mat-raised-button>
+          <button
+            (click)="rescue()"
+            type="submit"
+            class="btn"
+            mat-raised-button
+          >
             Rescue Pet
           </button>
         </div>
       </mat-list>
       } @empty { @defer () {
-      <h1>Pets not found.</h1>
-      } @loading (minimum 2000ms) {
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-      <h1>Loading all lost pets...</h1>
+      <div class="error">
+        <h1>Pets not found</h1>
+      </div>
+      } @loading (minimum 3000ms) {
+      <div class="error">
+        <div class="loading">
+          <h1>Loading all lost pets</h1>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+      </div>
       } }
     </div>
     <div class="pagination-container">
-      <mat-paginator [length]="totalItems" [pageSize]="pageSize" aria-label="Select page" (page)="pageChange($event)">
+      <mat-paginator
+        [length]="totalItems"
+        [pageSize]="pageSize"
+        aria-label="Select page"
+        (page)="pageChange($event)"
+      >
       </mat-paginator>
     </div>
   </div>

@@ -78,7 +78,7 @@ export class PublicationsComponent {
       case 'dog':
         return 'Woof, woof!';
       case 'cat':
-        return 'Meeeoooow!';
+        return 'Meeoow!';
       case 'bird':
         return 'Tweet, tweet!';
       case 'other':

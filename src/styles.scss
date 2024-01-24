@@ -1,6 +1,5 @@
 @use './assets/styles/colors.scss' as *;
 @import "@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -13,7 +12,6 @@
 html,
 body {
   background-color: $background;
-  /* 4a4e69  promissora b8bedd melhor*/
   height: 100%;
 
 }
@@ -22,7 +20,7 @@ body {
 }
 body {
   --sb-track-color: $background;
-  --sb-thumb-color: $primary;
+  --sb-thumb-color: #673ab7;
   --sb-size: 6px;
 
   scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
