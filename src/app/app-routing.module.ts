@@ -76,7 +76,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    title: '404',
+    title: 'sospet | 404',
+    canActivate: [alwaysAllowAuthGuard],
     loadComponent: () =>
       import('./pages/not-found/not-found.component').then(
         (p) => p.NotFoundComponent

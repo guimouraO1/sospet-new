@@ -1,19 +1,17 @@
-@use './assets/styles/colors.scss' as *;
+@use "./assets/styles/colors.scss" as *;
 @import "@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
   /* font-family: 'Comic Neue', cursive; */
-  font-family: 'Comfortaa', sans-serif;
+  font-family: "Comfortaa", sans-serif;
 }
 
 html,
 body {
+  margin: 0;
   background-color: $background;
   height: 100%;
-
 }
 .mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action {
   color: $primary !important;
@@ -27,7 +25,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-  width: var(--sb-size)
+  width: var(--sb-size);
 }
 
 body::-webkit-scrollbar-track {
@@ -36,5 +34,4 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
-
 }

@@ -13,7 +13,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { Observable, lastValueFrom, of, take } from 'rxjs';
 import { Pet } from '../../models/pet.model';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-find-pet',
@@ -28,8 +28,8 @@ import { CommonModule } from '@angular/common';
     MatPaginatorModule,
     MatProgressBarModule,
     MatSelectModule,
-    CommonModule
-  
+    CommonModule,
+    AsyncPipe
   ],
   templateUrl: './find-pet.component.html',
   styleUrl: './find-pet.component.scss',
